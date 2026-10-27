@@ -21,7 +21,8 @@ app.use((req, res, next) => {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Mount the API router
+// Mount the API router at both /api and / to handle all Vercel path rewrites
 app.use('/api', apiRouter);
+app.use('/', apiRouter);
 
 export default app;

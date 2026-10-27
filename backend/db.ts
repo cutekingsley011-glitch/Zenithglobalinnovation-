@@ -1,13 +1,17 @@
 import fs from 'fs';
 import path from 'path';
 
-const DATA_DIR = path.resolve(process.cwd(), 'data');
-const DB_FILE = path.join(DATA_DIR, 'db.json');
+const isVercel = Boolean(process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME);
+const BUNDLED_DB_FILE = path.resolve(process.cwd(), 'data', 'db.json');
+const DATA_DIR = isVercel ? '/tmp' : path.resolve(process.cwd(), 'data');
+const DB_FILE = isVercel ? path.join('/tmp', 'db.json') : path.join(DATA_DIR, 'db.json');
 
-// Ensure directory exists
-if (!fs.existsSync(DATA_DIR)) {
-  fs.mkdirSync(DATA_DIR, { recursive: true });
-}
+// Ensure directory exists without crashing on read-only serverless filesystems
+try {
+  if (!fs.existsSync(DATA_DIR)) {
+    fs.mkdirSync(DATA_DIR, { recursive: true });
+  }
+} catch {}
 
 interface DatabaseSchema {
   applications: Array<Record<string, any>>;
@@ -16,6 +20,7 @@ interface DatabaseSchema {
   leads: Array<Record<string, any>>;
   job_alerts: Array<Record<string, any>>;
   admin_sessions: Array<Record<string, any>>;
+  admin_security: Array<Record<string, any>>;
   [key: string]: Array<Record<string, any>>;
 }
 
@@ -26,11 +31,26 @@ const defaultSchema: DatabaseSchema = {
   leads: [],
   job_alerts: [],
   admin_sessions: [],
+  admin_security: [
+    {
+      id: "sec_admin_cred",
+      salt: "zgi_sec_salt_2026",
+      passwordHash: "fb2a4168334a02aee93e2ffa05eed0e2c22e8eeb191a91ed85a6061696eb5f47",
+      updatedAt: "2026-10-26T10:53:27.415Z"
+    }
+  ],
 };
 
 function readDb(): DatabaseSchema {
   try {
     if (!fs.existsSync(DB_FILE)) {
+      if (isVercel && fs.existsSync(BUNDLED_DB_FILE)) {
+        try {
+          const initial = fs.readFileSync(BUNDLED_DB_FILE, 'utf-8');
+          fs.writeFileSync(DB_FILE, initial, 'utf-8');
+          return { ...defaultSchema, ...JSON.parse(initial) };
+        } catch {}
+      }
       writeDb(defaultSchema);
       return { ...defaultSchema };
     }
@@ -38,7 +58,7 @@ function readDb(): DatabaseSchema {
     const parsed = JSON.parse(raw);
     return { ...defaultSchema, ...parsed };
   } catch (err) {
-    console.error('Error reading database, resetting to default structure:', err);
+    console.error('Error reading database, using default structure:', err);
     return { ...defaultSchema };
   }
 }
@@ -52,7 +72,8 @@ function writeDb(data: DatabaseSchema): void {
     if (fs.existsSync(tmpFile)) {
       try { fs.unlinkSync(tmpFile); } catch {}
     }
-    throw err;
+    // Log without crashing the serverless handler
+    console.warn('Filesystem write notice:', err);
   }
 }
 

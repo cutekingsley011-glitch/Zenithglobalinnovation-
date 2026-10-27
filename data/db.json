@@ -343,6 +343,13 @@
       "event": "ADMIN_LOGIN_SUCCESS",
       "details": "Administrator authenticated successfully from IP 127.0.0.1",
       "ip": "127.0.0.1",
+      "timestamp": "2026-10-27T23:30:00.784Z",
+      "id": "adm_mvrbirps_wo116z9"
+    },
+    {
+      "event": "ADMIN_LOGIN_SUCCESS",
+      "details": "Administrator authenticated successfully from IP 127.0.0.1",
+      "ip": "127.0.0.1",
       "timestamp": "2026-10-26T10:56:59.246Z",
       "id": "adm_mvp56ir3_tbh2n74"
     },
@@ -450,6 +457,13 @@
     }
   ],
   "admin_sessions": [
+    {
+      "token": "7efd313cfd1a10598b78981570e11097aedbeb2d435b338e82621dda029b45fe",
+      "email": "zenithglobalinnovationhq@protonmail.com",
+      "ip": "127.0.0.1",
+      "createdAt": "2026-10-27T23:30:00.783Z",
+      "id": "adm_mvrbirpr_cwfyurd"
+    },
     {
       "token": "96f9b0ce7e13256322fa00c5f82d9a42dbc40d8d970bf9572a7c93044f96acff",
       "email": "zenithglobalinnovationhq@protonmail.com",
