@@ -1853,7 +1853,9 @@ app.use((err, _req, res, _next) => {
   console.error("[SERVERLESS API ERROR]", err);
   res.status(500).json({ message: err?.message || "Internal Server Error" });
 });
-var serverless_default = app;
+function handler(req, res) {
+  return app(req, res);
+}
 export {
-  serverless_default as default
+  handler as default
 };
