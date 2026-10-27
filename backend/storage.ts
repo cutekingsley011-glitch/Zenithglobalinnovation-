@@ -1,11 +1,14 @@
 import fs from 'fs';
 import path from 'path';
 
-const STORAGE_ROOT = path.resolve(process.cwd(), 'data', 'storage');
+const isVercel = Boolean(process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME);
+const STORAGE_ROOT = isVercel ? '/tmp/storage' : path.resolve(process.cwd(), 'data', 'storage');
 
-if (!fs.existsSync(STORAGE_ROOT)) {
-  fs.mkdirSync(STORAGE_ROOT, { recursive: true });
-}
+try {
+  if (!fs.existsSync(STORAGE_ROOT)) {
+    fs.mkdirSync(STORAGE_ROOT, { recursive: true });
+  }
+} catch {}
 
 export interface StorageFile {
   path: string;
