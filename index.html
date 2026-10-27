@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script>
+      // Suppress benign Vite HMR WebSocket connection errors in iframe / Cloud Run environments
+      window.addEventListener('unhandledrejection', function(event) {
+        if (event && event.reason) {
+          var msg = event.reason.message || (typeof event.reason === 'string' ? event.reason : '');
+          if (msg && (msg.indexOf('WebSocket') !== -1 || msg.indexOf('vite:ws') !== -1)) {
+            event.preventDefault();
+            if (typeof event.stopImmediatePropagation === 'function') {
+              event.stopImmediatePropagation();
+            }
+          }
+        }
+      });
+      window.addEventListener('error', function(event) {
+        if (event && event.message && (event.message.indexOf('WebSocket') !== -1 || event.message.indexOf('vite:ws') !== -1)) {
+          event.preventDefault();
+          if (typeof event.stopImmediatePropagation === 'function') {
+            event.stopImmediatePropagation();
+          }
+        }
+      });
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zenith Global Innovation – Global Executive & Remote Careers</title>
+    <meta name="description" content="Connecting Talent Across Continents. Zenith Global Innovation is an international executive recruitment and remote talent partner connecting vetted professionals with global enterprises. Transparent salaries, full remote flexibility." />
+    <meta name="keywords" content="remote jobs, executive search, global staffing, remote engineering careers, CTO jobs, international recruitment, work from anywhere, verified remote talent, Zenith Global Innovation" />
+    <meta name="author" content="Zenith Global Innovation" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="theme-color" content="#10243e" />
+
+    <!-- OpenGraph Metadata for Social & Job Boards -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Zenith Global Innovation" />
+    <meta property="og:title" content="Zenith Global Innovation – Connecting Talent Across Continents" />
+    <meta property="og:description" content="Explore high-impact remote careers with transparent executive compensation ($120k–$240k/yr). Fully remote opportunities across North America, Europe and Asia-Pacific." />
+
+    <!-- Twitter / X Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Zenith Global Innovation – Global Executive & Remote Careers" />
+    <meta name="twitter:description" content="Transparent salaries, 100% remote flexibility. Apply for executive, engineering, and specialized consulting positions worldwide." />
+
+    <!-- Schema.org Structured Data (Google for Jobs & Corporate Knowledge Graph) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://zenithglobalinnovation.com/#organization",
+          "name": "Zenith Global Innovation",
+          "alternateName": "Zenith Global HR & Strategic Remote Staffing",
+          "url": "https://zenithglobalinnovation.com",
+          "foundingDate": "2019",
+          "description": "International corporate recruitment and remote staffing partner connecting thoroughly vetted professionals with companies worldwide.",
+          "email": "zenithglobalinnovationhq@protonmail.com",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "New York Headquarters",
+            "addressLocality": "New York",
+            "addressRegion": "NY",
+            "addressCountry": "US"
+          },
+          "areaServed": [
+            "United States",
+            "United Kingdom",
+            "Canada",
+            "Singapore",
+            "Australia",
+            "Worldwide"
+          ],
+          "knowsAbout": [
+            "Remote Staffing",
+            "Executive Search",
+            "Technical Recruitment",
+            "Global Workforce Management"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://zenithglobalinnovation.com/#website",
+          "url": "https://zenithglobalinnovation.com",
+          "name": "Zenith Global Innovation",
+          "publisher": {
+            "@id": "https://zenithglobalinnovation.com/#organization"
+          }
+        },
+        {
+          "@type": "JobPosting",
+          "title": "Chief Technology Officer (CTO)",
+          "description": "<p>High-impact global leadership role directing enterprise technology strategy, technical architecture, engineering leadership, and cybersecurity across distributed international teams.</p><h3>Responsibilities</h3><ul><li>Own day-to-day priorities and deliverables connected to enterprise technology strategy.</li><li>Apply specialist knowledge to analyze systems, mitigate risks, and lead engineering teams.</li><li>Manage distributed global infrastructure and report to executive committee.</li></ul>",
+          "datePosted": "2026-01-15T08:00:00Z",
+          "validThrough": "2027-12-31T23:59:59Z",
+          "employmentType": "FULL_TIME",
+          "hiringOrganization": {
+            "@type": "Organization",
+            "name": "Zenith Global Innovation",
+            "sameAs": "https://zenithglobalinnovation.com"
+          },
+          "jobLocationType": "TELECOMMUTE",
+          "applicantLocationRequirements": {
+            "@type": "Country",
+            "name": "Global"
+          },
+          "baseSalary": {
+            "@type": "MonetaryAmount",
+            "currency": "USD",
+            "value": {
+              "@type": "QuantitativeValue",
+              "value": 185000,
+              "unitText": "YEAR"
+            }
+          },
+          "directApply": true
+        },
+        {
+          "@type": "JobPosting",
+          "title": "Director of Global Engineering",
+          "description": "<p>Oversee distributed software development teams, infrastructure architecture, scalable engineering standards, and production cloud services across international timezones.</p><h3>Responsibilities</h3><ul><li>Lead software architecture and scalable cloud engineering standards.</li><li>Mentor engineering managers and senior technical contributors.</li><li>Ensure reliable software delivery and high availability systems.</li></ul>",
+          "datePosted": "2026-01-20T08:00:00Z",
+          "validThrough": "2027-12-31T23:59:59Z",
+          "employmentType": "FULL_TIME",
+          "hiringOrganization": {
+            "@type": "Organization",
+            "name": "Zenith Global Innovation",
+            "sameAs": "https://zenithglobalinnovation.com"
+          },
+          "jobLocationType": "TELECOMMUTE",
+          "applicantLocationRequirements": {
+            "@type": "Country",
+            "name": "Global"
+          },
+          "baseSalary": {
+            "@type": "MonetaryAmount",
+            "currency": "USD",
+            "value": {
+              "@type": "QuantitativeValue",
+              "value": 180000,
+              "unitText": "YEAR"
+            }
+          },
+          "directApply": true
+        },
+        {
+          "@type": "JobPosting",
+          "title": "Senior Full Stack Developer",
+          "description": "<p>End-to-end web application engineering across modern frontend, resilient backend APIs, databases and automated cloud delivery pipelines.</p><h3>Responsibilities</h3><ul><li>Design, develop and deploy full-stack web applications and microservices.</li><li>Collaborate with product designers and distributed engineering peers.</li><li>Optimize frontend performance, code quality and test coverage.</li></ul>",
+          "datePosted": "2026-01-22T08:00:00Z",
+          "validThrough": "2027-12-31T23:59:59Z",
+          "employmentType": "FULL_TIME",
+          "hiringOrganization": {
+            "@type": "Organization",
+            "name": "Zenith Global Innovation",
+            "sameAs": "https://zenithglobalinnovation.com"
+          },
+          "jobLocationType": "TELECOMMUTE",
+          "applicantLocationRequirements": {
+            "@type": "Country",
+            "name": "Global"
+          },
+          "baseSalary": {
+            "@type": "MonetaryAmount",
+            "currency": "USD",
+            "value": {
+              "@type": "QuantitativeValue",
+              "value": 145000,
+              "unitText": "YEAR"
+            }
+          },
+          "directApply": true
+        },
+        {
+          "@type": "JobPosting",
+          "title": "Creative Director",
+          "description": "<p>Direct multi-channel brand design, visual identity, campaign concepting, and creative leadership for international client portfolios and corporate initiatives.</p>",
+          "datePosted": "2026-01-25T08:00:00Z",
+          "validThrough": "2027-12-31T23:59:59Z",
+          "employmentType": "FULL_TIME",
+          "hiringOrganization": {
+            "@type": "Organization",
+            "name": "Zenith Global Innovation",
+            "sameAs": "https://zenithglobalinnovation.com"
+          },
+          "jobLocationType": "TELECOMMUTE",
+          "applicantLocationRequirements": {
+            "@type": "Country",
+            "name": "Global"
+          },
+          "baseSalary": {
+            "@type": "MonetaryAmount",
+            "currency": "USD",
+            "value": {
+              "@type": "QuantitativeValue",
+              "value": 140000,
+              "unitText": "YEAR"
+            }
+          },
+          "directApply": true
+        }
+      ]
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

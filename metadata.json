@@ -1,0 +1,8 @@
+{
+  "name": "Zenith Global Innovation",
+  "description": "Connecting Talent Across Continents — Corporate recruitment and remote staffing platform connecting qualified professionals with companies worldwide.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
