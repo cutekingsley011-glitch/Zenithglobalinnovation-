@@ -1,4 +1,4 @@
-// api/serverless.ts
+// backend/serverless.ts
 import express from "express";
 
 // backend/index.ts
@@ -10,8 +10,518 @@ import crypto2 from "crypto";
 // backend/db.ts
 import fs from "fs";
 import path from "path";
+
+// data/db.json
+var db_default = {
+  applications: [
+    {
+      name: "Jordan Bell",
+      email: "zenithglobalinnovationhq@protonmail.com",
+      phone: "+1 (555) 321-9876",
+      jobId: "eng-director",
+      jobTitle: "Director of Global Engineering",
+      country: "United States",
+      nationality: "American",
+      gender: "Non-binary",
+      availability: "Within 2 weeks",
+      education: "Bachelor of Science",
+      field: "Software Engineering",
+      experience: "6 years",
+      address: "123 Market St, San Francisco, CA",
+      resumePath: "applications/resumes/demo-resume.pdf",
+      signature: "Jordan Bell",
+      preferredChannel: "Telegram",
+      contactHandle: "@JordanBellDev",
+      dob: "1994-08-12",
+      expectedSalary: "Open / Negotiable",
+      employer: "Not specified",
+      currentTitle: "Not specified",
+      source: "Direct",
+      additionalRoles: [],
+      reference: "ZGI-2026-Y80VS6",
+      status: "Application Received",
+      submittedAt: "2026-10-25T20:47:01.745Z",
+      estimatedResponseDate: "2026-10-30",
+      companyEmail: "zenithglobalinnovationhq@protonmail.com",
+      emailSent: false,
+      emailError: 'Brevo rejected confirmation email (HTTP 401): {"message":"Key not found","code":"unauthorized"}\n',
+      id: "app_mvoatgtu_79vnllw"
+    },
+    {
+      name: "Sarah Connor",
+      email: "zenithglobalinnovationhq@protonmail.com",
+      phone: "+1 (555) 777-8888",
+      jobId: "eng-director",
+      jobTitle: "Director of Global Engineering",
+      country: "United Kingdom",
+      nationality: "British",
+      gender: "Female",
+      source: "remoteok",
+      additionalRoles: [
+        "Lead Software Architect",
+        "Chief Technology Officer (CTO)"
+      ],
+      expectedSalary: "$190,000 / year",
+      availability: "Immediate",
+      signature: "Sarah Connor",
+      preferredChannel: "Telegram",
+      contactHandle: "@SarahConnorTech",
+      dob: "1991-03-22",
+      education: "Master of Engineering",
+      field: "Computing",
+      experience: "10 years",
+      address: "10 Downing Street, London",
+      employer: "Cyberdyne Systems",
+      currentTitle: "Principal Staff Engineer",
+      resumePath: "applications/resumes/demo-resume.pdf",
+      reference: "ZGI-2026-HZMJTU",
+      status: "Application Received",
+      submittedAt: "2026-10-25T19:09:24.702Z",
+      estimatedResponseDate: "2026-10-30",
+      companyEmail: "zenithglobalinnovationhq@protonmail.com",
+      emailSent: true,
+      emailError: "",
+      id: "app_mvo7bxi6_51ugp40"
+    },
+    {
+      jobId: "eng-director",
+      jobTitle: "Director of Global Engineering",
+      name: "Marcus Vance",
+      email: "zenithglobalinnovationhq@protonmail.com",
+      phone: "+1 (555) 392-8172",
+      country: "United States",
+      nationality: "American",
+      dob: "1988-06-15",
+      gender: "Male",
+      address: "742 Evergreen Terrace, Springfield, OR",
+      expectedSalary: "$185,000 / year",
+      availability: "2026-11-15",
+      education: "Master of Science in Computer Science",
+      field: "Software Engineering & Distributed Systems",
+      experience: "12+ years",
+      employer: "Vance Technologies Global",
+      currentTitle: "Principal Infrastructure Architect",
+      resumePath: "applications/resumes/demo-resume.pdf",
+      signature: "Marcus Vance",
+      preferredChannel: "Telegram",
+      contactHandle: "@MarcusVanceEng",
+      reference: "ZGI-2026-7WE198",
+      status: "Shortlisted",
+      submittedAt: "2026-10-23T19:21:17.150Z",
+      estimatedResponseDate: "2026-10-28",
+      companyEmail: "zenithglobalinnovationhq@protonmail.com",
+      emailSent: true,
+      emailError: "",
+      id: "app_mvlcvhwe_phn8q3e",
+      interviewChannel: "Telegram",
+      interviewContact: "@ZenithTalentLead",
+      interviewDeadline: "Within 48 hours of receipt"
+    },
+    {
+      jobId: "eng-director",
+      jobTitle: "Director of Global Engineering",
+      name: "Marcus Vance",
+      email: "zenithglobalinnovationhq@protonmail.com",
+      phone: "+1 (555) 392-8172",
+      country: "United States",
+      nationality: "American",
+      dob: "1988-06-15",
+      gender: "Male",
+      address: "742 Evergreen Terrace, Springfield, OR",
+      expectedSalary: "$185,000 / year",
+      availability: "2026-11-15",
+      education: "Master of Science in Computer Science",
+      field: "Software Engineering & Distributed Systems",
+      experience: "12+ years",
+      employer: "Vance Technologies Global",
+      currentTitle: "Principal Infrastructure Architect",
+      resumePath: "applications/resumes/demo-resume.pdf",
+      signature: "Marcus Vance",
+      preferredChannel: "Telegram",
+      contactHandle: "@MarcusVanceEng",
+      reference: "ZGI-2026-27RAIK",
+      status: "Application Received",
+      submittedAt: "2026-10-23T19:20:42.163Z",
+      estimatedResponseDate: "2026-10-28",
+      companyEmail: "zenithglobalinnovationhq@protonmail.com",
+      emailSent: false,
+      emailError: 'Brevo rejected confirmation email (HTTP 401): {"message":"Key not found","code":"unauthorized"}\n',
+      id: "app_mvlcuqwk_9pcino4"
+    },
+    {
+      name: "Evelyn Reed",
+      email: "zenithglobalinnovationhq@protonmail.com",
+      phone: "+1 (312) 555-0144",
+      country: "United States",
+      nationality: "American",
+      dob: "1992-06-15",
+      gender: "Female",
+      address: "400 N Michigan Ave, Chicago, IL 60611",
+      jobId: "executive-leadership-positions-senior-project-manager",
+      jobTitle: "Senior Project Manager",
+      desiredRole: "Senior Project Manager",
+      expectedSalary: "$135,000",
+      availability: "2026-11-01",
+      education: "Master of Science",
+      field: "Project Management & Systems Engineering",
+      experience: "7",
+      employer: "Summit Global Consulting",
+      currentTitle: "Senior Project Manager",
+      resumePath: "applications/resumes/sample.pdf",
+      resumeName: "Evelyn_Reed_Resume.pdf",
+      signature: "Evelyn Reed",
+      applicationDate: "2026-10-22",
+      reference: "ZGI-2026-DG2OYQ",
+      status: "Application Received",
+      submittedAt: "2026-10-22T22:53:32.957Z",
+      estimatedResponseDate: "2026-10-27",
+      companyEmail: "zenithglobalinnovationhq@protonmail.com",
+      emailSent: true,
+      emailError: "",
+      id: "app_mvk50m8u_9dfkxqg"
+    },
+    {
+      name: "Jonathan Vance",
+      email: "zenithglobalinnovationhq@protonmail.com",
+      phone: "+1 (212) 555-0199",
+      country: "United States",
+      nationality: "American",
+      jobId: "senior-technical-roles-lead-software-architect",
+      jobTitle: "Lead Software Architect",
+      desiredRole: "Lead Software Architect",
+      signature: "Jonathan Vance",
+      resumePath: "applications/resumes/sample.pdf",
+      reference: "ZGI-2026-MK3GHQ",
+      status: "Under Review",
+      submittedAt: "2026-10-22T22:35:51.403Z",
+      estimatedResponseDate: "2026-10-27",
+      companyEmail: "zenithglobalinnovationhq@protonmail.com",
+      emailSent: true,
+      emailError: "",
+      id: "app_mvk4dv58_f9g8mxn"
+    },
+    {
+      name: "David Sterling",
+      email: "zenithglobalinnovationhq@protonmail.com",
+      phone: "+1 415-555-0199",
+      country: "United States",
+      nationality: "American",
+      jobId: "senior-technical-roles-senior-full-stack-developer",
+      jobTitle: "Senior Full Stack Developer",
+      desiredRole: "Senior Full Stack Developer",
+      signature: "David Sterling",
+      resumePath: "applications/resumes/sample.pdf",
+      reference: "ZGI-2026-UX96K9",
+      status: "Under Review",
+      submittedAt: "2026-10-22T22:28:16.641Z",
+      estimatedResponseDate: "2026-10-27",
+      companyEmail: "zenithglobalinnovationhq@protonmail.com",
+      emailSent: false,
+      emailError: 'Brevo rejected confirmation email (HTTP 401): {"message":"We have detected you are using an unrecognised IP address 34.34.246.77. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips","code":"unauthorized"}\n',
+      id: "app_mvk4448x_92nz1aw"
+    },
+    {
+      name: "Marcus Vance",
+      email: "zenithglobalinnovationhq@protonmail.com",
+      phone: "+1 (555) 234-5678",
+      country: "United States",
+      nationality: "American",
+      address: "742 Evergreen Terrace, New York, NY 10001",
+      jobId: "senior-technical-roles-senior-full-stack-developer",
+      jobTitle: "Senior Full Stack Developer",
+      desiredRole: "Senior Full Stack Developer",
+      education: "Master's Degree",
+      field: "Computer Science",
+      experience: "8+ years",
+      employer: "Apex Global Technologies",
+      currentTitle: "Lead Software Engineer",
+      expectedSalary: "45,000 / year",
+      availability: "Within 2 weeks",
+      resumePath: "applications/resumes/sample-test.pdf",
+      resumeName: "Marcus_Vance_Resume.pdf",
+      signature: "Marcus Vance",
+      applicationDate: "2026-10-22",
+      reference: "ZGI-2026-LZVIPF",
+      status: "Application Received",
+      submittedAt: "2026-10-22T22:28:11.127Z",
+      estimatedResponseDate: "2026-10-27",
+      companyEmail: "zenithglobalinnovationhq@protonmail.com",
+      emailSent: false,
+      emailError: 'Brevo rejected confirmation email (HTTP 401): {"message":"We have detected you are using an unrecognised IP address 34.34.246.77. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips","code":"unauthorized"}\n',
+      id: "app_mvk43zzs_5spqmgx"
+    },
+    {
+      name: "Alexandra Morgan",
+      email: "alex.morgan.tech@example.com",
+      phone: "+1 (555) 234-5678",
+      dob: "1990-05-15",
+      gender: "Female",
+      nationality: "United States",
+      country: "United States",
+      address: "450 Lexington Ave, New York, NY 10017",
+      jobId: "senior-technical-roles-senior-full-stack-developer",
+      jobTitle: "Senior Full Stack Developer",
+      desiredRole: "Senior Full Stack Developer",
+      expectedSalary: "$165,000",
+      availability: "2026-11-15",
+      education: "Bachelor of Science in Computer Science",
+      field: "Software Engineering",
+      certifications: "AWS Certified Solutions Architect, Certified Kubernetes Administrator",
+      experience: 8,
+      employer: "FinTech Nexus Inc.",
+      currentTitle: "Lead Software Engineer",
+      resumePath: "applications/resumes/1792701040426-alex_morgan_cv.pdf",
+      resumeName: "alex_morgan_cv.pdf",
+      signature: "Alexandra Morgan",
+      applicationDate: "2026-10-22",
+      reference: "ZGI-2026-60J5E3",
+      status: "Interview",
+      submittedAt: "2026-10-22T20:30:47.879Z",
+      estimatedResponseDate: "2026-10-27",
+      companyEmail: "zenithglobalinnovationhq@protonmail.com",
+      emailSent: false,
+      emailError: "Brevo API key not configured (BREVO_API_KEY environment variable required)",
+      id: "app_mvjzx1dz_mkn30kd",
+      adminNotes: [
+        {
+          note: "Strong background in distributed cloud architectures. Scheduling technical interview.",
+          adminEmail: "zenithglobalinnovationhq@protonmail.com",
+          createdAt: "2026-10-22T20:31:04.258Z"
+        }
+      ]
+    }
+  ],
+  jobs: [
+    {
+      title: "Senior Product Manager",
+      sector: "Additional High-Value Roles",
+      location: "Remote \xB7 Global",
+      type: "Full-time",
+      id: "job_mvjzwhyv_09ajw2u"
+    },
+    {
+      title: "Customer Success Director",
+      sector: "Customer Success & Sales Leadership",
+      location: "Remote \xB7 Global",
+      type: "Full-time",
+      id: "job_mvjzwhyv_2jup743"
+    },
+    {
+      title: "Senior Management Consultant",
+      sector: "Specialized Consulting Roles",
+      location: "Remote \xB7 Global",
+      type: "Contract",
+      id: "job_mvjzwhyv_lslvozb"
+    },
+    {
+      title: "Senior Operations Manager",
+      sector: "Operations & HR Leadership",
+      location: "Remote \xB7 Global",
+      type: "Full-time",
+      id: "job_mvjzwhyv_50boe3x"
+    },
+    {
+      title: "Senior Financial Analyst",
+      sector: "Finance & Business Intelligence",
+      location: "Remote \xB7 Global",
+      type: "Full-time",
+      id: "job_mvjzwhyv_pchju39"
+    },
+    {
+      title: "Creative Director",
+      sector: "Marketing & Creative Leadership",
+      location: "Remote \xB7 Global",
+      type: "Full-time",
+      featured: true,
+      id: "job_mvjzwhyv_mdos0xf"
+    },
+    {
+      title: "Senior Full Stack Developer",
+      sector: "Senior Technical Roles",
+      location: "Remote \xB7 Global",
+      type: "Full-time",
+      featured: true,
+      id: "job_mvjzwhyv_1brb91a"
+    },
+    {
+      title: "Chief Technology Officer (CTO)",
+      sector: "Executive & Leadership Positions",
+      location: "Remote \xB7 Global",
+      type: "Full-time",
+      featured: true,
+      id: "job_mvjzwhyv_71fu97u"
+    }
+  ],
+  admin_audit: [
+    {
+      event: "ADMIN_LOGIN_SUCCESS",
+      details: "Administrator authenticated successfully from IP 127.0.0.1",
+      ip: "127.0.0.1",
+      timestamp: "2026-10-27T23:30:00.784Z",
+      id: "adm_mvrbirps_wo116z9"
+    },
+    {
+      event: "ADMIN_LOGIN_SUCCESS",
+      details: "Administrator authenticated successfully from IP 127.0.0.1",
+      ip: "127.0.0.1",
+      timestamp: "2026-10-26T10:56:59.246Z",
+      id: "adm_mvp56ir3_tbh2n74"
+    },
+    {
+      event: "SECURITY_HONEYPOT_TRIGGERED",
+      details: "Exploit probe detected from 127.0.0.1 targeting /wp-login.php. IP isolated for 24 hours.",
+      ip: "127.0.0.1",
+      path: "/wp-login.php",
+      userAgent: "curl/7.88.1",
+      timestamp: "2026-10-26T10:56:42.099Z",
+      id: "adm_mvp565is_4xt1sji"
+    },
+    {
+      applicationId: "app_mvlcvhwe_phn8q3e",
+      reference: "ZGI-2026-7WE198",
+      action: "Status changed",
+      from: "Application Received",
+      to: "Shortlisted",
+      adminEmail: "zenithglobalinnovationhq@protonmail.com",
+      createdAt: "2026-10-23T19:21:25.859Z",
+      id: "adm_mvlcvomb_iknmfre"
+    },
+    {
+      applicationId: "app_mvk4dv58_f9g8mxn",
+      reference: "ZGI-2026-MK3GHQ",
+      action: "Status changed",
+      from: "Application Received",
+      to: "Under Review",
+      adminEmail: "zenithglobalinnovationhq@protonmail.com",
+      createdAt: "2026-10-22T22:35:57.180Z",
+      id: "adm_mvk4dzlo_sq7dxe6"
+    },
+    {
+      applicationId: "app_mvk4448x_92nz1aw",
+      reference: "ZGI-2026-UX96K9",
+      action: "Status changed",
+      from: "Application Received",
+      to: "Under Review",
+      adminEmail: "zenithglobalinnovationhq@protonmail.com",
+      createdAt: "2026-10-22T22:28:35.504Z",
+      id: "adm_mvk44isw_0akd6dj"
+    },
+    {
+      applicationId: "app_mvjzx1dz_mkn30kd",
+      reference: "ZGI-2026-60J5E3",
+      action: "Status changed",
+      from: "Shortlisted",
+      to: "Interview",
+      adminEmail: "zenithglobalinnovationhq@protonmail.com",
+      createdAt: "2026-10-22T21:31:44.248Z",
+      id: "adm_mvk23ens_mqly3pe"
+    },
+    {
+      applicationId: "app_mvjzx1dz_mkn30kd",
+      reference: "ZGI-2026-60J5E3",
+      action: "Admin note added",
+      adminEmail: "zenithglobalinnovationhq@protonmail.com",
+      createdAt: "2026-10-22T20:31:04.258Z",
+      id: "adm_mvjzxe0z_0yaw62x"
+    },
+    {
+      applicationId: "app_mvjzx1dz_mkn30kd",
+      reference: "ZGI-2026-60J5E3",
+      action: "Status changed",
+      from: "Application Received",
+      to: "Shortlisted",
+      adminEmail: "zenithglobalinnovationhq@protonmail.com",
+      createdAt: "2026-10-22T20:30:58.784Z",
+      id: "adm_mvjzx9sw_itrab63"
+    }
+  ],
+  leads: [
+    {
+      name: "Sarah Jenkins",
+      email: "sarah.jenkins@acmecorp.example",
+      company: "Acme Global Solutions",
+      phone: "+1 212-555-0188",
+      category: "Senior Technical Roles",
+      rolesNeeded: "Senior Full Stack Developer",
+      message: "Looking to staff 3 senior remote engineers for our North American operations.",
+      status: "New",
+      createdAt: "2026-10-22T22:28:24.710Z",
+      id: "lea_mvk44ah2_wp8kaj7"
+    },
+    {
+      name: "David Miller",
+      email: "david@clientcorp.com",
+      company: "ClientCorp Global",
+      message: "Interested in building a remote data engineering squad.",
+      createdAt: "2026-10-22T20:31:27.786Z",
+      id: "lea_mvjzxw6i_dykdu21",
+      status: "Contacted",
+      updatedBy: "zenithglobalinnovationhq@protonmail.com",
+      updatedAt: "2026-10-22T21:31:37.678Z"
+    }
+  ],
+  job_alerts: [
+    {
+      email: "candidate@example.com",
+      country: "United States",
+      category: "Senior Technical Roles",
+      createdAt: "2026-10-22T20:31:22.514Z",
+      active: true,
+      id: "job_mvjzxs42_hiji2wb"
+    }
+  ],
+  admin_sessions: [
+    {
+      token: "7efd313cfd1a10598b78981570e11097aedbeb2d435b338e82621dda029b45fe",
+      email: "zenithglobalinnovationhq@protonmail.com",
+      ip: "127.0.0.1",
+      createdAt: "2026-10-27T23:30:00.783Z",
+      id: "adm_mvrbirpr_cwfyurd"
+    },
+    {
+      token: "96f9b0ce7e13256322fa00c5f82d9a42dbc40d8d970bf9572a7c93044f96acff",
+      email: "zenithglobalinnovationhq@protonmail.com",
+      ip: "127.0.0.1",
+      createdAt: "2026-10-26T10:56:59.246Z",
+      id: "adm_mvp56ir2_yfnchdc"
+    },
+    {
+      token: "e24e2e0291a2d0b55eef920390a552faa0d8cfce5a39d35ab8e5f4be33aed3e0",
+      email: "zenithglobalinnovationhq@protonmail.com",
+      createdAt: "2026-10-25T19:09:12.603Z",
+      id: "adm_mvo7bo64_68d78zl"
+    },
+    {
+      token: "e24e2e0291a2d0b55eef920390a552faa0d8cfce5a39d35ab8e5f4be33aed3e0",
+      email: "zenithglobalinnovationhq@protonmail.com",
+      createdAt: "2026-10-23T19:21:20.648Z",
+      id: "adm_mvlcvkll_1am9ui3"
+    },
+    {
+      token: "e24e2e0291a2d0b55eef920390a552faa0d8cfce5a39d35ab8e5f4be33aed3e0",
+      email: "zenithglobalinnovationhq@protonmail.com",
+      createdAt: "2026-10-22T21:42:35.330Z",
+      id: "adm_mvk2hd1e_vg4qmmw"
+    },
+    {
+      token: "e24e2e0291a2d0b55eef920390a552faa0d8cfce5a39d35ab8e5f4be33aed3e0",
+      email: "zenithglobalinnovationhq@protonmail.com",
+      createdAt: "2026-10-22T21:31:28.171Z",
+      id: "adm_mvk23298_lptjlps"
+    }
+  ],
+  admin_security: [
+    {
+      id: "sec_admin_cred",
+      salt: "zgi_sec_salt_2026",
+      passwordHash: "fb2a4168334a02aee93e2ffa05eed0e2c22e8eeb191a91ed85a6061696eb5f47",
+      updatedAt: "2026-10-26T10:53:27.415Z"
+    }
+  ]
+};
+
+// backend/db.ts
 var isVercel = Boolean(process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME);
-var BUNDLED_DB_FILE = path.resolve(process.cwd(), "data", "db.json");
 var DATA_DIR = isVercel ? "/tmp" : path.resolve(process.cwd(), "data");
 var DB_FILE = isVercel ? path.join("/tmp", "db.json") : path.join(DATA_DIR, "db.json");
 try {
@@ -36,41 +546,28 @@ var defaultSchema = {
     }
   ]
 };
+var inMemoryStore = {
+  ...defaultSchema,
+  ...db_default
+};
 function readDb() {
   try {
-    if (!fs.existsSync(DB_FILE)) {
-      if (isVercel && fs.existsSync(BUNDLED_DB_FILE)) {
-        try {
-          const initial = fs.readFileSync(BUNDLED_DB_FILE, "utf-8");
-          fs.writeFileSync(DB_FILE, initial, "utf-8");
-          return { ...defaultSchema, ...JSON.parse(initial) };
-        } catch {
-        }
-      }
-      writeDb(defaultSchema);
-      return { ...defaultSchema };
+    if (fs.existsSync(DB_FILE)) {
+      const raw = fs.readFileSync(DB_FILE, "utf-8");
+      const parsed = JSON.parse(raw);
+      inMemoryStore = { ...inMemoryStore, ...parsed };
     }
-    const raw = fs.readFileSync(DB_FILE, "utf-8");
-    const parsed = JSON.parse(raw);
-    return { ...defaultSchema, ...parsed };
-  } catch (err) {
-    console.error("Error reading database, using default structure:", err);
-    return { ...defaultSchema };
+  } catch {
   }
+  return inMemoryStore;
 }
 function writeDb(data) {
-  const tmpFile = `${DB_FILE}.tmp.${Date.now()}`;
+  inMemoryStore = data;
   try {
+    const tmpFile = `${DB_FILE}.tmp.${Date.now()}`;
     fs.writeFileSync(tmpFile, JSON.stringify(data, null, 2), "utf-8");
     fs.renameSync(tmpFile, DB_FILE);
-  } catch (err) {
-    if (fs.existsSync(tmpFile)) {
-      try {
-        fs.unlinkSync(tmpFile);
-      } catch {
-      }
-    }
-    console.warn("Filesystem write notice:", err);
+  } catch {
   }
 }
 function generateId(prefix = "rec") {
@@ -441,58 +938,78 @@ var HONEYPOT_PATHS = [
   "/cmd.jsp"
 ];
 function getClientIp(req) {
-  const forwarded = req.headers["x-forwarded-for"];
-  if (typeof forwarded === "string") {
-    return forwarded.split(",")[0].trim();
+  try {
+    const forwarded = req.headers["x-forwarded-for"];
+    if (typeof forwarded === "string") {
+      return forwarded.split(",")[0].trim();
+    }
+    return req.socket?.remoteAddress || req.ip || "127.0.0.1";
+  } catch {
+    return "127.0.0.1";
   }
-  return req.socket?.remoteAddress || "127.0.0.1";
 }
 function honeypotShield(req, res, next) {
-  const ip = getClientIp(req);
-  const now = Date.now();
-  const blockedUntil = blockedIps.get(ip);
-  if (blockedUntil) {
-    if (now < blockedUntil) {
-      res.setHeader("Server", "Zenith-Perimeter-Shield/4.2");
-      res.setHeader("X-Threat-Detected", "Isolated");
+  try {
+    const ip = getClientIp(req);
+    const now = Date.now();
+    const blockedUntil = blockedIps.get(ip);
+    if (blockedUntil) {
+      if (now < blockedUntil) {
+        try {
+          res.setHeader("Server", "Zenith-Perimeter-Shield/4.2");
+          res.setHeader("X-Threat-Detected", "Isolated");
+        } catch {
+        }
+        res.status(403).json({
+          error: "Access Denied: Malicious activity detected. Your IP address has been isolated by the security perimeter."
+        });
+        return;
+      } else {
+        blockedIps.delete(ip);
+      }
+    }
+    const pathLower = (req.path || "").toLowerCase();
+    const isTrap = HONEYPOT_PATHS.some((trap) => pathLower === trap || pathLower.startsWith(trap + "/"));
+    if (isTrap) {
+      blockedIps.set(ip, now + 24 * 60 * 60 * 1e3);
+      db.add("admin_audit", [{
+        event: "SECURITY_HONEYPOT_TRIGGERED",
+        details: `Exploit probe detected from ${ip} targeting ${req.path}. IP isolated for 24 hours.`,
+        ip,
+        path: req.path,
+        userAgent: req.headers["user-agent"] || "Unknown",
+        timestamp: (/* @__PURE__ */ new Date()).toISOString()
+      }]).catch(() => {
+      });
+      console.warn(`[SECURITY ALERT] Honeypot triggered by ${ip} targeting "${req.path}". IP blacklisted.`);
+      try {
+        res.setHeader("Server", "Zenith-Active-Perimeter/4.2");
+        res.setHeader("X-Defense-Action", "Trap-Triggered-And-Logged");
+      } catch {
+      }
       res.status(403).json({
-        error: "Access Denied: Malicious activity detected. Your IP address has been isolated by the security perimeter."
+        error: "Security perimeter breach detected. Request signature has been logged and blacklisted."
       });
       return;
-    } else {
-      blockedIps.delete(ip);
     }
-  }
-  const pathLower = (req.path || "").toLowerCase();
-  const isTrap = HONEYPOT_PATHS.some((trap) => pathLower === trap || pathLower.startsWith(trap + "/"));
-  if (isTrap) {
-    blockedIps.set(ip, now + 24 * 60 * 60 * 1e3);
-    db.add("admin_audit", [{
-      event: "SECURITY_HONEYPOT_TRIGGERED",
-      details: `Exploit probe detected from ${ip} targeting ${req.path}. IP isolated for 24 hours.`,
-      ip,
-      path: req.path,
-      userAgent: req.headers["user-agent"] || "Unknown",
-      timestamp: (/* @__PURE__ */ new Date()).toISOString()
-    }]).catch(() => {
-    });
-    console.warn(`[SECURITY ALERT] Honeypot triggered by ${ip} targeting "${req.path}". IP blacklisted.`);
-    res.setHeader("Server", "Zenith-Active-Perimeter/4.2");
-    res.setHeader("X-Defense-Action", "Trap-Triggered-And-Logged");
-    res.status(403).json({
-      error: "Security perimeter breach detected. Request signature has been logged and blacklisted."
-    });
-    return;
+  } catch {
   }
   next();
 }
 function securityHeaders(req, res, next) {
-  res.removeHeader("X-Powered-By");
-  res.setHeader("Server", "Zenith-Enterprise-Gateway/4.0");
-  res.setHeader("X-Content-Type-Options", "nosniff");
-  res.setHeader("X-Frame-Options", "SAMEORIGIN");
-  res.setHeader("X-XSS-Protection", "1; mode=block");
-  res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
+  try {
+    if (typeof res.removeHeader === "function") {
+      res.removeHeader("X-Powered-By");
+    }
+    if (typeof res.setHeader === "function") {
+      res.setHeader("Server", "Zenith-Enterprise-Gateway/4.0");
+      res.setHeader("X-Content-Type-Options", "nosniff");
+      res.setHeader("X-Frame-Options", "SAMEORIGIN");
+      res.setHeader("X-XSS-Protection", "1; mode=block");
+      res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
+    }
+  } catch {
+  }
   next();
 }
 function verifyPassword(submitted, storedHash, salt) {
@@ -536,8 +1053,10 @@ async function recordAdminLoginAttempt(ip, success) {
     record.lockedUntil = now + 15 * 60 * 1e3;
   }
   adminLoginAttempts.set(ip, record);
-  const delay = 1200 + Math.floor(Math.random() * 600);
-  await new Promise((resolve) => setTimeout(resolve, delay));
+  if (!process.env.VERCEL && !process.env.AWS_LAMBDA_FUNCTION_NAME) {
+    const delay = 1200 + Math.floor(Math.random() * 600);
+    await new Promise((resolve) => setTimeout(resolve, delay));
+  }
 }
 function rateLimiter(action, maxRequests, windowMs) {
   return (req, res, next) => {
@@ -1831,7 +2350,7 @@ apiRouter.get("/profile", async (_req, res) => {
   res.json({ email: ADMIN_EMAIL, name: "Zenith Administrator" });
 });
 
-// api/serverless.ts
+// backend/serverless.ts
 var app = express();
 app.use(honeypotShield);
 app.use(securityHeaders);
@@ -1847,21 +2366,44 @@ app.use((req, res, next) => {
 });
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use((req, res, next) => {
+  if (req.originalUrl && (req.url === "/api" || req.url === "/api/index" || req.url === "/api/index.js")) {
+    req.url = req.originalUrl;
+  }
+  next();
+});
+app.get("/api/ping", (_req, res) => {
+  res.json({ ok: true, status: "operational", timestamp: (/* @__PURE__ */ new Date()).toISOString() });
+});
+app.get("/ping", (_req, res) => {
+  res.json({ ok: true, status: "operational", timestamp: (/* @__PURE__ */ new Date()).toISOString() });
+});
 app.use("/api", apiRouter);
+app.use("/api/index", apiRouter);
 app.use("/", apiRouter);
 app.use((req, res) => {
   res.status(404).json({
     error: "API endpoint not found",
     method: req.method,
-    url: req.url
+    url: req.url,
+    originalUrl: req.originalUrl
   });
 });
 app.use((err, _req, res, _next) => {
   console.error("[SERVERLESS API ERROR]", err);
-  res.status(500).json({ message: err?.message || "Internal Server Error" });
+  if (!res.headersSent) {
+    res.status(500).json({ message: err?.message || "Internal Server Error" });
+  }
 });
 function handler(req, res) {
-  return app(req, res);
+  try {
+    return app(req, res);
+  } catch (err) {
+    console.error("[SERVERLESS FATAL INVOCATION ERROR]", err);
+    if (res && typeof res.status === "function" && !res.headersSent) {
+      res.status(500).json({ error: "Internal handler failure", message: err?.message || String(err) });
+    }
+  }
 }
 export {
   handler as default

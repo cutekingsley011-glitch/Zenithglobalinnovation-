@@ -51,11 +51,15 @@ const HONEYPOT_PATHS = [
  * Extracts client IP considering trusted proxies
  */
 export function getClientIp(req: Request): string {
-  const forwarded = req.headers['x-forwarded-for'];
-  if (typeof forwarded === 'string') {
-    return forwarded.split(',')[0].trim();
+  try {
+    const forwarded = req.headers['x-forwarded-for'];
+    if (typeof forwarded === 'string') {
+      return forwarded.split(',')[0].trim();
+    }
+    return req.socket?.remoteAddress || (req as any).ip || '127.0.0.1';
+  } catch {
+    return '127.0.0.1';
   }
-  return req.socket?.remoteAddress || '127.0.0.1';
 }
 
 /**
@@ -64,51 +68,57 @@ export function getClientIp(req: Request): string {
  * and records an alert in the administrative audit log.
  */
 export function honeypotShield(req: Request, res: Response, next: NextFunction) {
-  const ip = getClientIp(req);
-  const now = Date.now();
+  try {
+    const ip = getClientIp(req);
+    const now = Date.now();
 
-  // 1. Check if IP is already blacklisted
-  const blockedUntil = blockedIps.get(ip);
-  if (blockedUntil) {
-    if (now < blockedUntil) {
-      res.setHeader('Server', 'Zenith-Perimeter-Shield/4.2');
-      res.setHeader('X-Threat-Detected', 'Isolated');
+    // 1. Check if IP is already blacklisted
+    const blockedUntil = blockedIps.get(ip);
+    if (blockedUntil) {
+      if (now < blockedUntil) {
+        try {
+          res.setHeader('Server', 'Zenith-Perimeter-Shield/4.2');
+          res.setHeader('X-Threat-Detected', 'Isolated');
+        } catch {}
+        res.status(403).json({
+          error: 'Access Denied: Malicious activity detected. Your IP address has been isolated by the security perimeter.',
+        });
+        return;
+      } else {
+        blockedIps.delete(ip);
+      }
+    }
+
+    // 2. Check if request targets a honeypot exploit path
+    const pathLower = (req.path || '').toLowerCase();
+    const isTrap = HONEYPOT_PATHS.some(trap => pathLower === trap || pathLower.startsWith(trap + '/'));
+
+    if (isTrap) {
+      // Blacklist IP for 24 hours
+      blockedIps.set(ip, now + 24 * 60 * 60 * 1000);
+
+      // Asynchronously log to security audit trail
+      db.add('admin_audit', [{
+        event: 'SECURITY_HONEYPOT_TRIGGERED',
+        details: `Exploit probe detected from ${ip} targeting ${req.path}. IP isolated for 24 hours.`,
+        ip,
+        path: req.path,
+        userAgent: req.headers['user-agent'] || 'Unknown',
+        timestamp: new Date().toISOString(),
+      }]).catch(() => {});
+
+      console.warn(`[SECURITY ALERT] Honeypot triggered by ${ip} targeting "${req.path}". IP blacklisted.`);
+
+      try {
+        res.setHeader('Server', 'Zenith-Active-Perimeter/4.2');
+        res.setHeader('X-Defense-Action', 'Trap-Triggered-And-Logged');
+      } catch {}
       res.status(403).json({
-        error: 'Access Denied: Malicious activity detected. Your IP address has been isolated by the security perimeter.',
+        error: 'Security perimeter breach detected. Request signature has been logged and blacklisted.',
       });
       return;
-    } else {
-      blockedIps.delete(ip);
     }
-  }
-
-  // 2. Check if request targets a honeypot exploit path
-  const pathLower = (req.path || '').toLowerCase();
-  const isTrap = HONEYPOT_PATHS.some(trap => pathLower === trap || pathLower.startsWith(trap + '/'));
-
-  if (isTrap) {
-    // Blacklist IP for 24 hours
-    blockedIps.set(ip, now + 24 * 60 * 60 * 1000);
-
-    // Asynchronously log to security audit trail
-    db.add('admin_audit', [{
-      event: 'SECURITY_HONEYPOT_TRIGGERED',
-      details: `Exploit probe detected from ${ip} targeting ${req.path}. IP isolated for 24 hours.`,
-      ip,
-      path: req.path,
-      userAgent: req.headers['user-agent'] || 'Unknown',
-      timestamp: new Date().toISOString(),
-    }]).catch(() => {});
-
-    console.warn(`[SECURITY ALERT] Honeypot triggered by ${ip} targeting "${req.path}". IP blacklisted.`);
-
-    res.setHeader('Server', 'Zenith-Active-Perimeter/4.2');
-    res.setHeader('X-Defense-Action', 'Trap-Triggered-And-Logged');
-    res.status(403).json({
-      error: 'Security perimeter breach detected. Request signature has been logged and blacklisted.',
-    });
-    return;
-  }
+  } catch {}
 
   next();
 }
@@ -118,15 +128,18 @@ export function honeypotShield(req: Request, res: Response, next: NextFunction) 
  * Obscures internal software versions and injects browser defense headers.
  */
 export function securityHeaders(req: Request, res: Response, next: NextFunction) {
-  // Mask underlying runtime / framework
-  res.removeHeader('X-Powered-By');
-  res.setHeader('Server', 'Zenith-Enterprise-Gateway/4.0');
-
-  // Anti-MIME-sniffing, Clickjacking, and XSS defense
-  res.setHeader('X-Content-Type-Options', 'nosniff');
-  res.setHeader('X-Frame-Options', 'SAMEORIGIN');
-  res.setHeader('X-XSS-Protection', '1; mode=block');
-  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+  try {
+    if (typeof res.removeHeader === 'function') {
+      res.removeHeader('X-Powered-By');
+    }
+    if (typeof res.setHeader === 'function') {
+      res.setHeader('Server', 'Zenith-Enterprise-Gateway/4.0');
+      res.setHeader('X-Content-Type-Options', 'nosniff');
+      res.setHeader('X-Frame-Options', 'SAMEORIGIN');
+      res.setHeader('X-XSS-Protection', '1; mode=block');
+      res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+    }
+  } catch {}
   next();
 }
 
@@ -192,9 +205,11 @@ export async function recordAdminLoginAttempt(ip: string, success: boolean): Pro
 
   adminLoginAttempts.set(ip, record);
 
-  // Inject a forced 1.2 to 1.8 second delay (Tarpit) on failed attempts to defeat automated bot speed
-  const delay = 1200 + Math.floor(Math.random() * 600);
-  await new Promise(resolve => setTimeout(resolve, delay));
+  // Inject a forced 1.2 to 1.8 second delay (Tarpit) on failed attempts to defeat automated bot speed (skip on serverless to avoid timeouts)
+  if (!process.env.VERCEL && !process.env.AWS_LAMBDA_FUNCTION_NAME) {
+    const delay = 1200 + Math.floor(Math.random() * 600);
+    await new Promise(resolve => setTimeout(resolve, delay));
+  }
 }
 
 /**

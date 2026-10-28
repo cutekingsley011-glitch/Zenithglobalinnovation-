@@ -1,8 +1,8 @@
 import fs from 'fs';
 import path from 'path';
+import seedDb from '../data/db.json';
 
 const isVercel = Boolean(process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME);
-const BUNDLED_DB_FILE = path.resolve(process.cwd(), 'data', 'db.json');
 const DATA_DIR = isVercel ? '/tmp' : path.resolve(process.cwd(), 'data');
 const DB_FILE = isVercel ? path.join('/tmp', 'db.json') : path.join(DATA_DIR, 'db.json');
 
@@ -41,40 +41,30 @@ const defaultSchema: DatabaseSchema = {
   ],
 };
 
+// In-memory store embedded with seed database so reads never fail
+let inMemoryStore: DatabaseSchema = {
+  ...defaultSchema,
+  ...(seedDb as any),
+};
+
 function readDb(): DatabaseSchema {
   try {
-    if (!fs.existsSync(DB_FILE)) {
-      if (isVercel && fs.existsSync(BUNDLED_DB_FILE)) {
-        try {
-          const initial = fs.readFileSync(BUNDLED_DB_FILE, 'utf-8');
-          fs.writeFileSync(DB_FILE, initial, 'utf-8');
-          return { ...defaultSchema, ...JSON.parse(initial) };
-        } catch {}
-      }
-      writeDb(defaultSchema);
-      return { ...defaultSchema };
+    if (fs.existsSync(DB_FILE)) {
+      const raw = fs.readFileSync(DB_FILE, 'utf-8');
+      const parsed = JSON.parse(raw);
+      inMemoryStore = { ...inMemoryStore, ...parsed };
     }
-    const raw = fs.readFileSync(DB_FILE, 'utf-8');
-    const parsed = JSON.parse(raw);
-    return { ...defaultSchema, ...parsed };
-  } catch (err) {
-    console.error('Error reading database, using default structure:', err);
-    return { ...defaultSchema };
-  }
+  } catch {}
+  return inMemoryStore;
 }
 
 function writeDb(data: DatabaseSchema): void {
-  const tmpFile = `${DB_FILE}.tmp.${Date.now()}`;
+  inMemoryStore = data;
   try {
+    const tmpFile = `${DB_FILE}.tmp.${Date.now()}`;
     fs.writeFileSync(tmpFile, JSON.stringify(data, null, 2), 'utf-8');
     fs.renameSync(tmpFile, DB_FILE);
-  } catch (err) {
-    if (fs.existsSync(tmpFile)) {
-      try { fs.unlinkSync(tmpFile); } catch {}
-    }
-    // Log without crashing the serverless handler
-    console.warn('Filesystem write notice:', err);
-  }
+  } catch {}
 }
 
 // Generate simple unique IDs
