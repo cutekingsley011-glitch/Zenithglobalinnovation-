@@ -47,6 +47,51 @@ let inMemoryStore: DatabaseSchema = {
   ...(seedDb as any),
 };
 
+const KV_URL = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
+const KV_TOKEN = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
+
+async function syncFromCloudKV(): Promise<void> {
+  if (!KV_URL || !KV_TOKEN) return;
+  try {
+    const res = await fetch(`${KV_URL}/get/zenith_global_db`, {
+      headers: { Authorization: `Bearer ${KV_TOKEN}` },
+    });
+    if (res.ok) {
+      const json: any = await res.json();
+      if (json && json.result) {
+        const parsed = typeof json.result === 'string' ? JSON.parse(json.result) : json.result;
+        if (parsed && typeof parsed === 'object') {
+          inMemoryStore = {
+            ...inMemoryStore,
+            ...parsed,
+            applications: Array.isArray(parsed.applications) ? parsed.applications : inMemoryStore.applications,
+            admin_sessions: Array.isArray(parsed.admin_sessions) ? parsed.admin_sessions : inMemoryStore.admin_sessions,
+            leads: Array.isArray(parsed.leads) ? parsed.leads : inMemoryStore.leads,
+          };
+        }
+      }
+    }
+  } catch (err) {
+    console.warn('[CLOUD KV SYNC ERROR]', err);
+  }
+}
+
+async function syncToCloudKV(data: DatabaseSchema): Promise<void> {
+  if (!KV_URL || !KV_TOKEN) return;
+  try {
+    await fetch(`${KV_URL}/set/zenith_global_db`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${KV_TOKEN}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(JSON.stringify(data)),
+    });
+  } catch (err) {
+    console.warn('[CLOUD KV WRITE ERROR]', err);
+  }
+}
+
 function readDb(): DatabaseSchema {
   try {
     if (fs.existsSync(DB_FILE)) {
@@ -74,6 +119,7 @@ function generateId(prefix = 'rec'): string {
 
 export const db = {
   async list<T = Record<string, any>>(collection: string, options?: { limit?: number }): Promise<{ items: T[] }> {
+    await syncFromCloudKV();
     const data = readDb();
     const items = (data[collection] || []) as T[];
     const limit = options?.limit || 1000;
@@ -81,6 +127,7 @@ export const db = {
   },
 
   async get<T = Record<string, any>>(collection: string, ids: string[]): Promise<T[]> {
+    await syncFromCloudKV();
     const data = readDb();
     const items = (data[collection] || []) as Array<Record<string, any>>;
     const idSet = new Set(ids.map(String));
@@ -89,6 +136,7 @@ export const db = {
   },
 
   async add<T = Record<string, any>>(collection: string, records: T[]): Promise<string[]> {
+    await syncFromCloudKV();
     const data = readDb();
     if (!data[collection]) {
       data[collection] = [];
@@ -102,6 +150,7 @@ export const db = {
       generatedIds.push(id);
     }
     writeDb(data);
+    syncToCloudKV(data).catch(() => {});
     return generatedIds;
   },
 
@@ -109,6 +158,7 @@ export const db = {
     collection: string,
     updates: Array<{ id: string; record: Partial<T> }>
   ): Promise<boolean[]> {
+    await syncFromCloudKV();
     const data = readDb();
     const items = (data[collection] || []) as Array<Record<string, any>>;
     const results: boolean[] = [];
@@ -126,6 +176,7 @@ export const db = {
     if (results.some(Boolean)) {
       data[collection] = items;
       writeDb(data);
+      syncToCloudKV(data).catch(() => {});
     }
     return results;
   },

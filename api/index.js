@@ -550,6 +550,48 @@ var inMemoryStore = {
   ...defaultSchema,
   ...db_default
 };
+var KV_URL = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
+var KV_TOKEN = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
+async function syncFromCloudKV() {
+  if (!KV_URL || !KV_TOKEN) return;
+  try {
+    const res = await fetch(`${KV_URL}/get/zenith_global_db`, {
+      headers: { Authorization: `Bearer ${KV_TOKEN}` }
+    });
+    if (res.ok) {
+      const json = await res.json();
+      if (json && json.result) {
+        const parsed = typeof json.result === "string" ? JSON.parse(json.result) : json.result;
+        if (parsed && typeof parsed === "object") {
+          inMemoryStore = {
+            ...inMemoryStore,
+            ...parsed,
+            applications: Array.isArray(parsed.applications) ? parsed.applications : inMemoryStore.applications,
+            admin_sessions: Array.isArray(parsed.admin_sessions) ? parsed.admin_sessions : inMemoryStore.admin_sessions,
+            leads: Array.isArray(parsed.leads) ? parsed.leads : inMemoryStore.leads
+          };
+        }
+      }
+    }
+  } catch (err) {
+    console.warn("[CLOUD KV SYNC ERROR]", err);
+  }
+}
+async function syncToCloudKV(data) {
+  if (!KV_URL || !KV_TOKEN) return;
+  try {
+    await fetch(`${KV_URL}/set/zenith_global_db`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${KV_TOKEN}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(JSON.stringify(data))
+    });
+  } catch (err) {
+    console.warn("[CLOUD KV WRITE ERROR]", err);
+  }
+}
 function readDb() {
   try {
     if (fs.existsSync(DB_FILE)) {
@@ -575,12 +617,14 @@ function generateId(prefix = "rec") {
 }
 var db = {
   async list(collection, options) {
+    await syncFromCloudKV();
     const data = readDb();
     const items = data[collection] || [];
     const limit = options?.limit || 1e3;
     return { items: items.slice(0, limit) };
   },
   async get(collection, ids) {
+    await syncFromCloudKV();
     const data = readDb();
     const items = data[collection] || [];
     const idSet = new Set(ids.map(String));
@@ -588,6 +632,7 @@ var db = {
     return found;
   },
   async add(collection, records) {
+    await syncFromCloudKV();
     const data = readDb();
     if (!data[collection]) {
       data[collection] = [];
@@ -601,9 +646,12 @@ var db = {
       generatedIds.push(id);
     }
     writeDb(data);
+    syncToCloudKV(data).catch(() => {
+    });
     return generatedIds;
   },
   async update(collection, updates) {
+    await syncFromCloudKV();
     const data = readDb();
     const items = data[collection] || [];
     const results = [];
@@ -619,6 +667,8 @@ var db = {
     if (results.some(Boolean)) {
       data[collection] = items;
       writeDb(data);
+      syncToCloudKV(data).catch(() => {
+      });
     }
     return results;
   },
