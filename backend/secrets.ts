@@ -30,6 +30,12 @@ export const secrets = {
       return '';
     }
 
+    if (key === 'RESEND_API_KEY') {
+      const r = process.env.RESEND_API_KEY;
+      if (r && r.trim() !== '') return r.trim();
+      return '';
+    }
+
     if (key === 'BREVO_API_KEY') {
       return process.env.BREVO_API_KEY || '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';
     }

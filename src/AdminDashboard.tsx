@@ -505,7 +505,7 @@ export default function AdminDashboard({ onExit }: AdminDashboardProps) {
           ))}
         </section>
 
-        {/* Brevo Transactional Email Integration Status Card */}
+        {/* Transactional Email Integration Status Card (Resend & Brevo Dual Provider) */}
         <section
           style={{
             background: brevoInfo?.valid ? '#f0fdf4' : '#fffbeb',
@@ -532,7 +532,7 @@ export default function AdminDashboard({ onExit }: AdminDashboardProps) {
                 }}
               />
               <strong style={{ fontSize: '14px', color: '#0f172a' }}>
-                Brevo Transactional Email Integration
+                Transactional Email Integration (Resend & Brevo Dual Provider)
               </strong>
               <span
                 style={{
@@ -544,35 +544,17 @@ export default function AdminDashboard({ onExit }: AdminDashboardProps) {
                   color: brevoInfo?.valid ? '#15803d' : '#92400e',
                 }}
               >
-                {brevoInfo?.valid ? 'Connected' : 'Action Required in Brevo'}
+                {brevoInfo?.valid ? (brevoInfo?.provider || 'Connected') : 'Configure Key'}
               </span>
             </div>
             <p style={{ margin: 0, fontSize: '13px', color: '#475569', lineHeight: '1.5' }}>
               {brevoInfo?.valid ? (
                 <>
-                  Verified sender: <strong>{brevoInfo?.senderEmail}</strong> · Account:{' '}
-                  <strong>{brevoInfo?.accountEmail}</strong> · Transactional emails active.
-                </>
-              ) : brevoInfo?.error && brevoInfo.error.includes('unrecognised IP address') ? (
-                <>
-                  API Key recognized! Brevo requires IP authorization:{' '}
-                  <a
-                    href="https://app.brevo.com/security/authorised_ips"
-                    target="_blank"
-                    rel="noreferrer"
-                    style={{ color: '#2563eb', fontWeight: 600, textDecoration: 'underline' }}
-                  >
-                    Authorize server IP in Brevo Security Settings
-                  </a>{' '}
-                  (or disable IP restriction for cloud hosting).
-                </>
-              ) : brevoInfo?.error && (brevoInfo.error.includes('Key not found') || brevoInfo.error.includes('unauthorized')) ? (
-                <>
-                  <strong style={{ color: '#b91c1c' }}>API Key Inactive or Paused by Brevo:</strong>{' '}
-                  Brevo has temporarily paused sending on your account for review (which revokes API keys), or this key was deleted. Once you reply to Brevo's email and your account is unpaused, or if you create a new key in Brevo (<em>SMTP & API → API Keys</em>), paste it below to reconnect.
+                  Active Dispatcher: <strong>{brevoInfo?.provider}</strong> · Sender:{' '}
+                  <strong>{brevoInfo?.senderEmail || 'intake@zenithglobalinnovation.com.ng'}</strong>. Candidate confirmation emails are operational.
                 </>
               ) : (
-                brevoInfo?.error || 'Checking Brevo transactional email connection...'
+                brevoInfo?.message || brevoInfo?.error || 'Paste your active Resend API key (re_...) or Brevo key below to activate candidate email notifications.'
               )}
             </p>
 
@@ -580,7 +562,7 @@ export default function AdminDashboard({ onExit }: AdminDashboardProps) {
             <form onSubmit={saveBrevoKey} style={{ display: 'flex', gap: '8px', marginTop: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
               <input
                 type="text"
-                placeholder="Paste active Brevo API Key (xkeysib-...)"
+                placeholder="Paste Resend API Key (re_...) or Brevo Key (xkeysib-...)"
                 value={newBrevoKey}
                 onChange={e => setNewBrevoKey(e.target.value)}
                 style={{
@@ -588,7 +570,7 @@ export default function AdminDashboard({ onExit }: AdminDashboardProps) {
                   fontSize: '12px',
                   borderRadius: '6px',
                   border: '1px solid #cbd5e1',
-                  minWidth: '260px',
+                  minWidth: '280px',
                   flex: 1,
                   fontFamily: 'monospace',
                 }}

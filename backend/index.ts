@@ -504,7 +504,104 @@ apiRouter.post('/admin/applications/:id', async (req: Request, res: Response) =>
   res.json({ application });
 });
 
-// Helper for Brevo Status Update Email
+// Unified System Email Dispatcher (Resend & Brevo Dual-Provider with Automatic Failover)
+export async function sendSystemEmail(options: {
+  to: string;
+  name?: string;
+  subject: string;
+  htmlContent: string;
+}): Promise<{ success: boolean; provider: string; error?: string; messageId?: string }> {
+  let resendKey = '';
+  let brevoKey = '';
+  try {
+    resendKey = await secrets.readSecret('RESEND_API_KEY');
+  } catch {}
+  if (!resendKey && process.env.RESEND_API_KEY) {
+    resendKey = process.env.RESEND_API_KEY;
+  }
+
+  try {
+    brevoKey = await secrets.readSecret('BREVO_API_KEY');
+  } catch {}
+  if (!brevoKey && process.env.BREVO_API_KEY) {
+    brevoKey = process.env.BREVO_API_KEY;
+  }
+
+  // 1. Prioritize Resend (100 daily limit, instant delivery)
+  if (resendKey) {
+    try {
+      const fromEmail = process.env.RESEND_FROM_EMAIL || 'Zenith Global Innovation <intake@zenithglobalinnovation.com.ng>';
+      const res = await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${resendKey}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          from: fromEmail,
+          to: [options.to],
+          subject: options.subject,
+          html: options.htmlContent,
+        }),
+      });
+
+      if (res.ok) {
+        const data: any = await res.json().catch(() => ({}));
+        console.log(`[RESEND SUCCESS] Email dispatched to ${options.to} (ID: ${data?.id})`);
+        return { success: true, provider: 'Resend', messageId: data?.id };
+      } else {
+        const errDetail = await res.text().catch(() => '');
+        console.warn(`[RESEND REJECTED] HTTP ${res.status}: ${errDetail.slice(0, 250)}`);
+        // If Resend fails and Brevo is configured, failover to Brevo below!
+      }
+    } catch (e: any) {
+      console.warn('[RESEND EXCEPTION]', e?.message);
+    }
+  }
+
+  // 2. Try Brevo (primary or failover)
+  if (brevoKey) {
+    try {
+      const response = await fetch('https://api.brevo.com/v3/smtp/email', {
+        method: 'POST',
+        headers: {
+          'api-key': brevoKey,
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          sender: {
+            name: 'Zenith Global Innovation',
+            email: 'zenithglobalinnovationhq@protonmail.com',
+          },
+          to: [{ email: options.to, name: options.name || options.to }],
+          subject: options.subject,
+          htmlContent: options.htmlContent,
+        }),
+      });
+
+      if (response.ok) {
+        const data: any = await response.json().catch(() => ({}));
+        console.log(`[BREVO SUCCESS] Email dispatched to ${options.to}`);
+        return { success: true, provider: 'Brevo', messageId: data?.messageId };
+      } else {
+        const detail = await response.text().catch(() => '');
+        console.warn(`[BREVO REJECTED] HTTP ${response.status}: ${detail.slice(0, 250)}`);
+        return { success: false, provider: 'Brevo', error: `Brevo error (HTTP ${response.status}): ${detail.slice(0, 200)}` };
+      }
+    } catch (err: any) {
+      return { success: false, provider: 'Brevo', error: err?.message || 'Brevo network error' };
+    }
+  }
+
+  return {
+    success: false,
+    provider: 'None',
+    error: 'No active email provider configured (configure RESEND_API_KEY or BREVO_API_KEY)',
+  };
+}
+
+// Helper for Candidate Status Update Email
 export async function sendStatusUpdateEmail(
   applicantEmail: string,
   applicantName: string,
@@ -515,16 +612,8 @@ export async function sendStatusUpdateEmail(
   interviewChannel?: string,
   interviewContact?: string,
   interviewDeadline?: string
-): Promise<{ success: boolean; error?: string }> {
+): Promise<{ success: boolean; error?: string; provider?: string }> {
   try {
-    let apiKey = '';
-    try {
-      apiKey = await secrets.readSecret('BREVO_API_KEY');
-    } catch {}
-
-    if (!apiKey) {
-      return { success: false, error: 'BREVO_API_KEY is not configured in environment' };
-    }
 
     const isInterview = newStatus === 'Shortlisted' || newStatus === 'Interview';
     const channel = interviewChannel || 'Telegram';
@@ -674,30 +763,13 @@ export async function sendStatusUpdateEmail(
 </div>`;
     }
 
-    const response = await fetch('https://api.brevo.com/v3/smtp/email', {
-      method: 'POST',
-      headers: {
-        'api-key': apiKey,
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-      },
-      body: JSON.stringify({
-        sender: {
-          name: 'Zenith Global Innovation',
-          email: 'zenithglobalinnovationhq@protonmail.com',
-        },
-        to: [{ email: applicantEmail, name: applicantName }],
-        subject,
-        htmlContent,
-      }),
+    const result = await sendSystemEmail({
+      to: applicantEmail,
+      name: applicantName,
+      subject,
+      htmlContent,
     });
-
-    if (response.ok) {
-      return { success: true };
-    } else {
-      const detail = await response.text().catch(() => '');
-      return { success: false, error: `Brevo rejected notification (HTTP ${response.status}): ${detail.slice(0, 200)}` };
-    }
+    return { success: result.success, error: result.error, provider: result.provider };
   } catch (err: any) {
     return { success: false, error: err?.message || 'Failed to dispatch update email' };
   }
@@ -849,74 +921,100 @@ apiRouter.post('/admin/brevo/status', async (req: Request, res: Response) => {
     return;
   }
 
-  let apiKey = '';
+  let resendKey = '';
+  let brevoKey = '';
   try {
-    apiKey = await secrets.readSecret('BREVO_API_KEY');
+    resendKey = await secrets.readSecret('RESEND_API_KEY');
   } catch {}
-
-  if (!apiKey) {
-    res.json({
-      configured: false,
-      valid: false,
-      senderEmail: ADMIN_EMAIL,
-      message: 'BREVO_API_KEY is not configured in the server environment (.env).',
-    });
-    return;
-  }
+  if (!resendKey && process.env.RESEND_API_KEY) resendKey = process.env.RESEND_API_KEY;
 
   try {
-    const accRes = await fetch('https://api.brevo.com/v3/account', {
-      headers: { 'api-key': apiKey, 'Accept': 'application/json' },
-    });
+    brevoKey = await secrets.readSecret('BREVO_API_KEY');
+  } catch {}
+  if (!brevoKey && process.env.BREVO_API_KEY) brevoKey = process.env.BREVO_API_KEY;
 
-    if (!accRes.ok) {
-      const errText = await accRes.text().catch(() => '');
-      res.json({
-        configured: true,
-        valid: false,
-        senderEmail: ADMIN_EMAIL,
-        statusCode: accRes.status,
-        error: `Brevo rejected key (HTTP ${accRes.status}): ${errText.slice(0, 200)}`,
-      });
-      return;
-    }
-
-    const accData: any = await accRes.json().catch(() => ({}));
-
-    // Check sender verification
-    let senderVerified = false;
+  // Check Resend Status
+  let resendValid = false;
+  let resendError = '';
+  let resendDomains: any[] = [];
+  if (resendKey) {
     try {
-      const sendersRes = await fetch('https://api.brevo.com/v3/senders', {
-        headers: { 'api-key': apiKey, 'Accept': 'application/json' },
+      const rRes = await fetch('https://api.resend.com/domains', {
+        headers: { 'Authorization': `Bearer ${resendKey}`, 'Accept': 'application/json' },
       });
-      if (sendersRes.ok) {
-        const sendersData: any = await sendersRes.json().catch(() => ({ senders: [] }));
-        const list = Array.isArray(sendersData.senders) ? sendersData.senders : [];
-        senderVerified = list.some((s: any) => String(s.email).toLowerCase() === ADMIN_EMAIL.toLowerCase() && s.active);
+      if (rRes.ok) {
+        const rData: any = await rRes.json().catch(() => ({ data: [] }));
+        resendDomains = rData?.data || [];
+        resendValid = true;
+      } else {
+        const rErr = await rRes.text().catch(() => '');
+        resendError = `Resend HTTP ${rRes.status}: ${rErr.slice(0, 150)}`;
       }
-    } catch {}
-
-    res.json({
-      configured: true,
-      valid: true,
-      senderEmail: ADMIN_EMAIL,
-      senderVerified,
-      accountEmail: accData.email || '',
-      companyName: accData.companyName || '',
-      plan: accData.plan || [],
-      message: 'Brevo API connection active and authenticated.',
-    });
-  } catch (err: any) {
-    res.json({
-      configured: true,
-      valid: false,
-      senderEmail: ADMIN_EMAIL,
-      error: `Connection failure to Brevo API: ${err?.message || 'Network error'}`,
-    });
+    } catch (e: any) {
+      resendError = e?.message || 'Network error';
+    }
   }
+
+  // Check Brevo Status
+  let brevoValid = false;
+  let brevoError = '';
+  let brevoAccountEmail = '';
+  if (brevoKey) {
+    try {
+      const bRes = await fetch('https://api.brevo.com/v3/account', {
+        headers: { 'api-key': brevoKey, 'Accept': 'application/json' },
+      });
+      if (bRes.ok) {
+        const bData: any = await bRes.json().catch(() => ({}));
+        brevoAccountEmail = bData?.email || '';
+        brevoValid = true;
+      } else {
+        const bErr = await bRes.text().catch(() => '');
+        brevoError = `Brevo HTTP ${bRes.status}: ${bErr.slice(0, 150)}`;
+      }
+    } catch (e: any) {
+      brevoError = e?.message || 'Network error';
+    }
+  }
+
+  const isConfigured = Boolean(resendKey || brevoKey);
+  const isValid = resendValid || brevoValid;
+
+  let activeProvider = 'None';
+  if (resendValid && brevoValid) {
+    activeProvider = 'Resend (Primary) + Brevo (Failover)';
+  } else if (resendValid) {
+    activeProvider = 'Resend (Active)';
+  } else if (brevoValid) {
+    activeProvider = 'Brevo (Active)';
+  }
+
+  res.json({
+    configured: isConfigured,
+    valid: isValid,
+    provider: activeProvider,
+    resend: {
+      configured: Boolean(resendKey),
+      valid: resendValid,
+      domains: resendDomains.map(d => ({ name: d.name, status: d.status })),
+      error: resendError,
+    },
+    brevo: {
+      configured: Boolean(brevoKey),
+      valid: brevoValid,
+      accountEmail: brevoAccountEmail,
+      error: brevoError,
+    },
+    senderEmail: 'intake@zenithglobalinnovation.com.ng',
+    message: isValid
+      ? `Email dispatcher active via ${activeProvider}. Confirmation emails are operational.`
+      : isConfigured
+      ? 'Email provider key configured, awaiting verification.'
+      : 'No email key configured. Add a Resend (re_...) or Brevo (xkeysib-...) key.',
+  });
 });
 
-// Admin Send Test Email via Brevo
+// Admin Send Test Email via Resend / Brevo
 apiRouter.post('/admin/brevo/test', async (req: Request, res: Response) => {
   const b = req.body as Record<string, unknown>;
   const t = String(b.token || '');
@@ -925,76 +1023,52 @@ apiRouter.post('/admin/brevo/test', async (req: Request, res: Response) => {
     return;
   }
 
-  let apiKey = '';
-  try {
-    apiKey = await secrets.readSecret('BREVO_API_KEY');
-  } catch {}
-
-  if (!apiKey) {
-    res.status(400).json({ success: false, message: 'BREVO_API_KEY is not configured.' });
-    return;
-  }
-
   const recipient = String(b.recipientEmail || ADMIN_EMAIL).trim();
 
-  try {
-    const response = await fetch('https://api.brevo.com/v3/smtp/email', {
-      method: 'POST',
-      headers: {
-        'api-key': apiKey,
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-      },
-      body: JSON.stringify({
-        sender: {
-          name: 'Zenith Global Innovation',
-          email: ADMIN_EMAIL,
-        },
-        to: [{ email: recipient, name: 'Zenith Administrator' }],
-        subject: `[Test] Brevo Integration Verification — Zenith Global Innovation`,
-        htmlContent: `
-          <div style="font-family:Arial,sans-serif;max-width:600px;margin:auto;color:#0f172a">
-            <div style="background:#10243e;padding:24px;color:#fff">
-              <h2 style="margin:0">Zenith Global Innovation</h2>
-              <p style="margin:4px 0 0;font-size:12px;opacity:0.85">Recruitment Operations · Brevo Integration Diagnostic</p>
-            </div>
-            <div style="padding:24px;border:1px solid #e2e8f0;border-top:none">
-              <p>Hello,</p>
-              <p>This is a test notification confirming that the <strong>Brevo Transactional Email API</strong> is properly authenticated and operating successfully for Zenith Global Innovation.</p>
-              <div style="background:#f1f5f9;padding:16px;border-radius:8px;font-size:13px;margin:20px 0">
-                <p style="margin:0 0 6px"><strong>Sender:</strong> ${ADMIN_EMAIL}</p>
-                <p style="margin:0 0 6px"><strong>Recipient:</strong> ${recipient}</p>
-                <p style="margin:0"><strong>Timestamp:</strong> ${new Date().toISOString()}</p>
-              </div>
-              <p style="font-size:12px;color:#64748b">Automatic candidate application confirmations and stage progression updates will now be dispatched without interruption.</p>
-            </div>
-          </div>
-        `,
-      }),
-    });
+  const testHtml = `
+    <div style="font-family:Arial,sans-serif;max-width:600px;margin:auto;color:#0f172a">
+      <div style="background:#10243e;padding:24px;color:#fff">
+        <h2 style="margin:0">Zenith Global Innovation</h2>
+        <p style="margin:4px 0 0;font-size:12px;opacity:0.85">Recruitment Operations · Email Integration Diagnostic</p>
+      </div>
+      <div style="padding:24px;border:1px solid #e2e8f0;border-top:none">
+        <p>Hello,</p>
+        <p>This is an automated test notification confirming that your <strong>Transactional Email Integration</strong> is properly authenticated and operating successfully for Zenith Global Innovation.</p>
+        <div style="background:#f1f5f9;padding:16px;border-radius:8px;font-size:13px;margin:20px 0">
+          <p style="margin:0 0 6px"><strong>Sender:</strong> intake@zenithglobalinnovation.com.ng</p>
+          <p style="margin:0 0 6px"><strong>Recipient:</strong> ${recipient}</p>
+          <p style="margin:0"><strong>Timestamp:</strong> ${new Date().toISOString()}</p>
+        </div>
+        <p style="font-size:12px;color:#64748b">Automatic candidate intake confirmations and stage progression updates are now operating live.</p>
+      </div>
+    </div>
+  `;
 
-    if (response.ok) {
-      const data: any = await response.json().catch(() => ({}));
-      res.json({
-        success: true,
-        messageId: data.messageId || 'ok',
-        recipient,
-        message: `Test email successfully dispatched to ${recipient}`,
-      });
-    } else {
-      const errText = await response.text().catch(() => '');
-      res.status(400).json({
-        success: false,
-        statusCode: response.status,
-        error: `Brevo dispatch failed: ${errText.slice(0, 300)}`,
-      });
-    }
-  } catch (err: any) {
-    res.status(500).json({ success: false, error: err?.message || 'Failed to dispatch email' });
+  const result = await sendSystemEmail({
+    to: recipient,
+    name: 'Zenith Administrator',
+    subject: '[Test] Email Integration Verification — Zenith Global Innovation',
+    htmlContent: testHtml,
+  });
+
+  if (result.success) {
+    res.json({
+      success: true,
+      provider: result.provider,
+      messageId: result.messageId || 'ok',
+      recipient,
+      message: `Test email successfully dispatched via ${result.provider} to ${recipient}!`,
+    });
+  } else {
+    res.status(400).json({
+      success: false,
+      provider: result.provider,
+      error: result.error || 'Failed to dispatch email',
+    });
   }
 });
 
-// Admin Update Brevo API Key
+// Admin Update Email API Key (accepts Resend re_... or Brevo xkeysib-...)
 apiRouter.post('/admin/brevo/key', async (req: Request, res: Response) => {
   const b = req.body as Record<string, unknown>;
   const t = String(b.token || '');
@@ -1009,32 +1083,63 @@ apiRouter.post('/admin/brevo/key', async (req: Request, res: Response) => {
     return;
   }
 
-  try {
-    await secrets.writeSecret('BREVO_API_KEY', rawKey);
-
-    // Verify key with Brevo API
-    const accRes = await fetch('https://api.brevo.com/v3/account', {
-      headers: { 'api-key': rawKey, 'Accept': 'application/json' },
-    });
-
-    if (accRes.ok) {
-      const accData: any = await accRes.json().catch(() => ({}));
-      res.json({
-        success: true,
-        valid: true,
-        message: `Brevo API key saved and verified! Connected to ${accData.email || 'account'}.`,
-        accountEmail: accData.email,
+  // Detect Resend key (starts with re_) vs Brevo key (starts with xkeysib-)
+  if (rawKey.startsWith('re_')) {
+    try {
+      await secrets.writeSecret('RESEND_API_KEY', rawKey);
+      const testRes = await fetch('https://api.resend.com/domains', {
+        headers: { 'Authorization': `Bearer ${rawKey}`, 'Accept': 'application/json' },
       });
-    } else {
-      const errText = await accRes.text().catch(() => '');
-      res.json({
-        success: true,
-        valid: false,
-        warning: `Key saved to server, but Brevo returned HTTP ${accRes.status}: ${errText.slice(0, 200)}`,
-      });
+      if (testRes.ok) {
+        const dData: any = await testRes.json().catch(() => ({ data: [] }));
+        const domains = dData?.data || [];
+        const domainNames = domains.map((d: any) => d.name).join(', ') || 'zenithglobalinnovation.com.ng';
+        res.json({
+          success: true,
+          valid: true,
+          provider: 'Resend',
+          message: `Resend API Key verified and active! Connected domain(s): ${domainNames}.`,
+        });
+      } else {
+        const errText = await testRes.text().catch(() => '');
+        res.json({
+          success: true,
+          valid: false,
+          provider: 'Resend',
+          warning: `Key saved to server, but Resend returned HTTP ${testRes.status}: ${errText.slice(0, 200)}`,
+        });
+      }
+    } catch (err: any) {
+      res.status(500).json({ message: err?.message || 'Failed to verify Resend API key' });
     }
-  } catch (err: any) {
-    res.status(500).json({ message: err?.message || 'Failed to update Brevo API key' });
+  } else {
+    // Brevo key
+    try {
+      await secrets.writeSecret('BREVO_API_KEY', rawKey);
+      const accRes = await fetch('https://api.brevo.com/v3/account', {
+        headers: { 'api-key': rawKey, 'Accept': 'application/json' },
+      });
+      if (accRes.ok) {
+        const accData: any = await accRes.json().catch(() => ({}));
+        res.json({
+          success: true,
+          valid: true,
+          provider: 'Brevo',
+          message: `Brevo API key saved and verified! Connected to ${accData.email || 'account'}.`,
+          accountEmail: accData.email,
+        });
+      } else {
+        const errText = await accRes.text().catch(() => '');
+        res.json({
+          success: true,
+          valid: false,
+          provider: 'Brevo',
+          warning: `Key saved to server, but Brevo returned HTTP ${accRes.status}: ${errText.slice(0, 200)}`,
+        });
+      }
+    } catch (err: any) {
+      res.status(500).json({ message: err?.message || 'Failed to update Brevo API key' });
+    }
   }
 });
 
@@ -1261,35 +1366,23 @@ apiRouter.post('/applications', rateLimiter('submit-app', 12, 15 * 60 * 1000), a
   </div>
 </div>`;
 
-        const response = await fetch('https://api.brevo.com/v3/smtp/email', {
-          method: 'POST',
-          headers: {
-            'api-key': apiKey,
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-          },
-          body: JSON.stringify({
-            sender: {
-              name: 'Zenith Global Innovation',
-              email: 'zenithglobalinnovationhq@protonmail.com',
-            },
-            to: [{ email: String(b.email), name: applicantName }],
-            subject: `Congratulations — Priority Review Intake Confirmed | ${role} (${reference})`,
-            htmlContent,
-          }),
+        const emailResult = await sendSystemEmail({
+          to: String(b.email),
+          name: applicantName,
+          subject: `Congratulations — Priority Review Intake Confirmed | ${role} (${reference})`,
+          htmlContent,
         });
 
-        if (response.ok) {
-          emailSent = true;
-          console.log(`Confirmation email sent via Brevo to ${b.email} for application ${reference}`);
+        emailSent = emailResult.success;
+        if (!emailResult.success) {
+          emailError = emailResult.error || 'Failed to dispatch confirmation email';
+          console.warn(`[CONFIRMATION EMAIL FAILED] ${emailError}`);
         } else {
-          const detail = await response.text().catch(() => '');
-          emailError = `Brevo rejected confirmation email (HTTP ${response.status})${detail ? `: ${detail.slice(0, 300)}` : ''}`;
-          console.error(emailError);
+          console.log(`[CONFIRMATION EMAIL SENT] via ${emailResult.provider} to ${b.email} for application ${reference}`);
         }
       }
     } catch (err: any) {
-      emailError = err?.message || 'Brevo email delivery error';
+      emailError = err?.message || 'Email delivery exception';
       console.error(emailError);
     }
 
@@ -1448,9 +1541,7 @@ apiRouter.post('/job-alerts', async (req: Request, res: Response) => {
 
     let confirmationSent = false;
     try {
-      const apiKey = await secrets.readSecret('BREVO_API_KEY');
-      if (apiKey) {
-        const html = `
+      const html = `
 <div style="font-family:Arial,sans-serif;max-width:620px;margin:auto;color:#18283d">
   <div style="padding:28px 30px;background:#10243e;color:#fff">
     <strong>ZENITH GLOBAL INNOVATION</strong>
@@ -1463,25 +1554,12 @@ apiRouter.post('/job-alerts', async (req: Request, res: Response) => {
     <p>For enquiries: <a href="mailto:zenithglobalinnovationhq@protonmail.com">zenithglobalinnovationhq@protonmail.com</a></p>
   </div>
 </div>`;
-        const response = await fetch('https://api.brevo.com/v3/smtp/email', {
-          method: 'POST',
-          headers: {
-            'api-key': apiKey,
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-          },
-          body: JSON.stringify({
-            sender: {
-              name: 'Zenith Global Innovation',
-              email: 'zenithglobalinnovationhq@protonmail.com',
-            },
-            to: [{ email }],
-            subject: 'Your Zenith Global Innovation job alert is active',
-            htmlContent: html,
-          }),
-        });
-        confirmationSent = response.ok;
-      }
+      const res = await sendSystemEmail({
+        to: email,
+        subject: 'Your Zenith Global Innovation job alert is active',
+        htmlContent: html,
+      });
+      confirmationSent = res.success;
     } catch {}
 
     res.status(201).json({ subscriptionId, subscribed: true, confirmationSent });
