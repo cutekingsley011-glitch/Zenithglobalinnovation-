@@ -2395,16 +2395,7 @@ app.use((err, _req, res, _next) => {
     res.status(500).json({ message: err?.message || "Internal Server Error" });
   }
 });
-function handler(req, res) {
-  try {
-    return app(req, res);
-  } catch (err) {
-    console.error("[SERVERLESS FATAL INVOCATION ERROR]", err);
-    if (res && typeof res.status === "function" && !res.headersSent) {
-      res.status(500).json({ error: "Internal handler failure", message: err?.message || String(err) });
-    }
-  }
-}
+var serverless_default = app;
 export {
-  handler as default
+  serverless_default as default
 };

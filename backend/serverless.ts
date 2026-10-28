@@ -63,13 +63,4 @@ app.use((err: any, _req: express.Request, res: express.Response, _next: express.
   }
 });
 
-export default function handler(req: any, res: any) {
-  try {
-    return app(req, res);
-  } catch (err: any) {
-    console.error('[SERVERLESS FATAL INVOCATION ERROR]', err);
-    if (res && typeof res.status === 'function' && !res.headersSent) {
-      res.status(500).json({ error: 'Internal handler failure', message: err?.message || String(err) });
-    }
-  }
-}
+export default app;
