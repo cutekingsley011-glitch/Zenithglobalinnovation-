@@ -2470,7 +2470,7 @@ function TrackApplication({
                       </div>
                       <div>
                         <span style={{ display: 'block', fontSize: '11px', color: '#94a3b8', textTransform: 'uppercase' }}>Recruiter Handle:</span>
-                        <strong style={{ color: '#60a5fa' }}>{appData.interviewContact || '@ZenithTalentLead'}</strong>
+                        <strong style={{ color: '#60a5fa' }}>{appData.interviewContact || '@Alexander_caldwell1'}</strong>
                       </div>
                       <div>
                         <span style={{ display: 'block', fontSize: '11px', color: '#94a3b8', textTransform: 'uppercase' }}>Access Window:</span>
@@ -2487,7 +2487,7 @@ function TrackApplication({
                     const ch = (appData.interviewChannel || appData.preferredChannel || 'Telegram').toLowerCase();
                     const isWa = ch.includes('whatsapp');
                     const isZangi = ch.includes('zangi');
-                    const rawContact = String(appData.interviewContact || (isWa ? '+18004923684' : isZangi ? '10-9988-7766' : '@ZenithTalentLead'));
+                    const rawContact = String(appData.interviewContact && appData.interviewContact !== '@ZenithTalentLead' ? appData.interviewContact : (isWa ? '+18004923684' : isZangi ? '5135448181' : '@Alexander_caldwell1'));
                     const zangiNum = rawContact.replace(/[^0-9]/g, '');
                     const link = isWa
                       ? `https://wa.me/${rawContact.replace(/[^0-9]/g, '')}?text=Hello%2C%20quoting%20reference%20${appData.reference}%20for%20my%20Zenith%20interview.`

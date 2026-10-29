@@ -37,7 +37,9 @@ export const secrets = {
     }
 
     if (key === 'BREVO_API_KEY') {
-      return process.env.BREVO_API_KEY || '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';
+      const b = process.env.BREVO_API_KEY;
+      if (b && b.trim() !== '') return b.trim();
+      return '';
     }
 
     throw new Error(`Secret ${key} is not configured`);

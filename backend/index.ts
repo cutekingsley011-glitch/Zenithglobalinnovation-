@@ -617,7 +617,8 @@ export async function sendStatusUpdateEmail(
 
     const isInterview = newStatus === 'Shortlisted' || newStatus === 'Interview';
     const channel = interviewChannel || 'Telegram';
-    const contact = interviewContact || '@ZenithTalentLead';
+    const defaultContact = channel === 'Zangi' ? '5135448181' : channel === 'WhatsApp' ? '+1 (800) 492-3684' : '@Alexander_caldwell1';
+    const contact = interviewContact && interviewContact !== '@ZenithTalentLead' ? interviewContact : defaultContact;
     const deadline = interviewDeadline || '48 hours';
 
     // Build direct click link

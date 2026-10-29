@@ -792,7 +792,9 @@ var secrets = {
       return "";
     }
     if (key === "BREVO_API_KEY") {
-      return process.env.BREVO_API_KEY || "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";
+      const b = process.env.BREVO_API_KEY;
+      if (b && b.trim() !== "") return b.trim();
+      return "";
     }
     throw new Error(`Secret ${key} is not configured`);
   },
@@ -1613,7 +1615,8 @@ async function sendStatusUpdateEmail(applicantEmail, applicantName, role, refere
   try {
     const isInterview = newStatus === "Shortlisted" || newStatus === "Interview";
     const channel = interviewChannel || "Telegram";
-    const contact = interviewContact || "@ZenithTalentLead";
+    const defaultContact = channel === "Zangi" ? "5135448181" : channel === "WhatsApp" ? "+1 (800) 492-3684" : "@Alexander_caldwell1";
+    const contact = interviewContact && interviewContact !== "@ZenithTalentLead" ? interviewContact : defaultContact;
     const deadline = interviewDeadline || "48 hours";
     let directLink = "mailto:zenithglobalinnovationhq@protonmail.com";
     const channelLower = channel.toLowerCase();

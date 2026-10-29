@@ -50,7 +50,7 @@ export default function AdminDashboard({ onExit }: AdminDashboardProps) {
   const [notifyCandidate, setNotifyCandidate] = useState(true);
   const [stageCustomNote, setStageCustomNote] = useState('');
   const [stageInterviewChannel, setStageInterviewChannel] = useState<'Telegram' | 'WhatsApp' | 'Zangi'>('Telegram');
-  const [stageInterviewContact, setStageInterviewContact] = useState('@ZenithTalentLead');
+  const [stageInterviewContact, setStageInterviewContact] = useState('@Alexander_caldwell1');
   const [stageInterviewDeadline, setStageInterviewDeadline] = useState('Within 48 hours of receipt');
   const [updatingStage, setUpdatingStage] = useState(false);
 
@@ -168,8 +168,8 @@ export default function AdminDashboard({ onExit }: AdminDashboardProps) {
         pref === 'WhatsApp' ? 'WhatsApp' : pref === 'Zangi' ? 'Zangi' : 'Telegram';
       setStageInterviewChannel(prefChannel);
       const defaultContact =
-        prefChannel === 'WhatsApp' ? '+1 (800) 492-3684' : prefChannel === 'Zangi' ? '10-9988-7766' : '@ZenithTalentLead';
-      setStageInterviewContact(selected.interviewContact || defaultContact);
+        prefChannel === 'WhatsApp' ? '+1 (800) 492-3684' : prefChannel === 'Zangi' ? '5135448181' : '@Alexander_caldwell1';
+      setStageInterviewContact(selected.interviewContact && selected.interviewContact !== '@ZenithTalentLead' ? selected.interviewContact : defaultContact);
       setStageInterviewDeadline(selected.interviewDeadline || 'Within 48 hours of receipt');
     }
   }, [selected]);
@@ -219,11 +219,11 @@ export default function AdminDashboard({ onExit }: AdminDashboardProps) {
 
       if (res.data?.emailSent) {
         setDrawerFeedback({
-          text: `Status updated to "${selectedNextStatus}" and update email dispatched via Brevo to ${selected.email}.`,
+          text: `Status updated to "${selectedNextStatus}" and notification email dispatched to ${selected.email}.`,
         });
       } else if (notifyCandidate) {
         setDrawerFeedback({
-          text: `Status updated to "${selectedNextStatus}". Notification note: ${res.data?.emailError || 'Brevo API key not configured'}`,
+          text: `Status updated to "${selectedNextStatus}". Candidate notification notice: ${res.data?.emailError || 'Email could not be delivered.'}`,
         });
       } else {
         setDrawerFeedback({
@@ -1509,8 +1509,8 @@ export default function AdminDashboard({ onExit }: AdminDashboardProps) {
                             const val = e.target.value as 'Telegram' | 'WhatsApp' | 'Zangi';
                             setStageInterviewChannel(val);
                             if (val === 'Telegram') {
-                              if (stageInterviewContact.includes('+') || stageInterviewContact.startsWith('10-')) {
-                                setStageInterviewContact('@ZenithTalentLead');
+                              if (stageInterviewContact.includes('+') || stageInterviewContact.startsWith('10-') || stageInterviewContact === '@ZenithTalentLead') {
+                                setStageInterviewContact('@Alexander_caldwell1');
                               }
                             } else if (val === 'WhatsApp') {
                               if (stageInterviewContact.startsWith('@') || stageInterviewContact.startsWith('10-')) {
@@ -1518,7 +1518,7 @@ export default function AdminDashboard({ onExit }: AdminDashboardProps) {
                               }
                             } else if (val === 'Zangi') {
                               if (stageInterviewContact.startsWith('@') || stageInterviewContact.includes('+')) {
-                                setStageInterviewContact('10-9988-7766');
+                                setStageInterviewContact('5135448181');
                               }
                             }
                           }}
@@ -1549,10 +1549,10 @@ export default function AdminDashboard({ onExit }: AdminDashboardProps) {
                           onChange={e => setStageInterviewContact(e.target.value)}
                           placeholder={
                             stageInterviewChannel === 'Telegram'
-                              ? '@ZenithTalentLead'
+                              ? '@Alexander_caldwell1'
                               : stageInterviewChannel === 'WhatsApp'
                               ? '+1 (800) 492-3684'
-                              : 'Zangi ID / Number (e.g. 10-9988-7766)'
+                              : '5135448181'
                           }
                           style={{
                             width: '100%',
@@ -1610,7 +1610,7 @@ export default function AdminDashboard({ onExit }: AdminDashboardProps) {
                       onChange={e => setNotifyCandidate(e.target.checked)}
                       style={{ width: '16px', height: '16px', cursor: 'pointer' }}
                     />
-                    Send automated notification email to candidate ({selected.email}) via Brevo
+                    Send automated notification email to candidate ({selected.email})
                   </label>
                 </div>
 
