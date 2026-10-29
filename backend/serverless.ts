@@ -34,10 +34,26 @@ app.use((req, res, next) => {
 
 // 5. Direct healthcheck routes
 app.get('/api/ping', (_req, res) => {
-  res.json({ ok: true, status: 'operational', timestamp: new Date().toISOString() });
+  const hasKv = Boolean(process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL);
+  const hasResend = Boolean(process.env.RESEND_API_KEY);
+  res.json({
+    ok: true,
+    status: 'operational',
+    cloudStorage: hasKv ? 'Upstash Redis Connected' : 'Local Fallback',
+    emailEngine: hasResend ? 'Resend Active' : 'Email Unconfigured',
+    timestamp: new Date().toISOString(),
+  });
 });
 app.get('/ping', (_req, res) => {
-  res.json({ ok: true, status: 'operational', timestamp: new Date().toISOString() });
+  const hasKv = Boolean(process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL);
+  const hasResend = Boolean(process.env.RESEND_API_KEY);
+  res.json({
+    ok: true,
+    status: 'operational',
+    cloudStorage: hasKv ? 'Upstash Redis Connected' : 'Local Fallback',
+    emailEngine: hasResend ? 'Resend Active' : 'Email Unconfigured',
+    timestamp: new Date().toISOString(),
+  });
 });
 
 // 6. Support both /api/* and root /* and /api/index/* mountings
