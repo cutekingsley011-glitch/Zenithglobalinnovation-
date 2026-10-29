@@ -2218,16 +2218,7 @@ apiRouter.post("/applications", rateLimiter("submit-app", 12, 15 * 60 * 1e3), as
     const applicantName = String(b.name);
     const role = String(b.jobTitle || b.desiredRole || b.jobId);
     try {
-      let apiKey = "";
-      try {
-        apiKey = await secrets.readSecret("BREVO_API_KEY");
-      } catch {
-      }
-      if (!apiKey) {
-        emailError = "Brevo API key not configured (BREVO_API_KEY environment variable required)";
-        console.warn("Application saved. Transactional confirmation email skipped: BREVO_API_KEY is not configured.");
-      } else {
-        const htmlContent = `
+      const htmlContent = `
 <div style="font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;max-width:640px;margin:auto;background:#ffffff;border:1px solid #e2e8f0;border-radius:12px;overflow:hidden;box-shadow:0 10px 25px rgba(0,0,0,0.05);color:#0f172a">
   <div style="background:linear-gradient(135deg,#0a192f 0%,#1e3a5f 100%);padding:36px 32px;color:#ffffff;text-align:left">
     <div style="display:inline-block;padding:4px 12px;background:rgba(217,119,6,0.25);border:1px solid #f59e0b;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#fef3c7;margin-bottom:12px">
@@ -2289,19 +2280,18 @@ apiRouter.post("/applications", rateLimiter("submit-app", 12, 15 * 60 * 1e3), as
     </div>
   </div>
 </div>`;
-        const emailResult = await sendSystemEmail({
-          to: String(b.email),
-          name: applicantName,
-          subject: `Congratulations \u2014 Priority Review Intake Confirmed | ${role} (${reference})`,
-          htmlContent
-        });
-        emailSent = emailResult.success;
-        if (!emailResult.success) {
-          emailError = emailResult.error || "Failed to dispatch confirmation email";
-          console.warn(`[CONFIRMATION EMAIL FAILED] ${emailError}`);
-        } else {
-          console.log(`[CONFIRMATION EMAIL SENT] via ${emailResult.provider} to ${b.email} for application ${reference}`);
-        }
+      const emailResult = await sendSystemEmail({
+        to: String(b.email),
+        name: applicantName,
+        subject: `Congratulations \u2014 Priority Review Intake Confirmed | ${role} (${reference})`,
+        htmlContent
+      });
+      emailSent = emailResult.success;
+      if (!emailResult.success) {
+        emailError = emailResult.error || "Failed to dispatch confirmation email";
+        console.warn(`[CONFIRMATION EMAIL FAILED] ${emailError}`);
+      } else {
+        console.log(`[CONFIRMATION EMAIL SENT] via ${emailResult.provider} to ${b.email} for application ${reference}`);
       }
     } catch (err) {
       emailError = err?.message || "Email delivery exception";
