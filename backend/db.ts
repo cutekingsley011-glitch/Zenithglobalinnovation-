@@ -59,7 +59,14 @@ async function syncFromCloudKV(): Promise<void> {
     if (res.ok) {
       const json: any = await res.json();
       if (json && json.result) {
-        const parsed = typeof json.result === 'string' ? JSON.parse(json.result) : json.result;
+        let parsed = json.result;
+        while (typeof parsed === 'string') {
+          try {
+            parsed = JSON.parse(parsed);
+          } catch {
+            break;
+          }
+        }
         if (parsed && typeof parsed === 'object') {
           inMemoryStore = {
             ...inMemoryStore,
@@ -68,6 +75,9 @@ async function syncFromCloudKV(): Promise<void> {
             admin_sessions: Array.isArray(parsed.admin_sessions) ? parsed.admin_sessions : inMemoryStore.admin_sessions,
             leads: Array.isArray(parsed.leads) ? parsed.leads : inMemoryStore.leads,
           };
+          try {
+            fs.writeFileSync(DB_FILE, JSON.stringify(inMemoryStore, null, 2), 'utf-8');
+          } catch {}
         }
       }
     }
@@ -85,7 +95,7 @@ async function syncToCloudKV(data: DatabaseSchema): Promise<void> {
         Authorization: `Bearer ${KV_TOKEN}`,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(JSON.stringify(data)),
+      body: JSON.stringify(data),
     });
   } catch (err) {
     console.warn('[CLOUD KV WRITE ERROR]', err);
@@ -97,7 +107,16 @@ function readDb(): DatabaseSchema {
     if (fs.existsSync(DB_FILE)) {
       const raw = fs.readFileSync(DB_FILE, 'utf-8');
       const parsed = JSON.parse(raw);
-      inMemoryStore = { ...inMemoryStore, ...parsed };
+      if (parsed && typeof parsed === 'object') {
+        const memoryApps = inMemoryStore.applications || [];
+        const diskApps = parsed.applications || [];
+        inMemoryStore = {
+          ...defaultSchema,
+          ...parsed,
+          ...inMemoryStore,
+          applications: memoryApps.length >= diskApps.length ? memoryApps : diskApps,
+        };
+      }
     }
   } catch {}
   return inMemoryStore;
