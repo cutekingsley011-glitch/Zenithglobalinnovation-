@@ -1909,6 +1909,54 @@ function About({ go }: { go: (p: string) => void }) {
             </div>
           </div>
 
+          {/* Global Corporate Offices Section in About */}
+          <div style={{ marginBottom: '48px', background: '#f8fafc', padding: '32px', borderRadius: '20px', border: '1px solid #e2e8f0' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#2563eb', fontSize: '12px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '8px' }}>
+              <Building2 size={16} /> Global Operational Infrastructure
+            </div>
+            <h3 style={{ fontSize: '22px', color: '#0f172a', margin: '0 0 8px' }}>
+              Corporate Headquarters & Regional Centers
+            </h3>
+            <p style={{ color: '#64748b', fontSize: '14px', lineHeight: 1.6, margin: '0 0 24px', maxWidth: '700px' }}>
+              Zenith Global Innovation maintains strategic physical offices in the world's leading commercial capitals to support enterprise clients, regulatory compliance, and distributed executive teams.
+            </p>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '20px' }}>
+              <div style={{ background: '#ffffff', padding: '20px', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
+                <b style={{ color: '#0f172a', fontSize: '14px', display: 'block', marginBottom: '8px' }}>🇺🇸 US Headquarters (New York)</b>
+                <div style={{ display: 'grid', gap: '6px', fontSize: '12.5px', color: '#475569' }}>
+                  <span>• 245 West 29th Street, Suite 1204, NY 10001</span>
+                  <span>• 1350 Avenue of the Americas, Floor 3, NY 10018</span>
+                  <span>• 400 Park Avenue South, Suite 800, NY 10022</span>
+                </div>
+              </div>
+
+              <div style={{ background: '#ffffff', padding: '20px', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
+                <b style={{ color: '#0f172a', fontSize: '14px', display: 'block', marginBottom: '8px' }}>🇬🇧 London Office</b>
+                <div style={{ display: 'grid', gap: '6px', fontSize: '12.5px', color: '#475569' }}>
+                  <span>• 82 Great Eastern Street, London EC2A 4NE</span>
+                  <span>• 152 City Road, London EC1V 9BD</span>
+                </div>
+              </div>
+
+              <div style={{ background: '#ffffff', padding: '20px', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
+                <b style={{ color: '#0f172a', fontSize: '14px', display: 'block', marginBottom: '8px' }}>🇸🇬 Singapore Office</b>
+                <div style={{ display: 'grid', gap: '6px', fontSize: '12.5px', color: '#475569' }}>
+                  <span>• 10 Marina Boulevard, Level 39, Singapore 018956</span>
+                  <span>• 1 Raffles Place, Tower 2, Singapore 049315</span>
+                </div>
+              </div>
+
+              <div style={{ background: '#ffffff', padding: '20px', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
+                <b style={{ color: '#0f172a', fontSize: '14px', display: 'block', marginBottom: '8px' }}>🇨🇦 Toronto Office</b>
+                <div style={{ display: 'grid', gap: '6px', fontSize: '12.5px', color: '#475569' }}>
+                  <span>• 88 Queen's Quay West, Suite 1900, Toronto, ON M5V 2T6</span>
+                  <span>• 199 Bay Street, Commerce Court West, Toronto, ON M5H 2N2</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* Compliance & Cookie Policy Banner in About Section */}
           <div
             style={{
@@ -2121,15 +2169,75 @@ function Contact() {
       </section>
 
       <section className="section contact">
-        <div>
-          <b>Official Company Email</b>
-          <a href="mailto:zenithglobalinnovationhq@protonmail.com">zenithglobalinnovationhq@protonmail.com</a>
-          <b>General Enquiries & Management</b>
-          <span>For general enquiries, complaints, management correspondence and company-related matters.</span>
-          <b>Headquarters</b>
-          <span>New York, NY · United States</span>
-          <b>International Operational Centers</b>
-          <span>London · Singapore · Toronto</span>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          <div>
+            <b style={{ color: '#0f172a', fontSize: '13px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Official Company Email</b>
+            <a href="mailto:zenithglobalinnovationhq@protonmail.com" style={{ display: 'block', fontSize: '15px', color: '#2563eb', fontWeight: 600, marginTop: '4px', textDecoration: 'none' }}>
+              zenithglobalinnovationhq@protonmail.com
+            </a>
+            <span style={{ fontSize: '12px', color: '#64748b', display: 'block', marginTop: '4px' }}>
+              Official correspondence for global recruitment, general inquiries, complaints, and candidate records.
+            </span>
+          </div>
+
+          <div style={{ borderTop: '1px solid #e2e8f0', paddingTop: '16px' }}>
+            <b style={{ color: '#0f172a', fontSize: '13px', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <Building2 size={16} color="#2563eb" /> US Headquarters (New York)
+            </b>
+            <ul style={{ listStyle: 'none', padding: 0, margin: '8px 0 0', display: 'grid', gap: '6px', fontSize: '13px', color: '#334155' }}>
+              <li style={{ padding: '8px 12px', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+                📍 245 West 29th Street, Suite 1204, New York, NY 10001
+              </li>
+              <li style={{ padding: '8px 12px', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+                📍 1350 Avenue of the Americas, Floor 3, New York, NY 10018
+              </li>
+              <li style={{ padding: '8px 12px', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+                📍 400 Park Avenue South, Suite 800, New York, NY 10022
+              </li>
+            </ul>
+          </div>
+
+          <div style={{ borderTop: '1px solid #e2e8f0', paddingTop: '16px' }}>
+            <b style={{ color: '#0f172a', fontSize: '13px', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <Building2 size={16} color="#2563eb" /> London Office
+            </b>
+            <ul style={{ listStyle: 'none', padding: 0, margin: '8px 0 0', display: 'grid', gap: '6px', fontSize: '13px', color: '#334155' }}>
+              <li style={{ padding: '8px 12px', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+                📍 82 Great Eastern Street, London EC2A 4NE
+              </li>
+              <li style={{ padding: '8px 12px', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+                📍 152 City Road, London EC1V 9BD
+              </li>
+            </ul>
+          </div>
+
+          <div style={{ borderTop: '1px solid #e2e8f0', paddingTop: '16px' }}>
+            <b style={{ color: '#0f172a', fontSize: '13px', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <Building2 size={16} color="#2563eb" /> Singapore Office
+            </b>
+            <ul style={{ listStyle: 'none', padding: 0, margin: '8px 0 0', display: 'grid', gap: '6px', fontSize: '13px', color: '#334155' }}>
+              <li style={{ padding: '8px 12px', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+                📍 10 Marina Boulevard, Level 39, Singapore 018956
+              </li>
+              <li style={{ padding: '8px 12px', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+                📍 1 Raffles Place, Tower 2, Singapore 049315
+              </li>
+            </ul>
+          </div>
+
+          <div style={{ borderTop: '1px solid #e2e8f0', paddingTop: '16px' }}>
+            <b style={{ color: '#0f172a', fontSize: '13px', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <Building2 size={16} color="#2563eb" /> Toronto Office
+            </b>
+            <ul style={{ listStyle: 'none', padding: 0, margin: '8px 0 0', display: 'grid', gap: '6px', fontSize: '13px', color: '#334155' }}>
+              <li style={{ padding: '8px 12px', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+                📍 88 Queen's Quay West, Suite 1900, Toronto, ON M5V 2T6
+              </li>
+              <li style={{ padding: '8px 12px', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+                📍 199 Bay Street, Commerce Court West, Toronto, ON M5H 2N2
+              </li>
+            </ul>
+          </div>
         </div>
 
         {done ? (
