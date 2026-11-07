@@ -235,8 +235,12 @@ export function validateSchemaGraph(rawJsonLd?: string | object): SchemaValidati
     let salaryText = 'Competitive';
     if (j.baseSalary) {
       const val = j.baseSalary.value?.value || j.baseSalary.value;
+      const min = j.baseSalary.value?.minValue;
+      const max = j.baseSalary.value?.maxValue;
       const curr = j.baseSalary.currency || 'USD';
-      if (typeof val === 'number') {
+      if (typeof min === 'number' && typeof max === 'number') {
+        salaryText = `$${min.toLocaleString()} - $${max.toLocaleString()} ${curr}/yr`;
+      } else if (typeof val === 'number') {
         salaryText = `$${val.toLocaleString()} ${curr}/yr`;
       }
     } else {

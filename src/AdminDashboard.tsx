@@ -1222,8 +1222,8 @@ export default function AdminDashboard({ onExit }: AdminDashboardProps) {
 
                 <div style={{ background: '#eff6ff', border: '1px solid #bfdbfe', padding: '16px', borderRadius: '12px' }}>
                   <span style={{ fontSize: '11px', color: '#1e40af', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>Jobs in Schema Graph</span>
-                  <div style={{ fontSize: '28px', fontWeight: 800, color: '#1d4ed8', margin: '4px 0' }}>{report.jobs.length || 9} Roles</div>
-                  <small style={{ color: '#1e40af' }}>Includes all 4 primary + extended catalog</small>
+                  <div style={{ fontSize: '28px', fontWeight: 800, color: '#1d4ed8', margin: '4px 0' }}>{report.jobs.length || 81} Roles</div>
+                  <small style={{ color: '#1e40af' }}>All 81 positions active across all 12 sectors</small>
                 </div>
 
                 <div style={{ background: '#f8fafc', border: '1px solid #e2e8f0', padding: '16px', borderRadius: '12px' }}>
