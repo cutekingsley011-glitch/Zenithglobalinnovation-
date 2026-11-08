@@ -2611,7 +2611,560 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
   </head>
   <body>
-    <div id="root"></div>
+        <div id="root">
+      <!-- STATIC COMPANY PROFILE & ACTIVE ROLES (Hydrated by React on load) -->
+      <header style="padding: 20px; background: #ffffff; border-bottom: 1px solid #e2e8f0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+        <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+          <div>
+            <h1 style="font-size: 22px; font-weight: 800; color: #10243e; margin: 0; letter-spacing: -0.5px;">ZENITH GLOBAL INNOVATION</h1>
+            <p style="font-size: 12px; color: #64748b; margin: 3px 0 0;">Connecting Talent Across Continents · Established 2019</p>
+          </div>
+          <div>
+            <a href="mailto:zenithglobalinnovationhq@protonmail.com" style="color: #2563eb; font-weight: 600; font-size: 13px; text-decoration: none;">zenithglobalinnovationhq@protonmail.com</a>
+          </div>
+        </div>
+      </header>
+
+      <main style="max-width: 1200px; margin: 0 auto; padding: 36px 20px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #0f172a;">
+        <section style="margin-bottom: 36px;">
+          <h2 style="font-size: 30px; font-weight: 800; margin: 0 0 12px; color: #0f172a; line-height: 1.2;">
+            Verified Global Executive & Remote Careers
+          </h2>
+          <p style="font-size: 15px; color: #475569; line-height: 1.7; max-width: 840px; margin: 0 0 20px;">
+            Zenith Global Innovation connects thoroughly vetted executives, engineers, directors, and specialized consultants with leading global enterprises. Every open position features transparent annual compensation ($65,000–$250,000 USD), full remote flexibility, dedicated applicant tracking reference codes, and guaranteed evaluation within 3–5 business days.
+          </p>
+
+          <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 24px;">
+            <span style="background: #eff6ff; color: #1d4ed8; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 700; border: 1px solid #bfdbfe;">✓ Google Cloud Partner Verified</span>
+            <span style="background: #e0f2fe; color: #0284c7; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 700; border: 1px solid #bae6fd;">✓ Meta Verified Business</span>
+            <span style="background: #f0fdf4; color: #15803d; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 700; border: 1px solid #bbf7d0;">✓ BBB Accredited Business (A+ Rating)</span>
+            <span style="background: #f0fdfa; color: #0f766e; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 700; border: 1px solid #99f6e4;">🔒 256-Bit SSL/TLS Certified Security</span>
+          </div>
+        </section>
+
+        <section style="margin-bottom: 36px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 24px;">
+          <h3 style="font-size: 18px; font-weight: 800; margin: 0 0 14px; color: #0f172a;">Global Corporate Headquarters & Operating Centers</h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; font-size: 12.5px; color: #475569;">
+            <div style="background: #ffffff; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0;">
+              <strong style="color: #0f172a; display: block; margin-bottom: 4px;">🇺🇸 US Headquarters (New York)</strong>
+              <div>• 245 West 29th Street, Suite 1204, NY 10001</div>
+              <div>• 1350 Avenue of the Americas, Floor 3, NY 10018</div>
+              <div>• 400 Park Avenue South, Suite 800, NY 10022</div>
+            </div>
+            <div style="background: #ffffff; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0;">
+              <strong style="color: #0f172a; display: block; margin-bottom: 4px;">🇬🇧 London Office</strong>
+              <div>• 82 Great Eastern Street, London EC2A 4NE</div>
+              <div>• 152 City Road, London EC1V 9BD</div>
+            </div>
+            <div style="background: #ffffff; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0;">
+              <strong style="color: #0f172a; display: block; margin-bottom: 4px;">🇸🇬 Singapore Office</strong>
+              <div>• 10 Marina Boulevard, Level 39, Singapore 018956</div>
+              <div>• 1 Raffles Place, Tower 2, Singapore 049315</div>
+            </div>
+            <div style="background: #ffffff; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0;">
+              <strong style="color: #0f172a; display: block; margin-bottom: 4px;">🇨🇦 Toronto Office</strong>
+              <div>• 88 Queen's Quay West, Suite 1900, Toronto, ON M5V 2T6</div>
+              <div>• 199 Bay Street, Commerce Court West, Toronto, ON M5H 2N2</div>
+            </div>
+          </div>
+        </section>
+
+        <section style="margin-bottom: 36px;">
+          <h3 style="font-size: 20px; font-weight: 800; margin: 0 0 8px; color: #0f172a;">Active Career Opportunities (All 81 Open Roles)</h3>
+          <p style="font-size: 13.5px; color: #64748b; margin: 0 0 18px;">
+            100% remote telecommute roles across North America, Europe, Asia-Pacific, and Worldwide. Direct application available:
+          </p>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px;">
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Executive & Leadership Positions</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Chief Technology Officer (CTO)</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $140,000 - $240,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Chief-Technology-Officer-CTO" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Executive & Leadership Positions</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Chief Marketing Officer (CMO)</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $140,000 - $240,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Chief-Marketing-Officer-CMO" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Executive & Leadership Positions</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Chief Operations Officer (COO)</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $140,000 - $240,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Chief-Operations-Officer-COO" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Executive & Leadership Positions</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Director of Digital Transformation</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $140,000 - $240,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Director-of-Digital-Transformation" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Executive & Leadership Positions</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Vice President of Business Development</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $140,000 - $240,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Vice-President-of-Business-Development" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Executive & Leadership Positions</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Senior Project Manager</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $140,000 - $240,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Senior-Project-Manager" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Executive & Leadership Positions</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Product Strategy Lead</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $140,000 - $240,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Product-Strategy-Lead" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Executive & Leadership Positions</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Change Management Consultant</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $140,000 - $240,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Change-Management-Consultant" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Senior Technical Roles</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Senior Full Stack Developer</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $120,000 - $210,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Senior-Full-Stack-Developer" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Senior Technical Roles</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Lead Software Architect</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $120,000 - $210,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Lead-Software-Architect" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Senior Technical Roles</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Senior DevOps Engineer</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $120,000 - $210,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Senior-DevOps-Engineer" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Senior Technical Roles</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Principal Cloud Engineer</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $120,000 - $210,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Principal-Cloud-Engineer" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Senior Technical Roles</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Senior Cybersecurity Analyst</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $120,000 - $210,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Senior-Cybersecurity-Analyst" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Senior Technical Roles</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Lead Data Scientist</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $120,000 - $210,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Lead-Data-Scientist" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Senior Technical Roles</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Senior Machine Learning Engineer</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $120,000 - $210,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Senior-Machine-Learning-Engineer" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Senior Technical Roles</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Blockchain Solutions Architect</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $120,000 - $210,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Blockchain-Solutions-Architect" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Senior Technical Roles</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Senior Database Administrator</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $120,000 - $210,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Senior-Database-Administrator" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Senior Technical Roles</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Principal UX/UI Designer</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $120,000 - $210,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Principal-UX-UI-Designer" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Marketing & Creative Leadership</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Senior Digital Marketing Manager</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $95,000 - $185,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Senior-Digital-Marketing-Manager" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Marketing & Creative Leadership</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Brand Strategy Director</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $95,000 - $185,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Brand-Strategy-Director" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Marketing & Creative Leadership</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Senior Content Strategist</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $95,000 - $185,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Senior-Content-Strategist" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Marketing & Creative Leadership</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Creative Director</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $95,000 - $185,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Creative-Director" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Marketing & Creative Leadership</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Senior SEO Specialist</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $95,000 - $185,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Senior-SEO-Specialist" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Marketing & Creative Leadership</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Marketing Automation Lead</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $95,000 - $185,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Marketing-Automation-Lead" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Marketing & Creative Leadership</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Senior Growth Hacker</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $95,000 - $185,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Senior-Growth-Hacker" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Marketing & Creative Leadership</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">E-commerce Strategy Manager</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $95,000 - $185,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=E-commerce-Strategy-Manager" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Finance & Business Intelligence</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Senior Financial Analyst</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $105,000 - $195,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Senior-Financial-Analyst" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Finance & Business Intelligence</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Business Intelligence Manager</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $105,000 - $195,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Business-Intelligence-Manager" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Finance & Business Intelligence</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Senior Investment Analyst</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $105,000 - $195,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Senior-Investment-Analyst" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Finance & Business Intelligence</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Risk Management Consultant</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $105,000 - $195,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Risk-Management-Consultant" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Finance & Business Intelligence</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Senior Compliance Officer</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $105,000 - $195,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Senior-Compliance-Officer" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Finance & Business Intelligence</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Treasury Manager</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $105,000 - $195,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Treasury-Manager" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Finance & Business Intelligence</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Financial Planning & Analysis Lead</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $105,000 - $195,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Financial-Planning-Analysis-Lead" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Finance & Business Intelligence</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Senior Tax Consultant</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $105,000 - $195,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Senior-Tax-Consultant" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Operations & HR Leadership</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Senior Operations Manager</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $90,000 - $175,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Senior-Operations-Manager" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Operations & HR Leadership</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Director of Remote Workforce Management</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $90,000 - $175,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Director-of-Remote-Workforce-Management" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Operations & HR Leadership</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Senior HR Business Partner</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $90,000 - $175,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Senior-HR-Business-Partner" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Operations & HR Leadership</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Talent Acquisition Lead</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $90,000 - $175,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Talent-Acquisition-Lead" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Operations & HR Leadership</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Organizational Development Consultant</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $90,000 - $175,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Organizational-Development-Consultant" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Operations & HR Leadership</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Senior Learning & Development Specialist</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $90,000 - $175,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Senior-Learning-Development-Specialist" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Operations & HR Leadership</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Employee Experience Manager</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $90,000 - $175,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Employee-Experience-Manager" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Operations & HR Leadership</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Workforce Analytics Lead</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $90,000 - $175,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Workforce-Analytics-Lead" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Specialized Consulting Roles</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Senior Management Consultant</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $110,000 - $250,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Senior-Management-Consultant" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Specialized Consulting Roles</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Digital Transformation Consultant</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $110,000 - $250,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Digital-Transformation-Consultant" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Specialized Consulting Roles</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Process Improvement Specialist</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $110,000 - $250,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Process-Improvement-Specialist" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Specialized Consulting Roles</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Senior Business Analyst</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $110,000 - $250,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Senior-Business-Analyst" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Specialized Consulting Roles</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">IT Strategy Consultant</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $110,000 - $250,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=IT-Strategy-Consultant" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Specialized Consulting Roles</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Customer Experience Consultant</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $110,000 - $250,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Customer-Experience-Consultant" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Specialized Consulting Roles</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Supply Chain Optimization Expert</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $110,000 - $250,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Supply-Chain-Optimization-Expert" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Specialized Consulting Roles</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Senior Data Privacy Consultant</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $110,000 - $250,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Senior-Data-Privacy-Consultant" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Customer Success & Sales Leadership</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Senior Account Manager</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $85,000 - $180,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Senior-Account-Manager" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Customer Success & Sales Leadership</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Customer Success Director</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $85,000 - $180,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Customer-Success-Director" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Customer Success & Sales Leadership</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Senior Sales Strategist</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $85,000 - $180,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Senior-Sales-Strategist" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Customer Success & Sales Leadership</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Key Account Manager</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $85,000 - $180,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Key-Account-Manager" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Customer Success & Sales Leadership</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Client Relationship Manager</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $85,000 - $180,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Client-Relationship-Manager" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Customer Success & Sales Leadership</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Senior Business Development Manager</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $85,000 - $180,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Senior-Business-Development-Manager" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Customer Success & Sales Leadership</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Sales Operations Lead</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $85,000 - $180,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Sales-Operations-Lead" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Additional High-Value Roles</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Senior Research Analyst</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $95,000 - $190,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Senior-Research-Analyst" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Additional High-Value Roles</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Corporate Trainer</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $95,000 - $190,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Corporate-Trainer" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Additional High-Value Roles</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Senior Legal Counsel</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $95,000 - $190,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Senior-Legal-Counsel" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Additional High-Value Roles</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Senior Procurement Specialist</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $95,000 - $190,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Senior-Procurement-Specialist" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Additional High-Value Roles</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Quality Assurance Lead</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $95,000 - $190,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Quality-Assurance-Lead" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Additional High-Value Roles</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Senior Compliance Auditor</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $95,000 - $190,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Senior-Compliance-Auditor" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Additional High-Value Roles</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Corporate Communications Manager</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $95,000 - $190,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Corporate-Communications-Manager" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Additional High-Value Roles</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Senior Product Manager</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $95,000 - $190,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Senior-Product-Manager" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Administrative Solutions</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Virtual Assistant</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $65,000 - $95,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Virtual-Assistant" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Administrative Solutions</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Executive Assistant</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $65,000 - $95,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Executive-Assistant" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Administrative Solutions</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Customer Service Representative</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $65,000 - $95,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Customer-Service-Representative" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Administrative Solutions</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Data Entry Specialist</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $65,000 - $95,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Data-Entry-Specialist" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Digital Marketing Services</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Social Media Manager</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $75,000 - $110,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Social-Media-Manager" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Digital Marketing Services</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Content Creator</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $75,000 - $110,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Content-Creator" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Digital Marketing Services</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">SEO Specialist</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $75,000 - $110,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=SEO-Specialist" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Digital Marketing Services</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Email Marketing Coordinator</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $75,000 - $110,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Email-Marketing-Coordinator" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Technical Services</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">IT Support Specialist</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $85,000 - $140,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=IT-Support-Specialist" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Technical Services</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Junior Developer</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $85,000 - $140,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Junior-Developer" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Technical Services</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Web Designer</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $85,000 - $140,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Web-Designer" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Technical Services</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Digital Project Manager</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $85,000 - $140,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Digital-Project-Manager" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Financial Services</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Bookkeeper</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $80,000 - $135,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Bookkeeper" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Financial Services</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Payroll Administrator</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $80,000 - $135,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Payroll-Administrator" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Financial Services</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Accounts Receivable Specialist</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $80,000 - $135,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Accounts-Receivable-Specialist" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px;">
+              <span style="font-size: 11px; color: #2563eb; font-weight: 700; text-transform: uppercase;">Financial Services</span>
+              <h4 style="font-size: 15px; font-weight: 700; margin: 4px 0 6px; color: #0f172a;">Financial Analyst</h4>
+              <div style="font-size: 12.5px; color: #047857; font-weight: 600; margin-bottom: 8px;">💰 $80,000 - $135,000 / yr · 🌐 Remote (Global)</div>
+              <a href="/?job=Financial-Analyst" style="display: inline-block; font-size: 12px; font-weight: 700; color: #2563eb; text-decoration: none;">Apply directly on Zenith →</a>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
