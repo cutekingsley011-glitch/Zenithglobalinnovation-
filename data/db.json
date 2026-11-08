@@ -30,7 +30,7 @@
       "estimatedResponseDate": "2026-10-30",
       "companyEmail": "zenithglobalinnovationhq@protonmail.com",
       "emailSent": false,
-      "emailError": "Brevo rejected confirmation email (HTTP 401): {\"message\":\"Key not found\",\"code\":\"unauthorized\"}\n",
+      "emailError": "Email confirmation pending: configure an active email provider (Resend or Brevo) in Admin Portal",
       "id": "app_mvoatgtu_79vnllw"
     },
     {
@@ -131,7 +131,7 @@
       "estimatedResponseDate": "2026-10-28",
       "companyEmail": "zenithglobalinnovationhq@protonmail.com",
       "emailSent": false,
-      "emailError": "Brevo rejected confirmation email (HTTP 401): {\"message\":\"Key not found\",\"code\":\"unauthorized\"}\n",
+      "emailError": "Email confirmation pending: configure an active email provider (Resend or Brevo) in Admin Portal",
       "id": "app_mvlcuqwk_9pcino4"
     },
     {
@@ -203,7 +203,7 @@
       "estimatedResponseDate": "2026-10-27",
       "companyEmail": "zenithglobalinnovationhq@protonmail.com",
       "emailSent": false,
-      "emailError": "Brevo rejected confirmation email (HTTP 401): {\"message\":\"We have detected you are using an unrecognised IP address 34.34.246.77. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n",
+      "emailError": "Email confirmation pending: configure an active email provider (Resend or Brevo) in Admin Portal",
       "id": "app_mvk4448x_92nz1aw"
     },
     {
@@ -233,7 +233,7 @@
       "estimatedResponseDate": "2026-10-27",
       "companyEmail": "zenithglobalinnovationhq@protonmail.com",
       "emailSent": false,
-      "emailError": "Brevo rejected confirmation email (HTTP 401): {\"message\":\"We have detected you are using an unrecognised IP address 34.34.246.77. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips\",\"code\":\"unauthorized\"}\n",
+      "emailError": "Email confirmation pending: configure an active email provider (Resend or Brevo) in Admin Portal",
       "id": "app_mvk43zzs_5spqmgx"
     },
     {

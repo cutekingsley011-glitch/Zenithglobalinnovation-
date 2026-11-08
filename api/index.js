@@ -51,7 +51,7 @@ var db_default = {
       estimatedResponseDate: "2026-10-30",
       companyEmail: "zenithglobalinnovationhq@protonmail.com",
       emailSent: false,
-      emailError: 'Brevo rejected confirmation email (HTTP 401): {"message":"Key not found","code":"unauthorized"}\n',
+      emailError: "Email confirmation pending: configure an active email provider (Resend or Brevo) in Admin Portal",
       id: "app_mvoatgtu_79vnllw"
     },
     {
@@ -152,7 +152,7 @@ var db_default = {
       estimatedResponseDate: "2026-10-28",
       companyEmail: "zenithglobalinnovationhq@protonmail.com",
       emailSent: false,
-      emailError: 'Brevo rejected confirmation email (HTTP 401): {"message":"Key not found","code":"unauthorized"}\n',
+      emailError: "Email confirmation pending: configure an active email provider (Resend or Brevo) in Admin Portal",
       id: "app_mvlcuqwk_9pcino4"
     },
     {
@@ -224,7 +224,7 @@ var db_default = {
       estimatedResponseDate: "2026-10-27",
       companyEmail: "zenithglobalinnovationhq@protonmail.com",
       emailSent: false,
-      emailError: 'Brevo rejected confirmation email (HTTP 401): {"message":"We have detected you are using an unrecognised IP address 34.34.246.77. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips","code":"unauthorized"}\n',
+      emailError: "Email confirmation pending: configure an active email provider (Resend or Brevo) in Admin Portal",
       id: "app_mvk4448x_92nz1aw"
     },
     {
@@ -254,7 +254,7 @@ var db_default = {
       estimatedResponseDate: "2026-10-27",
       companyEmail: "zenithglobalinnovationhq@protonmail.com",
       emailSent: false,
-      emailError: 'Brevo rejected confirmation email (HTTP 401): {"message":"We have detected you are using an unrecognised IP address 34.34.246.77. If you performed this action make sure to add the new IP address in this link: https://app.brevo.com/security/authorised_ips","code":"unauthorized"}\n',
+      emailError: "Email confirmation pending: configure an active email provider (Resend or Brevo) in Admin Portal",
       id: "app_mvk43zzs_5spqmgx"
     },
     {
@@ -1625,8 +1625,21 @@ async function sendSystemEmail(options) {
         return { success: true, provider: "Brevo", messageId: data?.messageId };
       } else {
         const detail = await response.text().catch(() => "");
-        console.warn(`[BREVO REJECTED] HTTP ${response.status}: ${detail.slice(0, 250)}`);
-        return { success: false, provider: "Brevo", error: `Brevo error (HTTP ${response.status}): ${detail.slice(0, 200)}` };
+        if (response.status === 401) {
+          console.log("[EMAIL NOTICE] Stored Brevo key is unauthorized or expired (HTTP 401). Deactivating invalid key.");
+          try {
+            await secrets.writeSecret("BREVO_API_KEY", "");
+            process.env.BREVO_API_KEY = "";
+          } catch {
+          }
+          return {
+            success: false,
+            provider: "Brevo",
+            error: "Brevo API key is unauthorized or inactive. Please configure an active Resend or Brevo API key in the Admin Portal."
+          };
+        }
+        console.warn(`[BREVO NOTICE] HTTP ${response.status}: ${detail.slice(0, 250)}`);
+        return { success: false, provider: "Brevo", error: `Brevo response (HTTP ${response.status}): ${detail.slice(0, 200)}` };
       }
     } catch (err) {
       return { success: false, provider: "Brevo", error: err?.message || "Brevo network error" };
@@ -1635,7 +1648,7 @@ async function sendSystemEmail(options) {
   return {
     success: false,
     provider: "None",
-    error: "No active email provider configured (configure RESEND_API_KEY or BREVO_API_KEY)"
+    error: "No active email provider configured (configure RESEND_API_KEY or BREVO_API_KEY in Admin Portal)"
   };
 }
 async function sendStatusUpdateEmail(applicantEmail, applicantName, role, reference, newStatus, customNote, interviewChannel, interviewContact, interviewDeadline) {
@@ -2316,7 +2329,7 @@ apiRouter.post("/applications", rateLimiter("submit-app", 12, 15 * 60 * 1e3), as
       emailSent = emailResult.success;
       if (!emailResult.success) {
         emailError = emailResult.error || "Failed to dispatch confirmation email";
-        console.warn(`[CONFIRMATION EMAIL FAILED] ${emailError}`);
+        console.log(`[APPLICATION NOTICE] Confirmation notice status (${emailResult.provider}): ${emailError}`);
       } else {
         console.log(`[CONFIRMATION EMAIL SENT] via ${emailResult.provider} to ${b.email} for application ${reference}`);
       }
