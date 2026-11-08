@@ -32,7 +32,34 @@ app.use((req, res, next) => {
   next();
 });
 
-// 5. Direct healthcheck routes
+// 5. Direct healthcheck routes & SEO crawler endpoints
+app.get(['/sitemap.xml', '/api/sitemap.xml'], (_req, res) => {
+  res.setHeader('Content-Type', 'application/xml; charset=utf-8');
+  res.setHeader('Cache-Control', 'public, max-age=3600');
+  try {
+    const fs = require('fs');
+    const path = require('path');
+    const candidates = [
+      path.join(process.cwd(), 'dist', 'sitemap.xml'),
+      path.join(process.cwd(), 'public', 'sitemap.xml'),
+      path.join(__dirname, '..', 'public', 'sitemap.xml'),
+      path.join(__dirname, '..', 'dist', 'sitemap.xml')
+    ];
+    for (const p of candidates) {
+      if (fs.existsSync(p)) {
+        return res.send(fs.readFileSync(p, 'utf-8'));
+      }
+    }
+  } catch {}
+  res.sendFile('sitemap.xml', { root: './public' });
+});
+
+app.get(['/robots.txt', '/api/robots.txt'], (_req, res) => {
+  res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+  res.setHeader('Cache-Control', 'public, max-age=3600');
+  res.send('User-agent: *\nAllow: /\n\nSitemap: https://www.zenithglobalinnovation.com.ng/sitemap.xml\n');
+});
+
 app.get('/api/ping', (_req, res) => {
   const hasKv = Boolean(process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL);
   const hasResend = Boolean(process.env.RESEND_API_KEY);

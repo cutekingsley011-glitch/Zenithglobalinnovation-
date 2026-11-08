@@ -1,3 +1,10 @@
+var __require = /* @__PURE__ */ ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, {
+  get: (a, b) => (typeof require !== "undefined" ? require : a)[b]
+}) : x)(function(x) {
+  if (typeof require !== "undefined") return require.apply(this, arguments);
+  throw Error('Dynamic require of "' + x + '" is not supported');
+});
+
 // backend/serverless.ts
 import express from "express";
 
@@ -2500,6 +2507,32 @@ app.use((req, res, next) => {
     req.url = req.originalUrl;
   }
   next();
+});
+app.get(["/sitemap.xml", "/api/sitemap.xml"], (_req, res) => {
+  res.setHeader("Content-Type", "application/xml; charset=utf-8");
+  res.setHeader("Cache-Control", "public, max-age=3600");
+  try {
+    const fs4 = __require("fs");
+    const path5 = __require("path");
+    const candidates = [
+      path5.join(process.cwd(), "dist", "sitemap.xml"),
+      path5.join(process.cwd(), "public", "sitemap.xml"),
+      path5.join(__dirname, "..", "public", "sitemap.xml"),
+      path5.join(__dirname, "..", "dist", "sitemap.xml")
+    ];
+    for (const p of candidates) {
+      if (fs4.existsSync(p)) {
+        return res.send(fs4.readFileSync(p, "utf-8"));
+      }
+    }
+  } catch {
+  }
+  res.sendFile("sitemap.xml", { root: "./public" });
+});
+app.get(["/robots.txt", "/api/robots.txt"], (_req, res) => {
+  res.setHeader("Content-Type", "text/plain; charset=utf-8");
+  res.setHeader("Cache-Control", "public, max-age=3600");
+  res.send("User-agent: *\nAllow: /\n\nSitemap: https://www.zenithglobalinnovation.com.ng/sitemap.xml\n");
 });
 app.get("/api/ping", (_req, res) => {
   const hasKv = Boolean(process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL);
