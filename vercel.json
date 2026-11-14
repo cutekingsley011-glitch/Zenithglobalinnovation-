@@ -37,6 +37,20 @@
       "destination": "/robots.txt"
     },
     {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "job"
+        }
+      ],
+      "destination": "/api/index"
+    },
+    {
+      "source": "/jobs/:slug",
+      "destination": "/api/index?job=:slug"
+    },
+    {
       "source": "/api",
       "destination": "/api/index"
     },

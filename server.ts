@@ -5,6 +5,7 @@ import path from 'path';
 import dotenv from 'dotenv';
 import { apiRouter } from './backend/index';
 import { securityHeaders, honeypotShield } from './backend/security';
+import { findSeoJob, renderJobDetailHtml } from './backend/seoJobs';
 
 dotenv.config();
 
@@ -37,6 +38,16 @@ app.use(express.urlencoded({ extended: true, limit: '25mb' }));
 
 // Mount API router
 app.use('/api', apiRouter);
+
+// Serve dedicated single-job SSR HTML for ?job= or /jobs/:slug SEO crawler inspection
+app.get(['/', '/jobs/:slug'], (req, res, next) => {
+  const rawJob = String(req.params?.slug || req.query?.job || '').trim();
+  if (!rawJob) return next();
+  const matched = findSeoJob(rawJob);
+  if (!matched) return next();
+  res.setHeader('Content-Type', 'text/html; charset=utf-8');
+  res.status(200).send(renderJobDetailHtml(matched, { isDev: !isProduction }));
+});
 
 // Initialize frontend middleware
 async function startServer() {

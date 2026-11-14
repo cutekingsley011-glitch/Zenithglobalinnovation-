@@ -1,6 +1,7 @@
 import express from 'express';
 import { apiRouter } from './index';
 import { securityHeaders, honeypotShield } from './security';
+import { findSeoJob, renderJobDetailHtml } from './seoJobs';
 
 const app = express();
 
@@ -58,6 +59,21 @@ app.get(['/robots.txt', '/api/robots.txt'], (_req, res) => {
   res.setHeader('Content-Type', 'text/plain; charset=utf-8');
   res.setHeader('Cache-Control', 'public, max-age=3600');
   res.send('User-agent: *\nAllow: /\n\nSitemap: https://www.zenithglobalinnovation.com.ng/sitemap.xml\n');
+});
+
+// Dedicated Per-Job Google for Jobs SSR HTML Pages (self-canonical + 1 JobPosting per URL)
+app.get(['/', '/jobs/:slug', '/api/job-page'], (req, res, next) => {
+  const rawJob = String(req.params?.slug || req.query?.job || '').trim();
+  if (!rawJob) {
+    return next();
+  }
+  const matched = findSeoJob(rawJob);
+  if (!matched) {
+    return next();
+  }
+  res.setHeader('Content-Type', 'text/html; charset=utf-8');
+  res.setHeader('Cache-Control', 'public, max-age=300, s-maxage=3600');
+  res.status(200).send(renderJobDetailHtml(matched));
 });
 
 app.get('/api/ping', (_req, res) => {

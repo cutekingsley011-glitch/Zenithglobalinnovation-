@@ -1,8 +1,11 @@
 /**
  * Zenith Global Innovation - Schema.org & Google for Jobs Validation Layer
- * Validates JSON-LD metadata embedded in index.html to guarantee strict compliance
- * with Google Search Console Rich Results and Google for Jobs crawler specifications.
+ * Validates JSON-LD metadata embedded in index.html (ItemList directory) and
+ * dedicated SSR job URLs (?job=<slug>, single JobPosting per URL) to guarantee
+ * strict compliance with Google Search Console & Google for Jobs specifications.
  */
+
+import seoData from '../../backend/seoJobsData.json';
 
 export interface ValidationIssue {
   field: string;
@@ -32,6 +35,7 @@ export interface ValidatedOffice {
 
 export interface SchemaValidationReport {
   timestamp: string;
+  schemaMode: 'itemlist-directory' | 'single-job' | 'multi-job-warning' | 'empty';
   totalJobs: number;
   validJobsCount: number;
   readinessScore: number;
@@ -84,6 +88,150 @@ export const OFFICIAL_CORPORATE_OFFICES: ValidatedOffice[] = [
   },
 ];
 
+function validateSingleJobNode(j: any, now: Date): ValidatedJobPosting {
+  const issues: ValidationIssue[] = [];
+
+  // Title validation
+  if (!j.title || typeof j.title !== 'string' || j.title.trim().length < 3) {
+    issues.push({
+      field: 'title',
+      severity: 'error',
+      message: 'Missing or invalid job title.',
+    });
+  }
+
+  // Self-canonical URL validation
+  if (!j.url || typeof j.url !== 'string' || !j.url.startsWith('http')) {
+    issues.push({
+      field: 'url',
+      severity: 'error',
+      message: 'Missing valid canonical job URL.',
+    });
+  } else if (!j.url.includes('?job=') && !j.url.includes('/jobs/')) {
+    issues.push({
+      field: 'url',
+      severity: 'error',
+      message: 'Job URL must resolve to a dedicated per-job URL (?job= or /jobs/).',
+    });
+  }
+
+  // Description validation
+  if (!j.description || typeof j.description !== 'string' || j.description.length < 50) {
+    issues.push({
+      field: 'description',
+      severity: 'error',
+      message: 'Description must be rich HTML and at least 50 characters.',
+    });
+  } else if (!j.description.includes('<p>') && !j.description.includes('<ul>')) {
+    issues.push({
+      field: 'description',
+      severity: 'warning',
+      message: 'Google for Jobs recommends HTML formatting (<p>, <ul>, <li>) for optimal display.',
+    });
+  }
+
+  // datePosted validation
+  if (!j.datePosted || isNaN(Date.parse(j.datePosted))) {
+    issues.push({
+      field: 'datePosted',
+      severity: 'error',
+      message: 'Missing or invalid ISO-8601 datePosted timestamp.',
+    });
+  }
+
+  // validThrough validation
+  if (!j.validThrough || isNaN(Date.parse(j.validThrough))) {
+    issues.push({
+      field: 'validThrough',
+      severity: 'error',
+      message: 'Missing or invalid ISO-8601 validThrough expiration date.',
+    });
+  } else {
+    const validThroughDate = new Date(j.validThrough);
+    if (validThroughDate < now) {
+      issues.push({
+        field: 'validThrough',
+        severity: 'error',
+        message: 'Job posting expiration date is in the past; Google will unindex expired roles.',
+      });
+    }
+  }
+
+  // Remote & Telecommute check
+  const isRemote = j.jobLocationType === 'TELECOMMUTE';
+  if (!isRemote && !j.jobLocation) {
+    issues.push({
+      field: 'jobLocationType',
+      severity: 'error',
+      message: 'Remote roles must specify jobLocationType: "TELECOMMUTE" or provide a physical jobLocation.',
+    });
+  }
+
+  // applicantLocationRequirements validation (Google rejects "Global" as a Country name)
+  if (isRemote && j.applicantLocationRequirements) {
+    const reqs = Array.isArray(j.applicantLocationRequirements)
+      ? j.applicantLocationRequirements
+      : [j.applicantLocationRequirements];
+    const hasGlobalCountry = reqs.some(
+      (r: any) => String(r?.name || '').trim().toLowerCase() === 'global'
+    );
+    if (hasGlobalCountry || reqs.length === 0) {
+      issues.push({
+        field: 'applicantLocationRequirements',
+        severity: 'error',
+        message: 'applicantLocationRequirements must list real ISO country names (e.g. United States, United Kingdom), not "Global".',
+      });
+    }
+  }
+
+  // Salary validation
+  let salaryText = 'Competitive';
+  if (j.baseSalary) {
+    const val = j.baseSalary.value?.value || j.baseSalary.value;
+    const min = j.baseSalary.value?.minValue;
+    const max = j.baseSalary.value?.maxValue;
+    const curr = j.baseSalary.currency || 'USD';
+    if (typeof min === 'number' && typeof max === 'number') {
+      salaryText = `$${min.toLocaleString()} - $${max.toLocaleString()} ${curr}/yr`;
+    } else if (typeof val === 'number') {
+      salaryText = `$${val.toLocaleString()} ${curr}/yr`;
+    }
+  } else {
+    issues.push({
+      field: 'baseSalary',
+      severity: 'warning',
+      message: 'Job postings with explicit baseSalary receive significantly higher Google for Jobs ranking.',
+    });
+  }
+
+  // Direct apply validation
+  const directApply = Boolean(j.directApply);
+  if (!directApply) {
+    issues.push({
+      field: 'directApply',
+      severity: 'warning',
+      message: 'Setting directApply: true displays a prominent "Apply directly on Zenith" button in Google Search.',
+    });
+  }
+
+  const hasError = issues.some(i => i.severity === 'error');
+  const hasWarning = issues.some(i => i.severity === 'warning');
+  const status: 'valid' | 'warning' | 'error' = hasError ? 'error' : hasWarning ? 'warning' : 'valid';
+
+  return {
+    title: j.title || 'Untitled Role',
+    url: j.url || '',
+    datePosted: j.datePosted || '',
+    validThrough: j.validThrough || '',
+    salary: salaryText,
+    employmentType: j.employmentType || 'FULL_TIME',
+    directApply,
+    isRemote,
+    status,
+    issues,
+  };
+}
+
 export function validateSchemaGraph(rawJsonLd?: string | object): SchemaValidationReport {
   let parsed: any = null;
   const globalIssues: ValidationIssue[] = [];
@@ -110,6 +258,7 @@ export function validateSchemaGraph(rawJsonLd?: string | object): SchemaValidati
   if (!parsed) {
     return {
       timestamp: new Date().toISOString(),
+      schemaMode: 'empty',
       totalJobs: 0,
       validJobsCount: 0,
       readinessScore: 0,
@@ -153,136 +302,64 @@ export function validateSchemaGraph(rawJsonLd?: string | object): SchemaValidati
     orgEmail = org.email || orgEmail;
   }
 
-  // Validate JobPostings
-  const jobNodes = graph.filter(item => item['@type'] === 'JobPosting');
   const now = new Date();
+  const jobNodes = graph.filter(item => item['@type'] === 'JobPosting');
+  const itemListNode = graph.find(item => item['@type'] === 'ItemList');
+  const ssrCatalogJobs: any[] = Array.isArray((seoData as any)?.jobs) ? (seoData as any).jobs : [];
 
-  const validatedJobs: ValidatedJobPosting[] = jobNodes.map(j => {
-    const issues: ValidationIssue[] = [];
+  let schemaMode: SchemaValidationReport['schemaMode'] = 'empty';
+  let nodesToValidate: any[] = [];
 
-    // Title validation
-    if (!j.title || typeof j.title !== 'string' || j.title.trim().length < 3) {
-      issues.push({
-        field: 'title',
+  if (jobNodes.length === 1) {
+    schemaMode = 'single-job';
+    nodesToValidate = jobNodes;
+  } else if (jobNodes.length > 1) {
+    schemaMode = 'multi-job-warning';
+    globalIssues.push({
+      field: 'JobPosting',
+      severity: 'error',
+      message: `Found ${jobNodes.length} JobPosting nodes on a single URL. Google Search Central requires max 1 JobPosting per URL.`,
+    });
+    nodesToValidate = jobNodes;
+  } else if (itemListNode) {
+    schemaMode = 'itemlist-directory';
+    const listItems: any[] = Array.isArray(itemListNode.itemListElement) ? itemListNode.itemListElement : [];
+    const catalogByUrl = new Map<string, any>(
+      ssrCatalogJobs.map(entry => [String(entry.url || ''), entry])
+    );
+
+    if (listItems.length === 0) {
+      globalIssues.push({
+        field: 'ItemList',
         severity: 'error',
-        message: 'Missing or invalid job title.',
+        message: 'Homepage ItemList contains no ListItem job directory links.',
       });
     }
 
-    // URL validation
-    if (!j.url || typeof j.url !== 'string' || !j.url.startsWith('http')) {
-      issues.push({
-        field: 'url',
-        severity: 'error',
-        message: 'Missing valid canonical job URL.',
-      });
-    }
-
-    // Description validation
-    if (!j.description || typeof j.description !== 'string' || j.description.length < 50) {
-      issues.push({
-        field: 'description',
-        severity: 'error',
-        message: 'Description must be rich HTML and at least 50 characters.',
-      });
-    } else if (!j.description.includes('<p>') && !j.description.includes('<ul>')) {
-      issues.push({
-        field: 'description',
-        severity: 'warning',
-        message: 'Google for Jobs recommends HTML formatting (<p>, <ul>, <li>) for optimal display.',
-      });
-    }
-
-    // datePosted validation
-    if (!j.datePosted || isNaN(Date.parse(j.datePosted))) {
-      issues.push({
-        field: 'datePosted',
-        severity: 'error',
-        message: 'Missing or invalid ISO-8601 datePosted timestamp.',
-      });
-    }
-
-    // validThrough validation
-    let validThroughDate: Date | null = null;
-    if (!j.validThrough || isNaN(Date.parse(j.validThrough))) {
-      issues.push({
-        field: 'validThrough',
-        severity: 'error',
-        message: 'Missing or invalid ISO-8601 validThrough expiration date.',
-      });
-    } else {
-      validThroughDate = new Date(j.validThrough);
-      if (validThroughDate < now) {
-        issues.push({
-          field: 'validThrough',
-          severity: 'error',
-          message: 'Job posting expiration date is in the past; Google will unindex expired roles.',
-        });
+    nodesToValidate = listItems.map(li => {
+      const matched = catalogByUrl.get(String(li.url || ''));
+      if (matched) {
+        return {
+          ...matched,
+          jobLocationType: 'TELECOMMUTE',
+          directApply: true,
+        };
       }
-    }
+      return {
+        title: li.name || 'Unlinked Role',
+        url: li.url || '',
+        description: '',
+        datePosted: '',
+        validThrough: '',
+      };
+    });
+  }
 
-    // Remote & Telecommute check
-    const isRemote = j.jobLocationType === 'TELECOMMUTE';
-    if (!isRemote && !j.jobLocation) {
-      issues.push({
-        field: 'jobLocationType',
-        severity: 'error',
-        message: 'Remote roles must specify jobLocationType: "TELECOMMUTE" or provide a physical jobLocation.',
-      });
-    }
-
-    // Salary validation
-    let salaryText = 'Competitive';
-    if (j.baseSalary) {
-      const val = j.baseSalary.value?.value || j.baseSalary.value;
-      const min = j.baseSalary.value?.minValue;
-      const max = j.baseSalary.value?.maxValue;
-      const curr = j.baseSalary.currency || 'USD';
-      if (typeof min === 'number' && typeof max === 'number') {
-        salaryText = `$${min.toLocaleString()} - $${max.toLocaleString()} ${curr}/yr`;
-      } else if (typeof val === 'number') {
-        salaryText = `$${val.toLocaleString()} ${curr}/yr`;
-      }
-    } else {
-      issues.push({
-        field: 'baseSalary',
-        severity: 'warning',
-        message: 'Job postings with explicit baseSalary receive significantly higher Google for Jobs ranking.',
-      });
-    }
-
-    // Direct apply validation
-    const directApply = Boolean(j.directApply);
-    if (!directApply) {
-      issues.push({
-        field: 'directApply',
-        severity: 'warning',
-        message: 'Setting directApply: true displays a prominent "Apply directly on Zenith" button in Google Search.',
-      });
-    }
-
-    // Status calculation
-    const hasError = issues.some(i => i.severity === 'error');
-    const hasWarning = issues.some(i => i.severity === 'warning');
-    const status: 'valid' | 'warning' | 'error' = hasError ? 'error' : hasWarning ? 'warning' : 'valid';
-
-    return {
-      title: j.title || 'Untitled Role',
-      url: j.url || '',
-      datePosted: j.datePosted || '',
-      validThrough: j.validThrough || '',
-      salary: salaryText,
-      employmentType: j.employmentType || 'FULL_TIME',
-      directApply,
-      isRemote,
-      status,
-      issues,
-    };
-  });
+  const validatedJobs: ValidatedJobPosting[] = nodesToValidate.map(j => validateSingleJobNode(j, now));
 
   const validJobsCount = validatedJobs.filter(j => j.status === 'valid' || j.status === 'warning').length;
   const perfectlyValidCount = validatedJobs.filter(j => j.status === 'valid').length;
-  
+
   let readinessScore = 0;
   if (validatedJobs.length > 0) {
     readinessScore = Math.round(
@@ -290,10 +367,15 @@ export function validateSchemaGraph(rawJsonLd?: string | object): SchemaValidati
     );
   }
 
-  const isGoogleRichResultsEligible = readinessScore >= 80 && validatedJobs.every(j => j.status !== 'error');
+  const isGoogleRichResultsEligible =
+    schemaMode !== 'multi-job-warning' &&
+    readinessScore >= 80 &&
+    validatedJobs.length > 0 &&
+    validatedJobs.every(j => j.status !== 'error');
 
   return {
     timestamp: new Date().toISOString(),
+    schemaMode,
     totalJobs: validatedJobs.length,
     validJobsCount,
     readinessScore,

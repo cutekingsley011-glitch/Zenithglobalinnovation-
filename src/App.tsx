@@ -393,24 +393,42 @@ export default function App() {
   const [menu, setMenu] = useState(false);
 
   // Helper to find a job by ID, title, or slug
+  const normalizeSlug = (val: string) =>
+    val.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
   const findJobMatch = (query: string): Job | undefined => {
     if (!query) return undefined;
-    const clean = query.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-');
+    const rawLower = query.trim().toLowerCase();
+    const clean = normalizeSlug(query);
+    if (!clean) return undefined;
+
+    // 1. Exact ID, normalized ID, or normalized title match first (prevents Financial-Analyst matching Senior-Financial-Analyst)
+    const exact = jobs.find(
+      j =>
+        j.id.toLowerCase() === rawLower ||
+        normalizeSlug(j.id) === clean ||
+        normalizeSlug(j.title) === clean
+    );
+    if (exact) return exact;
+
+    // 2. Suffix match for sector-prefixed IDs
+    const suffixMatch = jobs.find(j => normalizeSlug(j.id).endsWith(`-${clean}`));
+    if (suffixMatch) return suffixMatch;
+
+    // 3. Fallback partial match
     return jobs.find(
       j =>
-        j.id.toLowerCase() === query.trim().toLowerCase() ||
-        j.id.toLowerCase().replace(/[^a-z0-9]+/g, '-') === clean ||
-        j.title.toLowerCase().replace(/[^a-z0-9]+/g, '-') === clean ||
-        j.id.toLowerCase().includes(clean) ||
-        clean.includes(j.id.toLowerCase())
+        normalizeSlug(j.id).includes(clean) ||
+        clean.includes(normalizeSlug(j.title))
     );
   };
 
-  // Detect URL parameters on load (?job=... and ?track=... and ?source=...)
+  // Detect URL parameters or /jobs/:slug path on load (?job=... and ?track=... and ?source=...)
   useEffect(() => {
     try {
       const p = new URLSearchParams(window.location.search);
-      const jobParam = p.get('job');
+      const pathMatch = window.location.pathname.match(/^\/jobs\/([^/?#]+)/i);
+      const jobParam = p.get('job') || (pathMatch ? decodeURIComponent(pathMatch[1]) : null);
       if (jobParam) {
         const found = findJobMatch(jobParam);
         if (found) {

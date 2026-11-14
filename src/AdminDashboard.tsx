@@ -1324,22 +1324,26 @@ export default function AdminDashboard({ onExit }: AdminDashboardProps) {
         {/* TAB: GOOGLE & SEO SCHEMA CRAWLER VALIDATOR */}
         {activeTab === 'seo' && (() => {
           const report = validateSchemaGraph();
+          const allPassed = report.isGoogleRichResultsEligible && report.globalIssues.every(i => i.severity !== 'error');
           return (
             <section className="admin-panel">
               <div className="panel-head">
                 <div>
                   <h2>Google for Jobs & Schema.org Crawler Validation Layer</h2>
-                  <p>Real-time verification of structured metadata embedded in index.html for Google Search Console, Google for Jobs, and social crawlers.</p>
+                  <p>
+                    Google-compliant architecture: homepage serves <strong>Organization + WebSite + ItemList</strong> directory linking to{' '}
+                    <strong>{report.totalJobs} dedicated self-canonical SSR JobPosting URLs</strong> (1 JobPosting per URL, Nov 2026 dates, valid ISO country targeting).
+                  </p>
                 </div>
                 <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
                   <a
-                    href="https://search.google.com/test/rich-results?url=https%3A%2F%2Fwww.zenithglobalinnovation.com.ng%2F"
+                    href="https://search.google.com/test/rich-results?url=https%3A%2F%2Fwww.zenithglobalinnovation.com.ng%2F%3Fjob%3DChief-Technology-Officer-CTO"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="admin-btn"
                     style={{ background: '#2563eb', color: '#ffffff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '12px' }}
                   >
-                    🚀 Google Rich Results Test
+                    🚀 Test Sample Job URL
                   </a>
                   <a
                     href="https://validator.schema.org/#url=https%3A%2F%2Fwww.zenithglobalinnovation.com.ng%2F"
@@ -1353,24 +1357,39 @@ export default function AdminDashboard({ onExit }: AdminDashboardProps) {
                 </div>
               </div>
 
+              {report.globalIssues.length > 0 && (
+                <div style={{ background: '#fef2f2', border: '1px solid #fecaca', borderRadius: '10px', padding: '12px 16px', marginTop: '16px', color: '#991b1b', fontSize: '13px' }}>
+                  <strong>Schema Warnings / Issues:</strong>
+                  <ul style={{ margin: '6px 0 0 18px', padding: 0 }}>
+                    {report.globalIssues.map((issue, idx) => (
+                      <li key={idx}>[{issue.field}] {issue.message}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
               {/* STATS OVERVIEW */}
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px', margin: '20px 0' }}>
-                <div style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', padding: '16px', borderRadius: '12px' }}>
-                  <span style={{ fontSize: '11px', color: '#166534', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>Crawler Readiness</span>
-                  <div style={{ fontSize: '28px', fontWeight: 800, color: '#15803d', margin: '4px 0' }}>100%</div>
-                  <small style={{ color: '#166534' }}>All schema validation checks passed</small>
+                <div style={{ background: allPassed ? '#f0fdf4' : '#fff7ed', border: `1px solid ${allPassed ? '#bbf7d0' : '#fed7aa'}`, padding: '16px', borderRadius: '12px' }}>
+                  <span style={{ fontSize: '11px', color: allPassed ? '#166534' : '#9a3412', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>Crawler Readiness</span>
+                  <div style={{ fontSize: '28px', fontWeight: 800, color: allPassed ? '#15803d' : '#c2410c', margin: '4px 0' }}>{report.readinessScore}%</div>
+                  <small style={{ color: allPassed ? '#166534' : '#9a3412' }}>
+                    {allPassed ? '1-JobPosting-per-URL checks passed' : 'Review schema warnings above'}
+                  </small>
                 </div>
 
                 <div style={{ background: '#eff6ff', border: '1px solid #bfdbfe', padding: '16px', borderRadius: '12px' }}>
-                  <span style={{ fontSize: '11px', color: '#1e40af', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>Jobs in Schema Graph</span>
-                  <div style={{ fontSize: '28px', fontWeight: 800, color: '#1d4ed8', margin: '4px 0' }}>{report.jobs.length || 81} Roles</div>
-                  <small style={{ color: '#1e40af' }}>All 81 positions active across all 12 sectors</small>
+                  <span style={{ fontSize: '11px', color: '#1e40af', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>SSR Job URLs Indexed</span>
+                  <div style={{ fontSize: '28px', fontWeight: 800, color: '#1d4ed8', margin: '4px 0' }}>{report.validJobsCount} / {report.totalJobs} Roles</div>
+                  <small style={{ color: '#1e40af' }}>Self-canonical ?job= endpoints across 12 sectors</small>
                 </div>
 
                 <div style={{ background: '#f8fafc', border: '1px solid #e2e8f0', padding: '16px', borderRadius: '12px' }}>
-                  <span style={{ fontSize: '11px', color: '#475569', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>Rich Results Status</span>
-                  <div style={{ fontSize: '24px', fontWeight: 800, color: '#0f172a', margin: '4px 0' }}>Eligible</div>
-                  <small style={{ color: '#64748b' }}>Google for Jobs direct-apply enabled</small>
+                  <span style={{ fontSize: '11px', color: '#475569', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>Architecture Mode</span>
+                  <div style={{ fontSize: '20px', fontWeight: 800, color: '#0f172a', margin: '6px 0' }}>
+                    {report.schemaMode === 'itemlist-directory' ? 'ItemList → SSR Jobs' : report.schemaMode === 'single-job' ? 'Single JobPosting' : 'Directory'}
+                  </div>
+                  <small style={{ color: '#64748b' }}>Google for Jobs directApply &amp; ISO countries</small>
                 </div>
 
                 <div style={{ background: '#fdf4ff', border: '1px solid #f0abfc', padding: '16px', borderRadius: '12px' }}>
@@ -1383,7 +1402,7 @@ export default function AdminDashboard({ onExit }: AdminDashboardProps) {
               {/* QUICK CRAWLER LINKS */}
               <div style={{ background: '#f8fafc', padding: '14px 18px', borderRadius: '10px', border: '1px solid #e2e8f0', marginBottom: '24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px' }}>
                 <div style={{ fontSize: '12.5px', color: '#334155' }}>
-                  <b>Crawler Discovery Endpoints:</b> Search engines consume these files to discover all positions automatically.
+                  <b>Crawler Discovery Endpoints:</b> Search engines discover all {report.totalJobs} self-canonical job URLs via the XML sitemap and homepage ItemList.
                 </div>
                 <div style={{ display: 'flex', gap: '8px' }}>
                   <a href="/robots.txt" target="_blank" rel="noopener noreferrer" style={{ fontSize: '11px', padding: '4px 10px', background: '#ffffff', border: '1px solid #cbd5e1', borderRadius: '6px', color: '#2563eb', textDecoration: 'none', fontWeight: 600 }}>
@@ -1397,33 +1416,24 @@ export default function AdminDashboard({ onExit }: AdminDashboardProps) {
 
               {/* JOBS CRAWLER TABLE */}
               <h3 style={{ fontSize: '16px', margin: '0 0 12px', color: '#0f172a' }}>
-                Structured Data Job Postings (Google for Jobs Verified)
+                Structured Data Job Postings ({report.totalJobs} Dedicated Self-Canonical URLs)
               </h3>
               <div style={{ overflowX: 'auto', marginBottom: '32px' }}>
                 <table className="admin-table">
                   <thead>
                     <tr>
                       <th>Job Title</th>
-                      <th>Direct Apply URL</th>
+                      <th>Dedicated Canonical URL</th>
                       <th>Base Salary</th>
-                      <th>Remote (Telecommute)</th>
-                      <th>Direct Apply</th>
+                      <th>Posted</th>
+                      <th>Remote / Apply</th>
                       <th>Crawler Status</th>
+                      <th>Rich Results Test</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {(report.jobs.length ? report.jobs : [
-                      { title: 'Chief Technology Officer (CTO)', salary: '$185,000 USD/yr', url: 'https://www.zenithglobalinnovation.com.ng/?job=Chief-Technology-Officer', directApply: true, isRemote: true, status: 'valid' },
-                      { title: 'Director of Global Engineering', salary: '$180,000 USD/yr', url: 'https://www.zenithglobalinnovation.com.ng/?job=Director-of-Global-Engineering', directApply: true, isRemote: true, status: 'valid' },
-                      { title: 'Senior Full Stack Developer', salary: '$145,000 USD/yr', url: 'https://www.zenithglobalinnovation.com.ng/?job=Senior-Full-Stack-Developer', directApply: true, isRemote: true, status: 'valid' },
-                      { title: 'Creative Director', salary: '$140,000 USD/yr', url: 'https://www.zenithglobalinnovation.com.ng/?job=Creative-Director', directApply: true, isRemote: true, status: 'valid' },
-                      { title: 'Customer Success Director', salary: '$120,000 USD/yr', url: 'https://www.zenithglobalinnovation.com.ng/?job=Customer-Success-Director', directApply: true, isRemote: true, status: 'valid' },
-                      { title: 'Senior Management Consultant', salary: '$135,000 USD/yr', url: 'https://www.zenithglobalinnovation.com.ng/?job=Senior-Management-Consultant', directApply: true, isRemote: true, status: 'valid' },
-                      { title: 'Senior Operations Manager', salary: '$125,000 USD/yr', url: 'https://www.zenithglobalinnovation.com.ng/?job=Senior-Operations-Manager', directApply: true, isRemote: true, status: 'valid' },
-                      { title: 'Senior Financial Analyst', salary: '$130,000 USD/yr', url: 'https://www.zenithglobalinnovation.com.ng/?job=Senior-Financial-Analyst', directApply: true, isRemote: true, status: 'valid' },
-                      { title: 'Senior Product Manager', salary: '$150,000 USD/yr', url: 'https://www.zenithglobalinnovation.com.ng/?job=Senior-Product-Manager', directApply: true, isRemote: true, status: 'valid' },
-                    ]).map((j: any, idx: number) => (
-                      <tr key={idx}>
+                    {report.jobs.map((j, idx) => (
+                      <tr key={j.url || idx}>
                         <td>
                           <strong>{j.title}</strong>
                         </td>
@@ -1436,19 +1446,50 @@ export default function AdminDashboard({ onExit }: AdminDashboardProps) {
                           <span style={{ fontWeight: 600, color: '#047857' }}>{j.salary}</span>
                         </td>
                         <td>
+                          <span style={{ fontSize: '11.5px', color: '#475569', whiteSpace: 'nowrap' }}>
+                            {j.datePosted ? j.datePosted.slice(0, 10) : '—'}
+                          </span>
+                        </td>
+                        <td>
                           <span style={{ fontSize: '11px', padding: '2px 8px', borderRadius: '4px', background: '#eff6ff', color: '#1d4ed8', fontWeight: 600 }}>
-                            {j.isRemote ? '🌐 Telecommute' : 'Physical'}
+                            {j.isRemote ? '🌐 Telecommute' : 'Physical'} · {j.directApply ? 'Direct' : 'Standard'}
                           </span>
                         </td>
                         <td>
-                          <span style={{ fontSize: '11px', padding: '2px 8px', borderRadius: '4px', background: '#f0fdf4', color: '#15803d', fontWeight: 600 }}>
-                            {j.directApply ? '✓ True' : 'False'}
+                          <span
+                            style={{
+                              fontSize: '11px',
+                              padding: '2px 8px',
+                              borderRadius: '4px',
+                              background: j.status === 'error' ? '#fee2e2' : j.status === 'warning' ? '#fef3c7' : '#dcfce7',
+                              color: j.status === 'error' ? '#991b1b' : j.status === 'warning' ? '#92400e' : '#15803d',
+                              fontWeight: 700,
+                            }}
+                            title={j.issues.map(i => i.message).join(' | ')}
+                          >
+                            {j.status === 'error' ? '✕ Error' : j.status === 'warning' ? '⚠ Warning' : '✓ 100% Valid'}
                           </span>
                         </td>
                         <td>
-                          <span style={{ fontSize: '11px', padding: '2px 8px', borderRadius: '4px', background: '#dcfce7', color: '#15803d', fontWeight: 700 }}>
-                            ✓ 100% Valid
-                          </span>
+                          <a
+                            href={`https://search.google.com/test/rich-results?url=${encodeURIComponent(j.url)}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{
+                              fontSize: '11px',
+                              padding: '4px 10px',
+                              borderRadius: '6px',
+                              background: '#eff6ff',
+                              border: '1px solid #bfdbfe',
+                              color: '#1d4ed8',
+                              textDecoration: 'none',
+                              fontWeight: 600,
+                              whiteSpace: 'nowrap',
+                              display: 'inline-block',
+                            }}
+                          >
+                            🔍 Test URL ↗
+                          </a>
                         </td>
                       </tr>
                     ))}

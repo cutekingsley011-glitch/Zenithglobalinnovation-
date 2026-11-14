@@ -2515,6 +2515,5253 @@ apiRouter.get("/profile", async (_req, res) => {
   res.json({ email: ADMIN_EMAIL, name: "Zenith Administrator" });
 });
 
+// backend/seoJobsData.json
+var seoJobsData_default = {
+  organization: {
+    "@type": "Organization",
+    "@id": "https://www.zenithglobalinnovation.com.ng/#organization",
+    name: "Zenith Global Innovation",
+    alternateName: "Zenith Global HR & Strategic Remote Staffing",
+    url: "https://www.zenithglobalinnovation.com.ng",
+    foundingDate: "2019",
+    description: "International corporate recruitment and remote staffing partner connecting thoroughly vetted professionals with companies worldwide.",
+    email: "zenithglobalinnovationhq@protonmail.com",
+    address: [
+      {
+        "@type": "PostalAddress",
+        streetAddress: "245 West 29th Street, Suite 1204",
+        addressLocality: "New York",
+        addressRegion: "NY",
+        postalCode: "10001",
+        addressCountry: "US"
+      },
+      {
+        "@type": "PostalAddress",
+        streetAddress: "1350 Avenue of the Americas, Floor 3",
+        addressLocality: "New York",
+        addressRegion: "NY",
+        postalCode: "10018",
+        addressCountry: "US"
+      },
+      {
+        "@type": "PostalAddress",
+        streetAddress: "400 Park Avenue South, Suite 800",
+        addressLocality: "New York",
+        addressRegion: "NY",
+        postalCode: "10022",
+        addressCountry: "US"
+      },
+      {
+        "@type": "PostalAddress",
+        streetAddress: "82 Great Eastern Street",
+        addressLocality: "London",
+        postalCode: "EC2A 4NE",
+        addressCountry: "GB"
+      },
+      {
+        "@type": "PostalAddress",
+        streetAddress: "152 City Road",
+        addressLocality: "London",
+        postalCode: "EC1V 9BD",
+        addressCountry: "GB"
+      },
+      {
+        "@type": "PostalAddress",
+        streetAddress: "10 Marina Boulevard, Level 39",
+        addressLocality: "Singapore",
+        postalCode: "018956",
+        addressCountry: "SG"
+      },
+      {
+        "@type": "PostalAddress",
+        streetAddress: "1 Raffles Place, Tower 2",
+        addressLocality: "Singapore",
+        postalCode: "049315",
+        addressCountry: "SG"
+      },
+      {
+        "@type": "PostalAddress",
+        streetAddress: "88 Queen's Quay West, Suite 1900",
+        addressLocality: "Toronto",
+        addressRegion: "ON",
+        postalCode: "M5V 2T6",
+        addressCountry: "CA"
+      },
+      {
+        "@type": "PostalAddress",
+        streetAddress: "199 Bay Street, Commerce Court West",
+        addressLocality: "Toronto",
+        addressRegion: "ON",
+        postalCode: "M5H 2N2",
+        addressCountry: "CA"
+      }
+    ],
+    areaServed: [
+      "United States",
+      "United Kingdom",
+      "Canada",
+      "Singapore",
+      "Australia",
+      "Worldwide"
+    ],
+    knowsAbout: [
+      "Remote Staffing",
+      "Executive Search",
+      "Technical Recruitment",
+      "Global Workforce Management"
+    ],
+    award: "Better Business Bureau (BBB) A+ Accredited Business",
+    memberOf: [
+      {
+        "@type": "Organization",
+        name: "Better Business Bureau (BBB)",
+        sameAs: "https://www.bbb.org"
+      },
+      {
+        "@type": "Organization",
+        name: "Google Cloud Partner Advantage",
+        sameAs: "https://cloud.google.com/partners"
+      },
+      {
+        "@type": "Organization",
+        name: "Meta Business Partner Network",
+        sameAs: "https://www.facebook.com/business/partner-directory"
+      }
+    ]
+  },
+  website: {
+    "@type": "WebSite",
+    "@id": "https://www.zenithglobalinnovation.com.ng/#website",
+    url: "https://www.zenithglobalinnovation.com.ng",
+    name: "Zenith Global Innovation",
+    publisher: {
+      "@id": "https://www.zenithglobalinnovation.com.ng/#organization"
+    }
+  },
+  jobs: [
+    {
+      slug: "Chief-Technology-Officer-CTO",
+      title: "Chief Technology Officer (CTO)",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Chief-Technology-Officer-CTO",
+      description: "<p>The Chief Technology Officer (CTO) is a fully remote position at Zenith Global Innovation specializing in enterprise technology strategy, architecture, engineering leadership, cybersecurity and long-term technical investment. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to enterprise technology strategy, architecture, engineering leadership, cybersecurity and long-term technical investment into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Chief Technology Officer (CTO) or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-11-14T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 14e4,
+          maxValue: 24e4,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Chief-Marketing-Officer-CMO",
+      title: "Chief Marketing Officer (CMO)",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Chief-Marketing-Officer-CMO",
+      description: "<p>The Chief Marketing Officer (CMO) is a fully remote position at Zenith Global Innovation specializing in global brand strategy, demand generation, positioning, customer acquisition and marketing performance. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to global brand strategy, demand generation, positioning, customer acquisition and marketing performance into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Chief Marketing Officer (CMO) or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-11-04T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 14e4,
+          maxValue: 24e4,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Chief-Operations-Officer-COO",
+      title: "Chief Operations Officer (COO)",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Chief-Operations-Officer-COO",
+      description: "<p>The Chief Operations Officer (COO) is a fully remote position at Zenith Global Innovation specializing in company-wide operating discipline, service delivery, process excellence, workforce performance and scalable execution. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to company-wide operating discipline, service delivery, process excellence, workforce performance and scalable execution into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Chief Operations Officer (COO) or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-25T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 14e4,
+          maxValue: 24e4,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Director-of-Digital-Transformation",
+      title: "Director of Digital Transformation",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Director-of-Digital-Transformation",
+      description: "<p>The Director of Digital Transformation is a fully remote position at Zenith Global Innovation specializing in business process modernization, technology adoption, automation and measurable digital change. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to business process modernization, technology adoption, automation and measurable digital change into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Director of Digital Transformation or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-15T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 14e4,
+          maxValue: 24e4,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Vice-President-of-Business-Development",
+      title: "Vice President of Business Development",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Vice-President-of-Business-Development",
+      description: "<p>The Vice President of Business Development is a fully remote position at Zenith Global Innovation specializing in strategic partnerships, enterprise pipeline growth, market expansion and high-value commercial relationships. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to strategic partnerships, enterprise pipeline growth, market expansion and high-value commercial relationships into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Vice President of Business Development or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-05T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 14e4,
+          maxValue: 24e4,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Senior-Project-Manager",
+      title: "Senior Project Manager",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Senior-Project-Manager",
+      description: "<p>The Senior Project Manager is a fully remote position at Zenith Global Innovation specializing in complex project planning, delivery governance, stakeholder coordination, budgets, risks and milestones. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to complex project planning, delivery governance, stakeholder coordination, budgets, risks and milestones into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Senior Project Manager or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-10T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 14e4,
+          maxValue: 24e4,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Product-Strategy-Lead",
+      title: "Product Strategy Lead",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Product-Strategy-Lead",
+      description: "<p>The Product Strategy Lead is a fully remote position at Zenith Global Innovation specializing in product vision, market opportunity, customer insight, portfolio priorities and commercial product strategy. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to product vision, market opportunity, customer insight, portfolio priorities and commercial product strategy into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Product Strategy Lead or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-11-14T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 14e4,
+          maxValue: 24e4,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Change-Management-Consultant",
+      title: "Change Management Consultant",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Change-Management-Consultant",
+      description: "<p>The Change Management Consultant is a fully remote position at Zenith Global Innovation specializing in organizational change, stakeholder readiness, communication, adoption planning and transformation outcomes. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to organizational change, stakeholder readiness, communication, adoption planning and transformation outcomes into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Change Management Consultant or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-11-04T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 14e4,
+          maxValue: 24e4,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Senior-Full-Stack-Developer",
+      title: "Senior Full Stack Developer",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Senior-Full-Stack-Developer",
+      description: "<p>The Senior Full Stack Developer is a fully remote position at Zenith Global Innovation specializing in end-to-end web application engineering across frontend, backend, APIs, databases and production delivery. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to end-to-end web application engineering across frontend, backend, APIs, databases and production delivery into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Senior Full Stack Developer or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-25T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 12e4,
+          maxValue: 21e4,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Lead-Software-Architect",
+      title: "Lead Software Architect",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Lead-Software-Architect",
+      description: "<p>The Lead Software Architect is a fully remote position at Zenith Global Innovation specializing in technical architecture, engineering standards, system design, scalability and architectural decision-making. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to technical architecture, engineering standards, system design, scalability and architectural decision-making into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Lead Software Architect or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-15T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 12e4,
+          maxValue: 21e4,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Senior-DevOps-Engineer",
+      title: "Senior DevOps Engineer",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Senior-DevOps-Engineer",
+      description: "<p>The Senior DevOps Engineer is a fully remote position at Zenith Global Innovation specializing in CI/CD, cloud infrastructure, observability, automation, reliability and secure software delivery. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to CI/CD, cloud infrastructure, observability, automation, reliability and secure software delivery into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Senior DevOps Engineer or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-20T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 12e4,
+          maxValue: 21e4,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Principal-Cloud-Engineer",
+      title: "Principal Cloud Engineer",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Principal-Cloud-Engineer",
+      description: "<p>The Principal Cloud Engineer is a fully remote position at Zenith Global Innovation specializing in cloud architecture, migration, infrastructure automation, scalability, resilience and cost optimization. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to cloud architecture, migration, infrastructure automation, scalability, resilience and cost optimization into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Principal Cloud Engineer or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-10T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 12e4,
+          maxValue: 21e4,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Senior-Cybersecurity-Analyst",
+      title: "Senior Cybersecurity Analyst",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Senior-Cybersecurity-Analyst",
+      description: "<p>The Senior Cybersecurity Analyst is a fully remote position at Zenith Global Innovation specializing in security monitoring, threat analysis, incident response, vulnerability management and security controls. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to security monitoring, threat analysis, incident response, vulnerability management and security controls into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Senior Cybersecurity Analyst or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-11-14T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 12e4,
+          maxValue: 21e4,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Lead-Data-Scientist",
+      title: "Lead Data Scientist",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Lead-Data-Scientist",
+      description: "<p>The Lead Data Scientist is a fully remote position at Zenith Global Innovation specializing in advanced analytics, predictive modeling, experimentation and data-driven business decision support. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to advanced analytics, predictive modeling, experimentation and data-driven business decision support into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Lead Data Scientist or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-11-04T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 12e4,
+          maxValue: 21e4,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Senior-Machine-Learning-Engineer",
+      title: "Senior Machine Learning Engineer",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Senior-Machine-Learning-Engineer",
+      description: "<p>The Senior Machine Learning Engineer is a fully remote position at Zenith Global Innovation specializing in production machine learning systems, model deployment, data pipelines, evaluation and MLOps. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to production machine learning systems, model deployment, data pipelines, evaluation and MLOps into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Senior Machine Learning Engineer or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-25T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 12e4,
+          maxValue: 21e4,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Blockchain-Solutions-Architect",
+      title: "Blockchain Solutions Architect",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Blockchain-Solutions-Architect",
+      description: "<p>The Blockchain Solutions Architect is a fully remote position at Zenith Global Innovation specializing in distributed ledger architecture, smart-contract ecosystems, integration design and enterprise blockchain solutions. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to distributed ledger architecture, smart-contract ecosystems, integration design and enterprise blockchain solutions into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Blockchain Solutions Architect or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-30T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 12e4,
+          maxValue: 21e4,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Senior-Database-Administrator",
+      title: "Senior Database Administrator",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Senior-Database-Administrator",
+      description: "<p>The Senior Database Administrator is a fully remote position at Zenith Global Innovation specializing in database reliability, performance tuning, backup strategy, security and high-availability operations. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to database reliability, performance tuning, backup strategy, security and high-availability operations into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Senior Database Administrator or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-20T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 12e4,
+          maxValue: 21e4,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Principal-UX-UI-Designer",
+      title: "Principal UX/UI Designer",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Principal-UX-UI-Designer",
+      description: "<p>The Principal UX/UI Designer is a fully remote position at Zenith Global Innovation specializing in user research, interaction design, visual systems, accessibility and product experience leadership. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to user research, interaction design, visual systems, accessibility and product experience leadership into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Principal UX/UI Designer or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-10T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 12e4,
+          maxValue: 21e4,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Senior-Digital-Marketing-Manager",
+      title: "Senior Digital Marketing Manager",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Senior-Digital-Marketing-Manager",
+      description: "<p>The Senior Digital Marketing Manager is a fully remote position at Zenith Global Innovation specializing in multi-channel campaigns, performance marketing, audience growth, analytics and digital acquisition. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to multi-channel campaigns, performance marketing, audience growth, analytics and digital acquisition into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Senior Digital Marketing Manager or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-11-14T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 95e3,
+          maxValue: 185e3,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Brand-Strategy-Director",
+      title: "Brand Strategy Director",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Brand-Strategy-Director",
+      description: "<p>The Brand Strategy Director is a fully remote position at Zenith Global Innovation specializing in brand positioning, identity, messaging, market differentiation and global brand governance. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to brand positioning, identity, messaging, market differentiation and global brand governance into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Brand Strategy Director or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-11-04T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 95e3,
+          maxValue: 185e3,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Senior-Content-Strategist",
+      title: "Senior Content Strategist",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Senior-Content-Strategist",
+      description: "<p>The Senior Content Strategist is a fully remote position at Zenith Global Innovation specializing in editorial strategy, content planning, audience journeys, thought leadership and measurable content performance. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to editorial strategy, content planning, audience journeys, thought leadership and measurable content performance into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Senior Content Strategist or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-11-09T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 95e3,
+          maxValue: 185e3,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Creative-Director",
+      title: "Creative Director",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Creative-Director",
+      description: "<p>The Creative Director is a fully remote position at Zenith Global Innovation specializing in creative vision, campaign concepts, brand expression, creative teams and quality standards. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to creative vision, campaign concepts, brand expression, creative teams and quality standards into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Creative Director or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-30T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 95e3,
+          maxValue: 185e3,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Senior-SEO-Specialist",
+      title: "Senior SEO Specialist",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Senior-SEO-Specialist",
+      description: "<p>The Senior SEO Specialist is a fully remote position at Zenith Global Innovation specializing in technical SEO, content optimization, search visibility, keyword strategy and organic growth. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to technical SEO, content optimization, search visibility, keyword strategy and organic growth into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Senior SEO Specialist or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-20T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 95e3,
+          maxValue: 185e3,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Marketing-Automation-Lead",
+      title: "Marketing Automation Lead",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Marketing-Automation-Lead",
+      description: "<p>The Marketing Automation Lead is a fully remote position at Zenith Global Innovation specializing in lifecycle marketing, CRM automation, segmentation, lead nurturing and campaign operations. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to lifecycle marketing, CRM automation, segmentation, lead nurturing and campaign operations into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Marketing Automation Lead or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-10T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 95e3,
+          maxValue: 185e3,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Senior-Growth-Hacker",
+      title: "Senior Growth Hacker",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Senior-Growth-Hacker",
+      description: "<p>The Senior Growth Hacker is a fully remote position at Zenith Global Innovation specializing in rapid experimentation, acquisition loops, conversion optimization and scalable growth channels. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to rapid experimentation, acquisition loops, conversion optimization and scalable growth channels into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Senior Growth Hacker or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-11-14T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 95e3,
+          maxValue: 185e3,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "E-commerce-Strategy-Manager",
+      title: "E-commerce Strategy Manager",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=E-commerce-Strategy-Manager",
+      description: "<p>The E-commerce Strategy Manager is a fully remote position at Zenith Global Innovation specializing in digital commerce strategy, merchandising, conversion, customer journeys and online revenue growth. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to digital commerce strategy, merchandising, conversion, customer journeys and online revenue growth into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in E-commerce Strategy Manager or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-05T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 95e3,
+          maxValue: 185e3,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Senior-Financial-Analyst",
+      title: "Senior Financial Analyst",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Senior-Financial-Analyst",
+      description: "<p>The Senior Financial Analyst is a fully remote position at Zenith Global Innovation specializing in financial modeling, forecasting, variance analysis, reporting and management decision support. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to financial modeling, forecasting, variance analysis, reporting and management decision support into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Senior Financial Analyst or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-11-09T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 105e3,
+          maxValue: 195e3,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Business-Intelligence-Manager",
+      title: "Business Intelligence Manager",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Business-Intelligence-Manager",
+      description: "<p>The Business Intelligence Manager is a fully remote position at Zenith Global Innovation specializing in BI strategy, dashboards, data governance, analytics delivery and executive reporting. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to BI strategy, dashboards, data governance, analytics delivery and executive reporting into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Business Intelligence Manager or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-30T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 105e3,
+          maxValue: 195e3,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Senior-Investment-Analyst",
+      title: "Senior Investment Analyst",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Senior-Investment-Analyst",
+      description: "<p>The Senior Investment Analyst is a fully remote position at Zenith Global Innovation specializing in investment research, valuation, financial modeling, market analysis and investment recommendations. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to investment research, valuation, financial modeling, market analysis and investment recommendations into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Senior Investment Analyst or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-20T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 105e3,
+          maxValue: 195e3,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Risk-Management-Consultant",
+      title: "Risk Management Consultant",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Risk-Management-Consultant",
+      description: "<p>The Risk Management Consultant is a fully remote position at Zenith Global Innovation specializing in enterprise risk identification, controls, scenario analysis and risk mitigation programs. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to enterprise risk identification, controls, scenario analysis and risk mitigation programs into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Risk Management Consultant or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-10T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 105e3,
+          maxValue: 195e3,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Senior-Compliance-Officer",
+      title: "Senior Compliance Officer",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Senior-Compliance-Officer",
+      description: "<p>The Senior Compliance Officer is a fully remote position at Zenith Global Innovation specializing in regulatory compliance, policy implementation, monitoring, controls and compliance reporting. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to regulatory compliance, policy implementation, monitoring, controls and compliance reporting into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Senior Compliance Officer or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-15T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 105e3,
+          maxValue: 195e3,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Treasury-Manager",
+      title: "Treasury Manager",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Treasury-Manager",
+      description: "<p>The Treasury Manager is a fully remote position at Zenith Global Innovation specializing in cash management, liquidity planning, banking relationships, funding and treasury controls. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to cash management, liquidity planning, banking relationships, funding and treasury controls into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Treasury Manager or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-05T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 105e3,
+          maxValue: 195e3,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Financial-Planning-Analysis-Lead",
+      title: "Financial Planning & Analysis Lead",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Financial-Planning-Analysis-Lead",
+      description: "<p>The Financial Planning & Analysis Lead is a fully remote position at Zenith Global Innovation specializing in budgeting, forecasting, scenario planning, performance analysis and executive financial insight. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to budgeting, forecasting, scenario planning, performance analysis and executive financial insight into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Financial Planning & Analysis Lead or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-11-09T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 105e3,
+          maxValue: 195e3,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Senior-Tax-Consultant",
+      title: "Senior Tax Consultant",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Senior-Tax-Consultant",
+      description: "<p>The Senior Tax Consultant is a fully remote position at Zenith Global Innovation specializing in tax planning, compliance, research, advisory analysis and coordination of tax obligations. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to tax planning, compliance, research, advisory analysis and coordination of tax obligations into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Senior Tax Consultant or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-30T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 105e3,
+          maxValue: 195e3,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Senior-Operations-Manager",
+      title: "Senior Operations Manager",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Senior-Operations-Manager",
+      description: "<p>The Senior Operations Manager is a fully remote position at Zenith Global Innovation specializing in daily operating performance, service quality, process improvement, resource planning and team leadership. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to daily operating performance, service quality, process improvement, resource planning and team leadership into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Senior Operations Manager or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-20T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 9e4,
+          maxValue: 175e3,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Director-of-Remote-Workforce-Management",
+      title: "Director of Remote Workforce Management",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Director-of-Remote-Workforce-Management",
+      description: "<p>The Director of Remote Workforce Management is a fully remote position at Zenith Global Innovation specializing in distributed workforce strategy, remote operating models, productivity, engagement and workforce governance. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to distributed workforce strategy, remote operating models, productivity, engagement and workforce governance into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Director of Remote Workforce Management or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-25T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 9e4,
+          maxValue: 175e3,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Senior-HR-Business-Partner",
+      title: "Senior HR Business Partner",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Senior-HR-Business-Partner",
+      description: "<p>The Senior HR Business Partner is a fully remote position at Zenith Global Innovation specializing in strategic HR partnership, workforce planning, employee relations, performance and organizational effectiveness. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to strategic HR partnership, workforce planning, employee relations, performance and organizational effectiveness into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Senior HR Business Partner or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-15T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 9e4,
+          maxValue: 175e3,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Talent-Acquisition-Lead",
+      title: "Talent Acquisition Lead",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Talent-Acquisition-Lead",
+      description: "<p>The Talent Acquisition Lead is a fully remote position at Zenith Global Innovation specializing in recruitment strategy, sourcing, selection, employer branding and hiring quality. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to recruitment strategy, sourcing, selection, employer branding and hiring quality into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Talent Acquisition Lead or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-05T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 9e4,
+          maxValue: 175e3,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Organizational-Development-Consultant",
+      title: "Organizational Development Consultant",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Organizational-Development-Consultant",
+      description: "<p>The Organizational Development Consultant is a fully remote position at Zenith Global Innovation specializing in organizational design, leadership development, culture, capability building and change initiatives. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to organizational design, leadership development, culture, capability building and change initiatives into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Organizational Development Consultant or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-11-09T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 9e4,
+          maxValue: 175e3,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Senior-Learning-Development-Specialist",
+      title: "Senior Learning & Development Specialist",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Senior-Learning-Development-Specialist",
+      description: "<p>The Senior Learning & Development Specialist is a fully remote position at Zenith Global Innovation specializing in learning strategy, training programs, skills development, facilitation and learning measurement. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to learning strategy, training programs, skills development, facilitation and learning measurement into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Senior Learning & Development Specialist or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-30T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 9e4,
+          maxValue: 175e3,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Employee-Experience-Manager",
+      title: "Employee Experience Manager",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Employee-Experience-Manager",
+      description: "<p>The Employee Experience Manager is a fully remote position at Zenith Global Innovation specializing in employee journey, engagement programs, workplace culture, feedback and retention initiatives. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to employee journey, engagement programs, workplace culture, feedback and retention initiatives into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Employee Experience Manager or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-11-04T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 9e4,
+          maxValue: 175e3,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Workforce-Analytics-Lead",
+      title: "Workforce Analytics Lead",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Workforce-Analytics-Lead",
+      description: "<p>The Workforce Analytics Lead is a fully remote position at Zenith Global Innovation specializing in people analytics, workforce planning, reporting, forecasting and evidence-based talent decisions. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to people analytics, workforce planning, reporting, forecasting and evidence-based talent decisions into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Workforce Analytics Lead or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-25T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 9e4,
+          maxValue: 175e3,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Senior-Management-Consultant",
+      title: "Senior Management Consultant",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Senior-Management-Consultant",
+      description: "<p>The Senior Management Consultant is a fully remote position at Zenith Global Innovation specializing in executive advisory, business analysis, strategic recommendations and transformation execution. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to executive advisory, business analysis, strategic recommendations and transformation execution into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Senior Management Consultant or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-15T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "CONTRACT",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 11e4,
+          maxValue: 25e4,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Digital-Transformation-Consultant",
+      title: "Digital Transformation Consultant",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Digital-Transformation-Consultant",
+      description: "<p>The Digital Transformation Consultant is a fully remote position at Zenith Global Innovation specializing in digital operating models, technology-enabled process redesign, adoption and transformation roadmaps. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to digital operating models, technology-enabled process redesign, adoption and transformation roadmaps into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Digital Transformation Consultant or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-05T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "CONTRACT",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 11e4,
+          maxValue: 25e4,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Process-Improvement-Specialist",
+      title: "Process Improvement Specialist",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Process-Improvement-Specialist",
+      description: "<p>The Process Improvement Specialist is a fully remote position at Zenith Global Innovation specializing in process mapping, root-cause analysis, workflow redesign, lean improvement and measurable efficiency. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to process mapping, root-cause analysis, workflow redesign, lean improvement and measurable efficiency into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Process Improvement Specialist or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-11-09T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "CONTRACT",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 11e4,
+          maxValue: 25e4,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Senior-Business-Analyst",
+      title: "Senior Business Analyst",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Senior-Business-Analyst",
+      description: "<p>The Senior Business Analyst is a fully remote position at Zenith Global Innovation specializing in business requirements, process analysis, stakeholder discovery, solution definition and delivery support. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to business requirements, process analysis, stakeholder discovery, solution definition and delivery support into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Senior Business Analyst or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-11-14T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "CONTRACT",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 11e4,
+          maxValue: 25e4,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "IT-Strategy-Consultant",
+      title: "IT Strategy Consultant",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=IT-Strategy-Consultant",
+      description: "<p>The IT Strategy Consultant is a fully remote position at Zenith Global Innovation specializing in technology roadmaps, IT operating models, investment priorities, governance and business alignment. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to technology roadmaps, IT operating models, investment priorities, governance and business alignment into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in IT Strategy Consultant or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-11-04T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "CONTRACT",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 11e4,
+          maxValue: 25e4,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Customer-Experience-Consultant",
+      title: "Customer Experience Consultant",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Customer-Experience-Consultant",
+      description: "<p>The Customer Experience Consultant is a fully remote position at Zenith Global Innovation specializing in customer journey design, service improvement, voice-of-customer insight and experience strategy. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to customer journey design, service improvement, voice-of-customer insight and experience strategy into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Customer Experience Consultant or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-25T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "CONTRACT",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 11e4,
+          maxValue: 25e4,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Supply-Chain-Optimization-Expert",
+      title: "Supply Chain Optimization Expert",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Supply-Chain-Optimization-Expert",
+      description: "<p>The Supply Chain Optimization Expert is a fully remote position at Zenith Global Innovation specializing in supply chain performance, planning, procurement flows, inventory and operational optimization. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to supply chain performance, planning, procurement flows, inventory and operational optimization into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Supply Chain Optimization Expert or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-15T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "CONTRACT",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 11e4,
+          maxValue: 25e4,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Senior-Data-Privacy-Consultant",
+      title: "Senior Data Privacy Consultant",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Senior-Data-Privacy-Consultant",
+      description: "<p>The Senior Data Privacy Consultant is a fully remote position at Zenith Global Innovation specializing in privacy governance, data protection programs, risk assessments, controls and regulatory readiness. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to privacy governance, data protection programs, risk assessments, controls and regulatory readiness into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Senior Data Privacy Consultant or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-05T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "CONTRACT",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 11e4,
+          maxValue: 25e4,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Senior-Account-Manager",
+      title: "Senior Account Manager",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Senior-Account-Manager",
+      description: "<p>The Senior Account Manager is a fully remote position at Zenith Global Innovation specializing in strategic account ownership, client retention, expansion opportunities and executive relationship management. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to strategic account ownership, client retention, expansion opportunities and executive relationship management into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Senior Account Manager or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-10T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 85e3,
+          maxValue: 18e4,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Customer-Success-Director",
+      title: "Customer Success Director",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Customer-Success-Director",
+      description: "<p>The Customer Success Director is a fully remote position at Zenith Global Innovation specializing in customer outcomes, retention strategy, adoption, renewal performance and success team leadership. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to customer outcomes, retention strategy, adoption, renewal performance and success team leadership into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Customer Success Director or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-11-14T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 85e3,
+          maxValue: 18e4,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Senior-Sales-Strategist",
+      title: "Senior Sales Strategist",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Senior-Sales-Strategist",
+      description: "<p>The Senior Sales Strategist is a fully remote position at Zenith Global Innovation specializing in sales strategy, segmentation, pipeline performance, consultative selling and revenue planning. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to sales strategy, segmentation, pipeline performance, consultative selling and revenue planning into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Senior Sales Strategist or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-11-04T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 85e3,
+          maxValue: 18e4,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Key-Account-Manager",
+      title: "Key Account Manager",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Key-Account-Manager",
+      description: "<p>The Key Account Manager is a fully remote position at Zenith Global Innovation specializing in high-value account planning, relationship development, commercial growth and client satisfaction. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to high-value account planning, relationship development, commercial growth and client satisfaction into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Key Account Manager or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-25T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 85e3,
+          maxValue: 18e4,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Client-Relationship-Manager",
+      title: "Client Relationship Manager",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Client-Relationship-Manager",
+      description: "<p>The Client Relationship Manager is a fully remote position at Zenith Global Innovation specializing in client partnership, service coordination, issue resolution and relationship health. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to client partnership, service coordination, issue resolution and relationship health into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Client Relationship Manager or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-15T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 85e3,
+          maxValue: 18e4,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Senior-Business-Development-Manager",
+      title: "Senior Business Development Manager",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Senior-Business-Development-Manager",
+      description: "<p>The Senior Business Development Manager is a fully remote position at Zenith Global Innovation specializing in prospecting, enterprise opportunities, partnerships, proposals and revenue growth. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to prospecting, enterprise opportunities, partnerships, proposals and revenue growth into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Senior Business Development Manager or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-20T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 85e3,
+          maxValue: 18e4,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Sales-Operations-Lead",
+      title: "Sales Operations Lead",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Sales-Operations-Lead",
+      description: "<p>The Sales Operations Lead is a fully remote position at Zenith Global Innovation specializing in sales processes, CRM discipline, forecasting, performance analytics and commercial enablement. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to sales processes, CRM discipline, forecasting, performance analytics and commercial enablement into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Sales Operations Lead or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-10T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 85e3,
+          maxValue: 18e4,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Senior-Research-Analyst",
+      title: "Senior Research Analyst",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Senior-Research-Analyst",
+      description: "<p>The Senior Research Analyst is a fully remote position at Zenith Global Innovation specializing in structured research, market intelligence, data analysis, evidence synthesis and executive-ready insights. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to structured research, market intelligence, data analysis, evidence synthesis and executive-ready insights into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Senior Research Analyst or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-11-14T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 95e3,
+          maxValue: 19e4,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Corporate-Trainer",
+      title: "Corporate Trainer",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Corporate-Trainer",
+      description: "<p>The Corporate Trainer is a fully remote position at Zenith Global Innovation specializing in professional training design, facilitation, curriculum development and measurable capability improvement. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to professional training design, facilitation, curriculum development and measurable capability improvement into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Corporate Trainer or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-11-04T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 95e3,
+          maxValue: 19e4,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Senior-Legal-Counsel",
+      title: "Senior Legal Counsel",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Senior-Legal-Counsel",
+      description: "<p>The Senior Legal Counsel is a fully remote position at Zenith Global Innovation specializing in commercial legal advice, contract review, legal risk management and business-facing counsel. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to commercial legal advice, contract review, legal risk management and business-facing counsel into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Senior Legal Counsel or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-25T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 95e3,
+          maxValue: 19e4,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Senior-Procurement-Specialist",
+      title: "Senior Procurement Specialist",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Senior-Procurement-Specialist",
+      description: "<p>The Senior Procurement Specialist is a fully remote position at Zenith Global Innovation specializing in supplier sourcing, procurement processes, negotiation, vendor performance and cost management. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to supplier sourcing, procurement processes, negotiation, vendor performance and cost management into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Senior Procurement Specialist or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-30T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 95e3,
+          maxValue: 19e4,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Quality-Assurance-Lead",
+      title: "Quality Assurance Lead",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Quality-Assurance-Lead",
+      description: "<p>The Quality Assurance Lead is a fully remote position at Zenith Global Innovation specializing in quality strategy, testing standards, defect prevention, audit readiness and continuous improvement. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to quality strategy, testing standards, defect prevention, audit readiness and continuous improvement into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Quality Assurance Lead or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-20T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 95e3,
+          maxValue: 19e4,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Senior-Compliance-Auditor",
+      title: "Senior Compliance Auditor",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Senior-Compliance-Auditor",
+      description: "<p>The Senior Compliance Auditor is a fully remote position at Zenith Global Innovation specializing in independent compliance testing, control evaluation, evidence review, findings and remediation tracking. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to independent compliance testing, control evaluation, evidence review, findings and remediation tracking into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Senior Compliance Auditor or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-10T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 95e3,
+          maxValue: 19e4,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Corporate-Communications-Manager",
+      title: "Corporate Communications Manager",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Corporate-Communications-Manager",
+      description: "<p>The Corporate Communications Manager is a fully remote position at Zenith Global Innovation specializing in internal communications, corporate messaging, executive communications, reputation and stakeholder engagement. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to internal communications, corporate messaging, executive communications, reputation and stakeholder engagement into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Corporate Communications Manager or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-11-14T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 95e3,
+          maxValue: 19e4,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Senior-Product-Manager",
+      title: "Senior Product Manager",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Senior-Product-Manager",
+      description: "<p>The Senior Product Manager is a fully remote position at Zenith Global Innovation specializing in product strategy, roadmap ownership, customer needs, cross-functional delivery and product performance. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to product strategy, roadmap ownership, customer needs, cross-functional delivery and product performance into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Senior Product Manager or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-11-04T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 95e3,
+          maxValue: 19e4,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Virtual-Assistant",
+      title: "Virtual Assistant",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Virtual-Assistant",
+      description: "<p>The Virtual Assistant is a fully remote position at Zenith Global Innovation specializing in calendar management, correspondence, scheduling, research, administrative coordination and remote executive support. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to calendar management, correspondence, scheduling, research, administrative coordination and remote executive support into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Virtual Assistant or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-11-09T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 65e3,
+          maxValue: 95e3,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Executive-Assistant",
+      title: "Executive Assistant",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Executive-Assistant",
+      description: "<p>The Executive Assistant is a fully remote position at Zenith Global Innovation specializing in high-trust executive support, complex scheduling, meeting preparation, travel coordination and confidential administration. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to high-trust executive support, complex scheduling, meeting preparation, travel coordination and confidential administration into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Executive Assistant or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-30T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 65e3,
+          maxValue: 95e3,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Customer-Service-Representative",
+      title: "Customer Service Representative",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Customer-Service-Representative",
+      description: "<p>The Customer Service Representative is a fully remote position at Zenith Global Innovation specializing in customer inquiries, issue resolution, service quality, accurate documentation and positive customer experiences. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to customer inquiries, issue resolution, service quality, accurate documentation and positive customer experiences into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Customer Service Representative or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-20T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 65e3,
+          maxValue: 95e3,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Data-Entry-Specialist",
+      title: "Data Entry Specialist",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Data-Entry-Specialist",
+      description: "<p>The Data Entry Specialist is a fully remote position at Zenith Global Innovation specializing in accurate data capture, validation, record maintenance, document processing and information quality. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to accurate data capture, validation, record maintenance, document processing and information quality into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Data Entry Specialist or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-10T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 65e3,
+          maxValue: 95e3,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Social-Media-Manager",
+      title: "Social Media Manager",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Social-Media-Manager",
+      description: "<p>The Social Media Manager is a fully remote position at Zenith Global Innovation specializing in social strategy, publishing, community management, campaign execution and channel performance. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to social strategy, publishing, community management, campaign execution and channel performance into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Social Media Manager or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-11-14T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 75e3,
+          maxValue: 11e4,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Content-Creator",
+      title: "Content Creator",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Content-Creator",
+      description: "<p>The Content Creator is a fully remote position at Zenith Global Innovation specializing in original digital content, storytelling, creative production, editorial consistency and audience engagement. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to original digital content, storytelling, creative production, editorial consistency and audience engagement into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Content Creator or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-05T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 75e3,
+          maxValue: 11e4,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "SEO-Specialist",
+      title: "SEO Specialist",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=SEO-Specialist",
+      description: "<p>The SEO Specialist is a fully remote position at Zenith Global Innovation specializing in keyword research, on-page optimization, technical improvements, content briefs and search performance. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to keyword research, on-page optimization, technical improvements, content briefs and search performance into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in SEO Specialist or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-11-09T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 75e3,
+          maxValue: 11e4,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Email-Marketing-Coordinator",
+      title: "Email Marketing Coordinator",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Email-Marketing-Coordinator",
+      description: "<p>The Email Marketing Coordinator is a fully remote position at Zenith Global Innovation specializing in email campaigns, segmentation, automation support, testing, deliverability and performance reporting. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to email campaigns, segmentation, automation support, testing, deliverability and performance reporting into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Email Marketing Coordinator or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-30T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 75e3,
+          maxValue: 11e4,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "IT-Support-Specialist",
+      title: "IT Support Specialist",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=IT-Support-Specialist",
+      description: "<p>The IT Support Specialist is a fully remote position at Zenith Global Innovation specializing in technical troubleshooting, user support, device and software assistance and service-desk resolution. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to technical troubleshooting, user support, device and software assistance and service-desk resolution into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in IT Support Specialist or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-20T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 85e3,
+          maxValue: 14e4,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Junior-Developer",
+      title: "Junior Developer",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Junior-Developer",
+      description: "<p>The Junior Developer is a fully remote position at Zenith Global Innovation specializing in frontend or backend implementation, bug fixing, code quality, testing and supervised product delivery. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to frontend or backend implementation, bug fixing, code quality, testing and supervised product delivery into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Junior Developer or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-10T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 85e3,
+          maxValue: 14e4,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Web-Designer",
+      title: "Web Designer",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Web-Designer",
+      description: "<p>The Web Designer is a fully remote position at Zenith Global Innovation specializing in responsive web interfaces, visual design, usability, accessibility and design-to-development handoff. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to responsive web interfaces, visual design, usability, accessibility and design-to-development handoff into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Web Designer or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-15T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 85e3,
+          maxValue: 14e4,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Digital-Project-Manager",
+      title: "Digital Project Manager",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Digital-Project-Manager",
+      description: "<p>The Digital Project Manager is a fully remote position at Zenith Global Innovation specializing in digital project coordination, timelines, requirements, vendors, stakeholder communication and delivery quality. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to digital project coordination, timelines, requirements, vendors, stakeholder communication and delivery quality into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Digital Project Manager or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-05T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 85e3,
+          maxValue: 14e4,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Bookkeeper",
+      title: "Bookkeeper",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Bookkeeper",
+      description: "<p>The Bookkeeper is a fully remote position at Zenith Global Innovation specializing in transaction recording, reconciliations, ledger accuracy and routine financial reporting. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to transaction recording, reconciliations, ledger accuracy and routine financial reporting into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Bookkeeper or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-11-09T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 8e4,
+          maxValue: 135e3,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Payroll-Administrator",
+      title: "Payroll Administrator",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Payroll-Administrator",
+      description: "<p>The Payroll Administrator is a fully remote position at Zenith Global Innovation specializing in payroll preparation, employee records, deductions, compliance checks and payroll issue resolution. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to payroll preparation, employee records, deductions, compliance checks and payroll issue resolution into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Payroll Administrator or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-30T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 8e4,
+          maxValue: 135e3,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Accounts-Receivable-Specialist",
+      title: "Accounts Receivable Specialist",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Accounts-Receivable-Specialist",
+      description: "<p>The Accounts Receivable Specialist is a fully remote position at Zenith Global Innovation specializing in invoice management, collections, payment reconciliation, aging analysis and customer account accuracy. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to invoice management, collections, payment reconciliation, aging analysis and customer account accuracy into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Accounts Receivable Specialist or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-20T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 8e4,
+          maxValue: 135e3,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    },
+    {
+      slug: "Financial-Analyst",
+      title: "Financial Analyst",
+      url: "https://www.zenithglobalinnovation.com.ng/?job=Financial-Analyst",
+      description: "<p>The Financial Analyst is a fully remote position at Zenith Global Innovation specializing in financial reporting, modeling, budgeting, variance analysis and business performance insight. You will collaborate with international teams and enterprise stakeholders across multiple timezones to deliver high-impact results.</p><h3>Key Responsibilities</h3><ul><li>Translate strategic business objectives connected to financial reporting, modeling, budgeting, variance analysis and business performance insight into measurable work deliverables.</li><li>Apply specialized knowledge and professional judgment to identify risks, evaluate opportunities, and take appropriate action.</li><li>Maintain clear, dependable communication across distributed global teams and client organizations.</li><li>Ensure high operational standards, confidentiality, and data protection compliance in all deliverables.</li></ul><h3>Qualifications</h3><ul><li>Demonstrated professional experience in Financial Analyst or directly related executive functions.</li><li>Proven record of independent execution, reliability, and leadership in remote working environments.</li><li>Relevant academic qualification, professional degree, or equivalent practical industry excellence.</li><li>Strong analytical, cross-cultural communication, and problem-solving skills.</li></ul>",
+      datePosted: "2026-10-25T08:00:00Z",
+      validThrough: "2027-06-30T23:59:59Z",
+      employmentType: "FULL_TIME",
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          minValue: 8e4,
+          maxValue: 135e3,
+          unitText: "YEAR"
+        }
+      },
+      applicantLocationRequirements: [
+        {
+          "@type": "Country",
+          name: "United States"
+        },
+        {
+          "@type": "Country",
+          name: "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          name: "Canada"
+        },
+        {
+          "@type": "Country",
+          name: "Singapore"
+        },
+        {
+          "@type": "Country",
+          name: "Australia"
+        },
+        {
+          "@type": "Country",
+          name: "Germany"
+        },
+        {
+          "@type": "Country",
+          name: "Ireland"
+        },
+        {
+          "@type": "Country",
+          name: "Netherlands"
+        },
+        {
+          "@type": "Country",
+          name: "Nigeria"
+        },
+        {
+          "@type": "Country",
+          name: "India"
+        }
+      ]
+    }
+  ]
+};
+
+// backend/builtAssets.json
+var builtAssets_default = {
+  cssHrefs: [
+    "/assets/index-C7VNwAvA.css",
+    "https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+  ],
+  jsSrcs: [
+    "/assets/index-B6_H0LLx.js"
+  ]
+};
+
+// backend/seoJobs.ts
+var allJobs = seoJobsData_default.jobs || [];
+var organizationNode = seoJobsData_default.organization || {};
+var websiteNode = seoJobsData_default.website || {};
+function normalizeSlug(input) {
+  return String(input || "").trim().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+}
+function escapeHtml(text) {
+  return String(text || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+function findSeoJob(rawQuery) {
+  if (!rawQuery) return void 0;
+  const clean = normalizeSlug(rawQuery);
+  if (!clean) return void 0;
+  const exact = allJobs.find(
+    (j) => normalizeSlug(j.slug) === clean || normalizeSlug(j.title) === clean
+  );
+  if (exact) return exact;
+  const suffixMatches = allJobs.filter((j) => {
+    const s = normalizeSlug(j.slug);
+    return clean.endsWith(`-${s}`);
+  }).sort((a, b) => b.slug.length - a.slug.length);
+  if (suffixMatches.length > 0) return suffixMatches[0];
+  return allJobs.find((j) => {
+    const s = normalizeSlug(j.slug);
+    return clean.includes(s) || s.includes(clean);
+  });
+}
+function renderJobDetailHtml(job, options) {
+  const canonicalUrl = `https://www.zenithglobalinnovation.com.ng/?job=${encodeURIComponent(job.slug)}`;
+  const minPay = job.baseSalary?.value?.minValue ?? 85e3;
+  const maxPay = job.baseSalary?.value?.maxValue ?? 18e4;
+  const salaryFormatted = `$${minPay.toLocaleString()}\u2013$${maxPay.toLocaleString()} USD/yr`;
+  const empTypeLabel = job.employmentType === "CONTRACTOR" ? "Contract \xB7 100% Remote" : "Full-time \xB7 100% Remote";
+  const pageTitle = `${job.title} \u2013 Remote (${salaryFormatted}) | Zenith Global Innovation`;
+  const metaDesc = `Apply directly for ${job.title} at Zenith Global Innovation (${salaryFormatted}, ${empTypeLabel}). Google Cloud Partner Verified, Meta Verified & BBB A+ Accredited.`;
+  const jobPostingNode = {
+    "@type": "JobPosting",
+    "@id": `${canonicalUrl}#jobposting`,
+    title: job.title,
+    url: canonicalUrl,
+    description: job.description,
+    datePosted: job.datePosted,
+    validThrough: job.validThrough,
+    employmentType: job.employmentType,
+    hiringOrganization: {
+      "@type": "Organization",
+      "@id": "https://www.zenithglobalinnovation.com.ng/#organization",
+      name: "Zenith Global Innovation",
+      sameAs: "https://www.zenithglobalinnovation.com.ng"
+    },
+    jobLocationType: "TELECOMMUTE",
+    applicantLocationRequirements: job.applicantLocationRequirements,
+    baseSalary: job.baseSalary,
+    directApply: true,
+    identifier: {
+      "@type": "PropertyValue",
+      name: "Zenith Global Innovation",
+      value: job.slug
+    }
+  };
+  const graphPayload = {
+    "@context": "https://schema.org",
+    "@graph": [organizationNode, websiteNode, jobPostingNode]
+  };
+  const assets = builtAssets_default;
+  const cssTags = (assets.cssHrefs || []).map((href) => `<link rel="stylesheet" crossorigin href="${escapeHtml(href)}">`).join("\n    ");
+  const jsTags = options?.isDev ? `<script type="module" src="/src/main.tsx"></script>` : assets.jsSrcs && assets.jsSrcs.length > 0 ? assets.jsSrcs.map((src) => `<script type="module" crossorigin src="${escapeHtml(src)}"></script>`).join("\n    ") : `<script type="module" src="/src/main.tsx"></script>`;
+  const postedDateDisplay = job.datePosted.slice(0, 10);
+  return `<!doctype html>
+<html lang="en">
+  <head>
+    <script>
+      window.addEventListener('unhandledrejection', function(event) {
+        if (event && event.reason) {
+          var msg = event.reason.message || (typeof event.reason === 'string' ? event.reason : '');
+          if (msg && (msg.indexOf('WebSocket') !== -1 || msg.indexOf('vite:ws') !== -1)) {
+            event.preventDefault();
+            if (typeof event.stopImmediatePropagation === 'function') event.stopImmediatePropagation();
+          }
+        }
+      });
+      window.addEventListener('error', function(event) {
+        if (event && event.message && (event.message.indexOf('WebSocket') !== -1 || event.message.indexOf('vite:ws') !== -1)) {
+          event.preventDefault();
+          if (typeof event.stopImmediatePropagation === 'function') event.stopImmediatePropagation();
+        }
+      });
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>${escapeHtml(pageTitle)}</title>
+    <meta name="description" content="${escapeHtml(metaDesc)}" />
+    <meta name="keywords" content="${escapeHtml(job.title)}, remote career, executive staffing, Zenith Global Innovation, Google for Jobs, remote ${escapeHtml(empTypeLabel)}" />
+    <meta name="author" content="Zenith Global Innovation" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="theme-color" content="#10243e" />
+
+    <link rel="canonical" href="${escapeHtml(canonicalUrl)}" />
+
+    <!-- OpenGraph Metadata -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="${escapeHtml(canonicalUrl)}" />
+    <meta property="og:site_name" content="Zenith Global Innovation" />
+    <meta property="og:title" content="${escapeHtml(pageTitle)}" />
+    <meta property="og:description" content="${escapeHtml(metaDesc)}" />
+
+    <!-- Twitter / X Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="${escapeHtml(pageTitle)}" />
+    <meta name="twitter:description" content="${escapeHtml(metaDesc)}" />
+
+    <!-- Single-Job Google for Jobs JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    ${JSON.stringify(graphPayload, null, 2)}
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    ${cssTags}
+  </head>
+  <body>
+    <div id="root">
+      <header style="padding: 20px; background: #ffffff; border-bottom: 1px solid #e2e8f0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+        <div style="max-width: 960px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+          <div>
+            <a href="https://www.zenithglobalinnovation.com.ng/" style="font-size: 20px; font-weight: 800; color: #10243e; text-decoration: none;">ZENITH GLOBAL INNOVATION</a>
+            <p style="font-size: 12px; color: #64748b; margin: 3px 0 0;">Connecting Talent Across Continents \xB7 Established 2019</p>
+          </div>
+          <a href="https://www.zenithglobalinnovation.com.ng/" style="color: #2563eb; font-weight: 700; font-size: 13px; text-decoration: none;">\u2190 Browse All 81 Open Roles</a>
+        </div>
+      </header>
+
+      <main style="max-width: 960px; margin: 0 auto; padding: 36px 20px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #0f172a;">
+        <div style="margin-bottom: 12px; font-size: 12px; font-weight: 700; color: #2563eb; text-transform: uppercase;">
+          ${escapeHtml(empTypeLabel)} \xB7 Posted ${escapeHtml(postedDateDisplay)}
+        </div>
+        <h1 style="font-size: 32px; font-weight: 800; margin: 0 0 14px; color: #0f172a;">
+          ${escapeHtml(job.title)}
+        </h1>
+        <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 12px; padding: 16px 20px; margin-bottom: 24px;">
+          <strong style="color: #1e3a8a; font-size: 18px;">Compensation: ${escapeHtml(salaryFormatted)}</strong>
+          <div style="font-size: 13px; color: #334155; margin-top: 4px;">
+            100% Remote (Telecommute) \xB7 Direct Application Enabled \xB7 Assessment Response in 3\u20135 Business Days
+          </div>
+        </div>
+
+        <article style="font-size: 15px; line-height: 1.7; color: #334155;">
+          ${job.description}
+        </article>
+
+        <section style="margin-top: 32px; padding: 20px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px;">
+          <h2 style="font-size: 16px; margin: 0 0 8px; color: #0f172a;">Verified Employer &amp; Global Hubs</h2>
+          <p style="margin: 0 0 10px; font-size: 13px; color: #475569;">
+            Google Cloud Partner Verified \xB7 Meta Verified Business \xB7 BBB Accredited Business (A+ Rating) \xB7 256-Bit SSL Encrypted Intake
+          </p>
+          <p style="margin: 0; font-size: 12.5px; color: #64748b;">
+            Offices: New York (245 West 29th Street, 1350 Avenue of the Americas, 400 Park Avenue South) \xB7 London (82 Great Eastern Street, 152 City Road) \xB7 Singapore (10 Marina Boulevard, 1 Raffles Place) \xB7 Toronto (88 Queen's Quay West, 199 Bay Street)
+          </p>
+        </section>
+      </main>
+    </div>
+    ${jsTags}
+  </body>
+</html>`;
+}
+
 // backend/serverless.ts
 var app = express();
 app.use(honeypotShield);
@@ -2562,6 +7809,19 @@ app.get(["/robots.txt", "/api/robots.txt"], (_req, res) => {
   res.setHeader("Content-Type", "text/plain; charset=utf-8");
   res.setHeader("Cache-Control", "public, max-age=3600");
   res.send("User-agent: *\nAllow: /\n\nSitemap: https://www.zenithglobalinnovation.com.ng/sitemap.xml\n");
+});
+app.get(["/", "/jobs/:slug", "/api/job-page"], (req, res, next) => {
+  const rawJob = String(req.params?.slug || req.query?.job || "").trim();
+  if (!rawJob) {
+    return next();
+  }
+  const matched = findSeoJob(rawJob);
+  if (!matched) {
+    return next();
+  }
+  res.setHeader("Content-Type", "text/html; charset=utf-8");
+  res.setHeader("Cache-Control", "public, max-age=300, s-maxage=3600");
+  res.status(200).send(renderJobDetailHtml(matched));
 });
 app.get("/api/ping", (_req, res) => {
   const hasKv = Boolean(process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL);
