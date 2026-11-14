@@ -70,7 +70,7 @@ export function findSeoJob(rawQuery: string): SeoJobEntry | undefined {
 }
 
 export function renderJobDetailHtml(job: SeoJobEntry, options?: { isDev?: boolean }): string {
-  const canonicalUrl = `https://www.zenithglobalinnovation.com.ng/?job=${encodeURIComponent(job.slug)}`;
+  const canonicalUrl = `https://www.zenithglobalinnovation.com.ng/jobs/${encodeURIComponent(job.slug)}`;
   const minPay = job.baseSalary?.value?.minValue ?? 85000;
   const maxPay = job.baseSalary?.value?.maxValue ?? 180000;
   const salaryFormatted = `$${minPay.toLocaleString()}–$${maxPay.toLocaleString()} USD/yr`;

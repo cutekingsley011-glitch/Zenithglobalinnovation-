@@ -1332,12 +1332,12 @@ export default function AdminDashboard({ onExit }: AdminDashboardProps) {
                   <h2>Google for Jobs & Schema.org Crawler Validation Layer</h2>
                   <p>
                     Google-compliant architecture: homepage serves <strong>Organization + WebSite + ItemList</strong> directory linking to{' '}
-                    <strong>{report.totalJobs} dedicated self-canonical SSR JobPosting URLs</strong> (1 JobPosting per URL, Nov 2026 dates, valid ISO country targeting).
+                    <strong>{report.totalJobs} dedicated self-canonical SSR JobPosting URLs</strong> (<code>/jobs/&lt;slug&gt;</code>, 1 JobPosting per URL, Nov 2026 dates, valid ISO country targeting).
                   </p>
                 </div>
                 <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
                   <a
-                    href="https://search.google.com/test/rich-results?url=https%3A%2F%2Fwww.zenithglobalinnovation.com.ng%2F%3Fjob%3DChief-Technology-Officer-CTO"
+                    href="https://search.google.com/test/rich-results?url=https%3A%2F%2Fwww.zenithglobalinnovation.com.ng%2Fjobs%2FChief-Technology-Officer-CTO"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="admin-btn"
@@ -1381,7 +1381,7 @@ export default function AdminDashboard({ onExit }: AdminDashboardProps) {
                 <div style={{ background: '#eff6ff', border: '1px solid #bfdbfe', padding: '16px', borderRadius: '12px' }}>
                   <span style={{ fontSize: '11px', color: '#1e40af', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>SSR Job URLs Indexed</span>
                   <div style={{ fontSize: '28px', fontWeight: 800, color: '#1d4ed8', margin: '4px 0' }}>{report.validJobsCount} / {report.totalJobs} Roles</div>
-                  <small style={{ color: '#1e40af' }}>Self-canonical ?job= endpoints across 12 sectors</small>
+                  <small style={{ color: '#1e40af' }}>Self-canonical /jobs/ endpoints across 12 sectors</small>
                 </div>
 
                 <div style={{ background: '#f8fafc', border: '1px solid #e2e8f0', padding: '16px', borderRadius: '12px' }}>

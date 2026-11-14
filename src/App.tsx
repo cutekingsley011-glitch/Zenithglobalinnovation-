@@ -450,8 +450,10 @@ export default function App() {
   const openJob = (job: Job) => {
     setSelected(job);
     try {
+      const slug = job.title.replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-|-$/g, '');
       const url = new URL(window.location.href);
-      url.searchParams.set('job', job.id);
+      url.pathname = `/jobs/${slug}`;
+      url.searchParams.delete('job');
       if (source && source !== 'Direct') {
         url.searchParams.set('source', source);
       }
@@ -463,6 +465,7 @@ export default function App() {
     setSelected(null);
     try {
       const url = new URL(window.location.href);
+      url.pathname = '/';
       url.searchParams.delete('job');
       window.history.replaceState({}, '', url.toString());
     } catch {}
