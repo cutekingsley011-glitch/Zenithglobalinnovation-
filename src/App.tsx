@@ -24,7 +24,7 @@ import {
 } from 'lucide-react';
 
 type Pay = { annual: string; weekly: string; hourly: string; commission?: string };
-type Job = { id: string; title: string; sector: string; location: string; type: string; pay: Pay };
+type Job = { id: string; title: string; sector: string; location: string; type: string; pay: Pay; postedDate: string };
 type Detail = {
   focus: string;
   overview: string;
@@ -306,6 +306,30 @@ const roleDetails: Record<string, Detail> = Object.fromEntries(
   })
 );
 
+function computePostedDate(globalIdx: number): string {
+  // Deterministic staggered dates ending 2026-11-14 across recent 45 days
+  const daysAgo = (globalIdx * 7 + (globalIdx % 5) * 3) % 45;
+  const base = new Date('2026-11-14T12:00:00Z');
+  base.setUTCDate(base.getUTCDate() - daysAgo);
+  return base.toISOString().slice(0, 10);
+}
+
+function formatPostedDate(isoDate: string): string {
+  if (!isoDate) return '';
+  const parsed = new Date(`${isoDate}T12:00:00Z`);
+  if (Number.isNaN(parsed.getTime())) return isoDate;
+  return parsed.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+}
+
+function parseSalaryBounds(annual: string): { min: number; max: number } {
+  const matches = annual.match(/\d[\d,]*/g) || [];
+  const nums = matches.map(m => Number(m.replace(/,/g, ''))).filter(n => !Number.isNaN(n));
+  if (nums.length === 0) return { min: 0, max: 0 };
+  if (nums.length === 1) return { min: nums[0], max: nums[0] };
+  return { min: Math.min(...nums), max: Math.max(...nums) };
+}
+
+let globalJobIndex = 0;
 const jobs: Job[] = Object.entries(groups).flatMap(([sector, roles]) =>
   roles.map((title, i) => ({
     id: `${sector}-${title}`.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
@@ -313,7 +337,8 @@ const jobs: Job[] = Object.entries(groups).flatMap(([sector, roles]) =>
     sector,
     location: i % 3 === 0 ? 'Remote · Global' : i % 3 === 1 ? 'Remote · North America' : 'Remote · International',
     type: sector === 'Specialized Consulting Roles' ? 'Contract' : 'Full-time',
-    pay: pay[sector]
+    pay: pay[sector],
+    postedDate: computePostedDate(globalJobIndex++),
   }))
 );
 
@@ -823,8 +848,30 @@ function Careers({
   const [alertEmail, setAlertEmail] = useState('');
   const [alertCountry, setAlertCountry] = useState('Any country');
   const [alertCategory, setAlertCategory] = useState('All roles');
+  const [sortBy, setSortBy] = useState<'newest' | 'highest-salary' | 'alphabetical'>('newest');
 
-  const filtered = jobs.filter(j => `${j.title} ${j.sector}`.toLowerCase().includes(search.toLowerCase()));
+  const filtered = useMemo(() => {
+    const q = search.trim().toLowerCase();
+    const matched = jobs.filter(j =>
+      !q || `${j.title} ${j.sector} ${j.location}`.toLowerCase().includes(q)
+    );
+    return [...matched].sort((a, b) => {
+      if (sortBy === 'highest-salary') {
+        const payA = parseSalaryBounds(a.pay.annual);
+        const payB = parseSalaryBounds(b.pay.annual);
+        if (payB.max !== payA.max) return payB.max - payA.max;
+        if (payB.min !== payA.min) return payB.min - payA.min;
+        return a.title.localeCompare(b.title);
+      }
+      if (sortBy === 'alphabetical') {
+        return a.title.localeCompare(b.title);
+      }
+      // Default: 'newest' (Newest Date Posted)
+      const dateCmp = b.postedDate.localeCompare(a.postedDate);
+      if (dateCmp !== 0) return dateCmp;
+      return a.title.localeCompare(b.title);
+    });
+  }, [search, sortBy]);
 
   async function subscribe(e: React.FormEvent) {
     e.preventDefault();
@@ -858,14 +905,29 @@ function Careers({
       </section>
 
       <section className="section light">
-        <div className="search">
-          <Search size={18} />
-          <input
-            value={search}
-            onChange={e => setSearch(e.target.value)}
-            placeholder="Search a role, sector or keyword..."
-          />
-          <span>{filtered.length} positions</span>
+        <div className="careers-controls">
+          <div className="search">
+            <Search size={18} />
+            <input
+              value={search}
+              onChange={e => setSearch(e.target.value)}
+              placeholder="Search a role, sector or keyword..."
+            />
+            <span>{filtered.length} positions</span>
+          </div>
+
+          <label className="sort-control">
+            <span>Sort by</span>
+            <select
+              aria-label="Sort open positions"
+              value={sortBy}
+              onChange={e => setSortBy(e.target.value as 'newest' | 'highest-salary' | 'alphabetical')}
+            >
+              <option value="newest">Newest Date Posted</option>
+              <option value="highest-salary">Highest Salary</option>
+              <option value="alphabetical">Alphabetical</option>
+            </select>
+          </label>
         </div>
 
         <div className="all-jobs">
@@ -938,7 +1000,7 @@ function JobCard({ job, open }: { job: Job; open: () => void }) {
         <small>{job.sector}</small>
         <h3>{job.title}</h3>
         <p>
-          {job.location} · {job.type}
+          {job.location} · {job.type} · Posted {formatPostedDate(job.postedDate)}
         </p>
         <b>{job.pay.annual} / year</b>
       </div>
@@ -1230,7 +1292,7 @@ function JobModal({
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '10px', flexWrap: 'wrap' }}>
               <div>
                 <span className="kicker">
-                  {job.sector} · {job.type}
+                  {job.sector} · {job.type} · Posted {formatPostedDate(job.postedDate)}
                 </span>
                 <h2>{job.title}</h2>
               </div>

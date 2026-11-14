@@ -102,6 +102,17 @@ async function syncToCloudKV(data: DatabaseSchema): Promise<void> {
   }
 }
 
+function mergeRecords(primary: Array<Record<string, any>>, secondary: Array<Record<string, any>>): Array<Record<string, any>> {
+  const byId = new Map<string, Record<string, any>>();
+  for (const item of secondary) {
+    if (item && item.id) byId.set(String(item.id), item);
+  }
+  for (const item of primary) {
+    if (item && item.id) byId.set(String(item.id), item);
+  }
+  return Array.from(byId.values());
+}
+
 function readDb(): DatabaseSchema {
   try {
     if (fs.existsSync(DB_FILE)) {
@@ -110,11 +121,17 @@ function readDb(): DatabaseSchema {
       if (parsed && typeof parsed === 'object') {
         const memoryApps = inMemoryStore.applications || [];
         const diskApps = parsed.applications || [];
+        const memoryLeads = inMemoryStore.leads || [];
+        const diskLeads = parsed.leads || [];
+        const memoryAlerts = inMemoryStore.job_alerts || [];
+        const diskAlerts = parsed.job_alerts || [];
         inMemoryStore = {
           ...defaultSchema,
           ...parsed,
           ...inMemoryStore,
-          applications: memoryApps.length >= diskApps.length ? memoryApps : diskApps,
+          applications: memoryApps.length >= diskApps.length ? mergeRecords(memoryApps, diskApps) : mergeRecords(diskApps, memoryApps),
+          leads: memoryLeads.length >= diskLeads.length ? mergeRecords(memoryLeads, diskLeads) : mergeRecords(diskLeads, memoryLeads),
+          job_alerts: memoryAlerts.length >= diskAlerts.length ? mergeRecords(memoryAlerts, diskAlerts) : mergeRecords(diskAlerts, memoryAlerts),
         };
       }
     }

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { api } from './lib/api';
 import { safeStorage } from './lib/storage';
 import { validateSchemaGraph, OFFICIAL_CORPORATE_OFFICES } from './lib/schemaValidator';
@@ -27,6 +27,18 @@ export default function AdminDashboard({ onExit }: AdminDashboardProps) {
   const [leads, setLeads] = useState<any[]>([]);
   const [stats, setStats] = useState<any>({});
   const [selected, setSelected] = useState<any>(null);
+  const [selectedLead, setSelectedLead] = useState<any>(null);
+  const [leadFeedback, setLeadFeedback] = useState<string | null>(null);
+  const leadsSectionRef = useRef<HTMLElement | null>(null);
+
+  const openTab = (tab: 'overview' | 'applications' | 'leads' | 'pipeline' | 'analytics' | 'links' | 'seo') => {
+    setActiveTab(tab);
+    if (tab === 'leads') {
+      setTimeout(() => {
+        leadsSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 60);
+    }
+  };
   const [query, setQuery] = useState('');
   const [leadQuery, setLeadQuery] = useState('');
   const [status, setStatus] = useState('All');
@@ -247,6 +259,11 @@ export default function AdminDashboard({ onExit }: AdminDashboardProps) {
   async function updateLeadStatus(id: string, nextStatus: string) {
     try {
       await api.post(`/api/admin/leads/${id}/status`, { token, status: nextStatus });
+      if (selectedLead && selectedLead.id === id) {
+        setSelectedLead((prev: any) => (prev ? { ...prev, status: nextStatus } : prev));
+        setLeadFeedback(`Inquiry status updated to "${nextStatus}".`);
+        setTimeout(() => setLeadFeedback(null), 4000);
+      }
       await load();
     } catch (err: any) {
       console.error(err);
@@ -337,12 +354,15 @@ export default function AdminDashboard({ onExit }: AdminDashboardProps) {
 
   const filteredLeads = useMemo(
     () =>
-      leads.filter(l =>
-        !leadQuery ||
-        [l.name, l.email, l.company, l.message].some(v =>
-          String(v || '').toLowerCase().includes(leadQuery.toLowerCase())
+      [...leads]
+        .filter(
+          l =>
+            !leadQuery ||
+            [l.name, l.email, l.company, l.message, l.rolesNeeded, l.category, l.phone].some(v =>
+              String(v || '').toLowerCase().includes(leadQuery.toLowerCase())
+            )
         )
-      ),
+        .sort((a, b) => String(b.createdAt || '').localeCompare(String(a.createdAt || ''))),
     [leads, leadQuery]
   );
 
@@ -500,16 +520,34 @@ export default function AdminDashboard({ onExit }: AdminDashboardProps) {
         {/* Top KPI Metrics Bar */}
         <section className="metrics">
           {[
-            ['Total Applications', stats.total ?? rows.length],
-            ['Today', stats.today ?? 0],
-            ['Under Review', stats.byStatus?.['Under Review'] ?? 0],
-            ['Shortlisted', stats.byStatus?.['Shortlisted'] ?? 0],
-            ['Interviews', stats.byStatus?.['Interview'] ?? 0],
-            ['Client Inquiries', leads.length],
-          ].map(([a, b]) => (
-            <div key={String(a)}>
-              <small>{a}</small>
-              <strong>{b}</strong>
+            { label: 'Total Applications', value: stats.total ?? rows.length, tab: 'applications' as const, hint: 'View all →' },
+            { label: 'Today', value: stats.today ?? 0, tab: 'applications' as const },
+            { label: 'Under Review', value: stats.byStatus?.['Under Review'] ?? 0, tab: 'pipeline' as const },
+            { label: 'Shortlisted', value: stats.byStatus?.['Shortlisted'] ?? 0, tab: 'pipeline' as const },
+            { label: 'Interviews', value: stats.byStatus?.['Interview'] ?? 0, tab: 'pipeline' as const },
+            { label: 'Client Inquiries', value: leads.length, tab: 'leads' as const, hint: 'Tap to read →' },
+          ].map(item => (
+            <div
+              key={item.label}
+              className="metric-clickable"
+              onClick={() => openTab(item.tab)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={e => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  openTab(item.tab);
+                }
+              }}
+              style={
+                item.tab === 'leads' && leads.length > 0
+                  ? { borderColor: '#bfdbfe', background: '#f8fbff' }
+                  : undefined
+              }
+            >
+              <small>{item.label}</small>
+              <strong>{item.value}</strong>
+              {item.hint && <em>{item.hint}</em>}
             </div>
           ))}
         </section>
@@ -814,23 +852,113 @@ export default function AdminDashboard({ onExit }: AdminDashboardProps) {
                 )}
               </div>
             </section>
+
+            {/* Recent Client Inquiries Preview on Overview */}
+            {activeTab === 'overview' && (
+              <section className="admin-panel">
+                <div className="panel-head">
+                  <div>
+                    <h2>Recent Client Inquiries ({leads.length})</h2>
+                    <p>Messages submitted via the public Contact & Staffing Request form.</p>
+                  </div>
+                  <div className="admin-actions">
+                    <button
+                      type="button"
+                      className="admin-primary"
+                      onClick={() => setActiveTab('leads')}
+                      style={{ width: 'auto' }}
+                    >
+                      Open All Client Inquiries ({leads.length}) →
+                    </button>
+                  </div>
+                </div>
+
+                {leads.length === 0 ? (
+                  <p className="empty">No client inquiries submitted yet.</p>
+                ) : (
+                  <div style={{ display: 'grid', gap: '12px' }}>
+                    {filteredLeads.slice(0, 5).map(l => (
+                      <div
+                        key={l.id}
+                        style={{
+                          border: '1px solid #e2e8f0',
+                          borderRadius: '12px',
+                          padding: '16px',
+                          background: '#f8fafc',
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'flex-start',
+                          gap: '16px',
+                          flexWrap: 'wrap',
+                        }}
+                      >
+                        <div style={{ flex: 1, minWidth: '240px' }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', marginBottom: '6px' }}>
+                            <strong style={{ fontSize: '14px', color: '#0f172a' }}>{l.name || 'Unnamed Client'}</strong>
+                            {l.company && (
+                              <span style={{ fontSize: '12px', color: '#475569', fontWeight: 600 }}>
+                                · {l.company}
+                              </span>
+                            )}
+                            <span
+                              style={{
+                                display: 'inline-block',
+                                padding: '2px 8px',
+                                borderRadius: '6px',
+                                fontSize: '11px',
+                                fontWeight: 700,
+                                background: l.status === 'Contacted' ? '#dcfce7' : l.status === 'Closed' ? '#f1f5f9' : '#eff6ff',
+                                color: l.status === 'Contacted' ? '#15803d' : l.status === 'Closed' ? '#475569' : '#1d4ed8',
+                              }}
+                            >
+                              {l.status || 'New'}
+                            </span>
+                          </div>
+                          <div style={{ fontSize: '12px', color: '#64748b', marginBottom: '8px' }}>
+                            {l.email} {l.createdAt ? `· ${new Date(l.createdAt).toLocaleDateString()}` : ''}
+                          </div>
+                          <p style={{ margin: 0, fontSize: '13px', color: '#1e293b', lineHeight: 1.55, whiteSpace: 'pre-wrap' }}>
+                            {l.message || l.inquiry || l.details || 'No message body provided.'}
+                          </p>
+                        </div>
+                        <button
+                          type="button"
+                          className="view-btn"
+                          onClick={() => setSelectedLead(l)}
+                        >
+                          Read Message
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </section>
+            )}
           </>
         )}
 
         {/* TAB 2: CLIENT INQUIRIES / LEADS */}
         {activeTab === 'leads' && (
-          <section className="admin-panel">
+          <section className="admin-panel" ref={leadsSectionRef}>
             <div className="panel-head">
               <div>
-                <h2>Corporate staffing inquiries</h2>
-                <p>{filteredLeads.length} total client submissions</p>
+                <h2>Corporate staffing &amp; client inquiries</h2>
+                <p>{filteredLeads.length} of {leads.length} total client submissions</p>
               </div>
               <div className="filters">
                 <input
                   value={leadQuery}
                   onChange={e => setLeadQuery(e.target.value)}
-                  placeholder="Search company, name or email..."
+                  placeholder="Search company, name, email or message..."
                 />
+                <button
+                  type="button"
+                  className="admin-secondary"
+                  onClick={() => load()}
+                  disabled={loading}
+                >
+                  {loading ? 'Refreshing...' : 'Refresh'}
+                </button>
               </div>
             </div>
 
@@ -850,15 +978,19 @@ export default function AdminDashboard({ onExit }: AdminDashboardProps) {
                   {filteredLeads.map(l => (
                     <tr key={l.id}>
                       <td>
-                        <b>{l.name}</b>
-                        <small>{l.email}</small>
+                        <b>{l.name || 'Unnamed Client'}</b>
+                        <small>{l.email || '—'}</small>
+                        {l.phone && <small>{l.phone}</small>}
                       </td>
                       <td>
-                        <b>{l.company}</b>
+                        <b>{l.company || '—'}</b>
+                        {(l.rolesNeeded || l.category) && (
+                          <small>{l.rolesNeeded || l.category}</small>
+                        )}
                       </td>
-                      <td style={{ maxWidth: '340px' }}>
-                        <p style={{ margin: 0, fontSize: '12px', color: '#475569', lineHeight: '1.5' }}>
-                          {l.message}
+                      <td style={{ minWidth: '240px', maxWidth: '380px' }}>
+                        <p style={{ margin: 0, fontSize: '13px', color: '#1e293b', lineHeight: '1.55', whiteSpace: 'pre-wrap' }}>
+                          {l.message || l.inquiry || l.details || 'No message body recorded.'}
                         </p>
                       </td>
                       <td>{l.createdAt ? new Date(l.createdAt).toLocaleDateString() : '—'}</td>
@@ -867,32 +999,41 @@ export default function AdminDashboard({ onExit }: AdminDashboardProps) {
                           style={{
                             display: 'inline-block',
                             padding: '4px 10px',
-                            borderRadius: '999px',
+                            borderRadius: '6px',
                             fontSize: '11px',
                             fontWeight: 700,
-                            background: l.status === 'Contacted' ? '#dcfce7' : '#eff6ff',
-                            color: l.status === 'Contacted' ? '#15803d' : '#1d4ed8',
+                            background: l.status === 'Contacted' ? '#dcfce7' : l.status === 'Closed' ? '#f1f5f9' : '#eff6ff',
+                            color: l.status === 'Contacted' ? '#15803d' : l.status === 'Closed' ? '#475569' : '#1d4ed8',
                           }}
                         >
                           {l.status || 'New'}
                         </span>
                       </td>
                       <td>
-                        <select
-                          value={l.status || 'New'}
-                          onChange={e => updateLeadStatus(l.id, e.target.value)}
-                          style={{
-                            padding: '6px 10px',
-                            borderRadius: '8px',
-                            border: '1px solid #cbd5e1',
-                            fontSize: '12px',
-                          }}
-                        >
-                          <option value="New">New</option>
-                          <option value="Contacted">Contacted</option>
-                          <option value="In Discussion">In Discussion</option>
-                          <option value="Closed">Closed</option>
-                        </select>
+                        <div style={{ display: 'flex', gap: '8px', alignItems: 'center', flexWrap: 'wrap' }}>
+                          <button
+                            type="button"
+                            className="view-btn"
+                            onClick={() => setSelectedLead(l)}
+                          >
+                            Read
+                          </button>
+                          <select
+                            value={l.status || 'New'}
+                            onChange={e => updateLeadStatus(l.id, e.target.value)}
+                            style={{
+                              padding: '6px 10px',
+                              borderRadius: '8px',
+                              border: '1px solid #cbd5e1',
+                              fontSize: '12px',
+                            }}
+                          >
+                            <option value="New">New</option>
+                            <option value="Contacted">Contacted</option>
+                            <option value="In Discussion">In Discussion</option>
+                            <option value="Closed">Closed</option>
+                          </select>
+                        </div>
                       </td>
                     </tr>
                   ))}
@@ -1845,6 +1986,158 @@ export default function AdminDashboard({ onExit }: AdminDashboardProps) {
                 <button className="admin-primary" onClick={addNote}>
                   Save note
                 </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Client Inquiry Detail Drawer */}
+        {selectedLead && (
+          <div className="drawer-bg" onClick={() => setSelectedLead(null)}>
+            <div className="drawer" onClick={e => e.stopPropagation()}>
+              <button className="drawer-close" onClick={() => setSelectedLead(null)}>
+                ×
+              </button>
+              <small>CLIENT INQUIRY MESSAGE</small>
+              <h2>{selectedLead.name || 'Client Inquiry'}</h2>
+              <p>
+                {selectedLead.company ? `${selectedLead.company} · ` : ''}
+                Received {selectedLead.createdAt ? new Date(selectedLead.createdAt).toLocaleString() : '—'}
+              </p>
+
+              {leadFeedback && (
+                <div
+                  style={{
+                    padding: '12px 14px',
+                    borderRadius: '10px',
+                    fontSize: '13px',
+                    fontWeight: 600,
+                    marginBottom: '16px',
+                    background: '#f0fdf4',
+                    color: '#15803d',
+                    border: '1px solid #bbf7d0',
+                  }}
+                >
+                  {leadFeedback}
+                </div>
+              )}
+
+              <div
+                style={{
+                  background: '#f8fafc',
+                  border: '1px solid #cbd5e1',
+                  borderRadius: '12px',
+                  padding: '20px',
+                  marginBottom: '20px',
+                }}
+              >
+                <small
+                  style={{
+                    display: 'block',
+                    fontSize: '10px',
+                    fontWeight: 800,
+                    letterSpacing: '0.08em',
+                    color: '#64748b',
+                    textTransform: 'uppercase',
+                    marginBottom: '10px',
+                  }}
+                >
+                  Full Inquiry Message
+                </small>
+                <div
+                  style={{
+                    fontSize: '14.5px',
+                    lineHeight: 1.7,
+                    color: '#0f172a',
+                    whiteSpace: 'pre-wrap',
+                    wordBreak: 'break-word',
+                  }}
+                >
+                  {selectedLead.message || selectedLead.inquiry || selectedLead.details || 'No message body provided.'}
+                </div>
+              </div>
+
+              <div className="details">
+                <div>
+                  <small>Sender Name</small>
+                  <span>{selectedLead.name || '—'}</span>
+                </div>
+                <div>
+                  <small>Company / Organization</small>
+                  <span>{selectedLead.company || '—'}</span>
+                </div>
+                <div>
+                  <small>Email Address</small>
+                  <span>{selectedLead.email || '—'}</span>
+                </div>
+                <div>
+                  <small>Phone Number</small>
+                  <span>{selectedLead.phone || 'Not provided'}</span>
+                </div>
+                {(selectedLead.category || selectedLead.rolesNeeded) && (
+                  <div style={{ gridColumn: '1 / -1' }}>
+                    <small>Requested Focus / Roles Needed</small>
+                    <span>
+                      {[selectedLead.category, selectedLead.rolesNeeded].filter(Boolean).join(' · ')}
+                    </span>
+                  </div>
+                )}
+              </div>
+
+              <div
+                style={{
+                  background: '#f8fafc',
+                  border: '1px solid #cbd5e1',
+                  borderRadius: '14px',
+                  padding: '20px',
+                  margin: '20px 0',
+                }}
+              >
+                <label style={{ margin: '0 0 14px' }}>
+                  Update Inquiry Status
+                  <select
+                    value={selectedLead.status || 'New'}
+                    onChange={e => updateLeadStatus(selectedLead.id, e.target.value)}
+                  >
+                    <option value="New">New</option>
+                    <option value="Contacted">Contacted</option>
+                    <option value="In Discussion">In Discussion</option>
+                    <option value="Closed">Closed</option>
+                  </select>
+                </label>
+
+                {selectedLead.email && (
+                  <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+                    <a
+                      href={`mailto:${selectedLead.email}?subject=${encodeURIComponent(
+                        `Re: Zenith Global Innovation Inquiry (${selectedLead.company || selectedLead.name})`
+                      )}`}
+                      className="admin-primary"
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        textDecoration: 'none',
+                        flex: 1,
+                        minWidth: '180px',
+                        boxSizing: 'border-box',
+                      }}
+                    >
+                      Reply via Email ↗
+                    </a>
+                    <button
+                      type="button"
+                      className="admin-secondary"
+                      onClick={() => {
+                        navigator.clipboard.writeText(String(selectedLead.email));
+                        setLeadFeedback(`Copied ${selectedLead.email} to clipboard.`);
+                        setTimeout(() => setLeadFeedback(null), 3000);
+                      }}
+                    >
+                      Copy Email
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           </div>

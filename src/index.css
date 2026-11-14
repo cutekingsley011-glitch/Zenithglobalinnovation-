@@ -350,9 +350,18 @@ h2 em {
   border-bottom: 1px solid #e2e8f0;
 }
 
-.search {
-  max-width: 700px;
+.careers-controls {
+  max-width: 1000px;
   margin: 0 auto 32px;
+  display: flex;
+  gap: 12px;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+
+.search {
+  flex: 1 1 320px;
+  margin: 0;
   display: flex;
   gap: 12px;
   align-items: center;
@@ -365,12 +374,14 @@ h2 em {
 
 .search svg {
   color: #64748b;
+  flex-shrink: 0;
 }
 
 .search input {
   border: 0;
   outline: 0;
   flex: 1;
+  min-width: 0;
   padding: 4px;
   font-size: 15px;
   color: #0f172a;
@@ -387,6 +398,40 @@ h2 em {
   background: #f1f5f9;
   padding: 4px 10px;
   border-radius: 8px;
+  white-space: nowrap;
+}
+
+.sort-control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 14px;
+  padding: 8px 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  flex: 0 0 auto;
+}
+
+.sort-control span {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #64748b;
+  white-space: nowrap;
+}
+
+.sort-control select {
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font-size: 14px;
+  font-weight: 600;
+  color: #0f172a;
+  cursor: pointer;
+  padding: 6px 4px;
+  font-family: inherit;
 }
 
 .all-jobs {
@@ -1024,5 +1069,27 @@ footer b {
     min-height: 52px !important;
     font-size: 16px !important;
     padding: 14px 20px !important;
+  }
+
+  .careers-controls {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .search {
+    flex: none;
+    width: 100%;
+  }
+  .search input {
+    font-size: 16px;
+  }
+  .sort-control {
+    width: 100%;
+    justify-content: space-between;
+    min-height: 48px;
+  }
+  .sort-control select {
+    flex: 1;
+    text-align: right;
+    font-size: 16px;
   }
 }
