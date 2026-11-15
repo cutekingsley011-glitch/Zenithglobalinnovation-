@@ -493,6 +493,7 @@ export default function App() {
   );
 
   const go = (p: string, ref?: string) => {
+    setSelected(null);
     setPage(p);
     if (ref !== undefined) setTrackingRef(ref);
     setMenu(false);
@@ -506,6 +507,16 @@ export default function App() {
         if (window.location.hash === '#admin') {
           window.location.hash = '';
           setCurrentHash('');
+        }
+        if (window.location.pathname.startsWith('/jobs/')) {
+          const url = new URL(window.location.href);
+          url.pathname = '/';
+          if (p !== 'home') {
+            url.searchParams.set('page', p);
+          } else {
+            url.searchParams.delete('page');
+          }
+          window.history.replaceState({}, '', url.toString());
         }
       } catch {}
     }
@@ -647,10 +658,57 @@ export default function App() {
           <strong style={{ color: '#0f172a', marginBottom: '4px', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
             Corporate & Legal
           </strong>
-          <a onClick={() => go('about')} style={{ color: '#475569', cursor: 'pointer', textDecoration: 'none' }}>About Zenith</a>
-          <a onClick={() => go('careers')} style={{ color: '#475569', cursor: 'pointer', textDecoration: 'none' }}>Open Positions</a>
-          <a onClick={() => go('track')} style={{ color: '#475569', cursor: 'pointer', textDecoration: 'none' }}>Track Application</a>
-          <a onClick={() => go('cookies')} style={{ color: '#2563eb', cursor: 'pointer', fontWeight: 600, textDecoration: 'underline' }}>Cookie Policy & Preferences</a>
+          <a
+            href="/?page=about"
+            onClick={e => {
+              if (!e.metaKey && !e.ctrlKey && !e.shiftKey && !e.altKey) {
+                e.preventDefault();
+                go('about');
+              }
+            }}
+            style={{ color: '#475569', cursor: 'pointer', textDecoration: 'none' }}
+          >
+            About Zenith
+          </a>
+          <a
+            href="/?page=careers"
+            onClick={e => {
+              if (!e.metaKey && !e.ctrlKey && !e.shiftKey && !e.altKey) {
+                e.preventDefault();
+                go('careers');
+              }
+            }}
+            style={{ color: '#475569', cursor: 'pointer', textDecoration: 'none' }}
+          >
+            Open Positions
+          </a>
+          <a
+            href="/?page=track"
+            onClick={e => {
+              if (!e.metaKey && !e.ctrlKey && !e.shiftKey && !e.altKey) {
+                e.preventDefault();
+                go('track');
+              }
+            }}
+            style={{ color: '#475569', cursor: 'pointer', textDecoration: 'none' }}
+          >
+            Track Application
+          </a>
+          <a
+            href="/?page=cookies"
+            onClick={e => {
+              if (!e.metaKey && !e.ctrlKey && !e.shiftKey && !e.altKey) {
+                e.preventDefault();
+                go('cookies');
+              }
+            }}
+            style={{ color: '#2563eb', cursor: 'pointer', fontWeight: 600, textDecoration: 'underline' }}
+          >
+            Cookie Policy & Preferences
+          </a>
+          <a href="/sitemap.xml" style={{ color: '#475569', textDecoration: 'none' }}>
+            Sitemap Directory
+          </a>
         </div>
 
         <div className="footer-contact">
@@ -659,6 +717,33 @@ export default function App() {
           <small>
             Official company contact · General enquiries · Candidate records, complaints & compliance correspondence
           </small>
+        </div>
+
+        {/* Crawlable Live Directory of All 81 Self-Canonical Job URLs for Users & Search Engines */}
+        <div style={{ gridColumn: '1 / -1', borderTop: '1px solid #e2e8f0', paddingTop: '18px' }}>
+          <div style={{ fontSize: '11.5px', fontWeight: 700, color: '#0f172a', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '10px' }}>
+            Active Remote Positions Directory ({jobs.length} Open Roles)
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(210px, 1fr))', gap: '6px 14px' }}>
+            {jobs.map(j => {
+              const slug = j.title.replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-|-$/g, '');
+              return (
+                <a
+                  key={j.id}
+                  href={`/jobs/${slug}`}
+                  onClick={e => {
+                    if (!e.metaKey && !e.ctrlKey && !e.shiftKey && !e.altKey) {
+                      e.preventDefault();
+                      openJob(j);
+                    }
+                  }}
+                  style={{ fontSize: '11.5px', color: '#475569', textDecoration: 'none', lineHeight: 1.4 }}
+                >
+                  {j.title}
+                </a>
+              );
+            })}
+          </div>
         </div>
 
         <div style={{ gridColumn: '1 / -1', borderTop: '1px solid #e2e8f0', paddingTop: '16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px', fontSize: '11.5px', color: '#64748b' }}>
@@ -809,9 +894,19 @@ function Home({ go, open }: { go: (p: string) => void; open: (j: Job) => void })
               Roles built for <em>impact.</em>
             </h2>
           </div>
-          <button className="text-btn" onClick={() => go('careers')}>
+          <a
+            href="/?page=careers"
+            className="text-btn"
+            style={{ textDecoration: 'none' }}
+            onClick={e => {
+              if (!e.metaKey && !e.ctrlKey && !e.shiftKey && !e.altKey) {
+                e.preventDefault();
+                go('careers');
+              }
+            }}
+          >
             View all {jobs.length} roles <ArrowRight size={16} />
-          </button>
+          </a>
         </div>
         <div className="job-grid">
           {jobs.slice(0, 8).map(j => (
@@ -1014,8 +1109,18 @@ function Careers({
 }
 
 function JobCard({ job, open }: { job: Job; open: () => void }) {
+  const slug = job.title.replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-|-$/g, '');
   return (
-    <button className="job-card" onClick={open}>
+    <a
+      href={`/jobs/${slug}`}
+      className="job-card"
+      onClick={e => {
+        if (!e.metaKey && !e.ctrlKey && !e.shiftKey && !e.altKey) {
+          e.preventDefault();
+          open();
+        }
+      }}
+    >
       <BriefcaseBusiness size={22} />
       <div>
         <small>{job.sector}</small>
@@ -1026,7 +1131,7 @@ function JobCard({ job, open }: { job: Job; open: () => void }) {
         <b>{job.pay.annual} / year</b>
       </div>
       <ArrowRight size={18} />
-    </button>
+    </a>
   );
 }
 
