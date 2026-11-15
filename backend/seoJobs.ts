@@ -95,7 +95,10 @@ export function renderJobDetailHtml(job: SeoJobEntry, options?: { isDev?: boolea
       sameAs: 'https://www.zenithglobalinnovation.com.ng',
     },
     jobLocationType: 'TELECOMMUTE',
-    applicantLocationRequirements: job.applicantLocationRequirements,
+    applicantLocationRequirements:
+      ((seoData as any).acceptedCountries && (seoData as any).acceptedCountries.length > 0)
+        ? (seoData as any).acceptedCountries
+        : job.applicantLocationRequirements,
     baseSalary: job.baseSalary,
     directApply: true,
     identifier: {

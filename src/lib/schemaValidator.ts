@@ -336,11 +336,16 @@ export function validateSchemaGraph(rawJsonLd?: string | object): SchemaValidati
       });
     }
 
+    const sharedCountries = (seoData as any)?.acceptedCountries;
     nodesToValidate = listItems.map(li => {
       const matched = catalogByUrl.get(String(li.url || ''));
       if (matched) {
         return {
           ...matched,
+          applicantLocationRequirements:
+            Array.isArray(sharedCountries) && sharedCountries.length > 0
+              ? sharedCountries
+              : matched.applicantLocationRequirements,
           jobLocationType: 'TELECOMMUTE',
           directApply: true,
         };

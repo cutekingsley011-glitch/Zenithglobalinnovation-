@@ -7580,6 +7580,280 @@ var seoJobsData_default = {
         }
       ]
     }
+  ],
+  acceptedCountries: [
+    {
+      "@type": "Country",
+      name: "United States"
+    },
+    {
+      "@type": "Country",
+      name: "United Kingdom"
+    },
+    {
+      "@type": "Country",
+      name: "Canada"
+    },
+    {
+      "@type": "Country",
+      name: "Australia"
+    },
+    {
+      "@type": "Country",
+      name: "Germany"
+    },
+    {
+      "@type": "Country",
+      name: "France"
+    },
+    {
+      "@type": "Country",
+      name: "Switzerland"
+    },
+    {
+      "@type": "Country",
+      name: "Singapore"
+    },
+    {
+      "@type": "Country",
+      name: "United Arab Emirates"
+    },
+    {
+      "@type": "Country",
+      name: "Saudi Arabia"
+    },
+    {
+      "@type": "Country",
+      name: "Qatar"
+    },
+    {
+      "@type": "Country",
+      name: "Kuwait"
+    },
+    {
+      "@type": "Country",
+      name: "Bahrain"
+    },
+    {
+      "@type": "Country",
+      name: "Oman"
+    },
+    {
+      "@type": "Country",
+      name: "Jordan"
+    },
+    {
+      "@type": "Country",
+      name: "Japan"
+    },
+    {
+      "@type": "Country",
+      name: "Netherlands"
+    },
+    {
+      "@type": "Country",
+      name: "Sweden"
+    },
+    {
+      "@type": "Country",
+      name: "Norway"
+    },
+    {
+      "@type": "Country",
+      name: "Denmark"
+    },
+    {
+      "@type": "Country",
+      name: "Finland"
+    },
+    {
+      "@type": "Country",
+      name: "Belgium"
+    },
+    {
+      "@type": "Country",
+      name: "Austria"
+    },
+    {
+      "@type": "Country",
+      name: "New Zealand"
+    },
+    {
+      "@type": "Country",
+      name: "Ireland"
+    },
+    {
+      "@type": "Country",
+      name: "Luxembourg"
+    },
+    {
+      "@type": "Country",
+      name: "Liechtenstein"
+    },
+    {
+      "@type": "Country",
+      name: "Monaco"
+    },
+    {
+      "@type": "Country",
+      name: "Iceland"
+    },
+    {
+      "@type": "Country",
+      name: "Hong Kong"
+    },
+    {
+      "@type": "Country",
+      name: "Cayman Islands"
+    },
+    {
+      "@type": "Country",
+      name: "Bermuda"
+    },
+    {
+      "@type": "Country",
+      name: "Gibraltar"
+    },
+    {
+      "@type": "Country",
+      name: "Jersey"
+    },
+    {
+      "@type": "Country",
+      name: "Guernsey"
+    },
+    {
+      "@type": "Country",
+      name: "Isle of Man"
+    },
+    {
+      "@type": "Country",
+      name: "Israel"
+    },
+    {
+      "@type": "Country",
+      name: "South Korea"
+    },
+    {
+      "@type": "Country",
+      name: "Taiwan"
+    },
+    {
+      "@type": "Country",
+      name: "Italy"
+    },
+    {
+      "@type": "Country",
+      name: "Spain"
+    },
+    {
+      "@type": "Country",
+      name: "Portugal"
+    },
+    {
+      "@type": "Country",
+      name: "Malta"
+    },
+    {
+      "@type": "Country",
+      name: "Cyprus"
+    },
+    {
+      "@type": "Country",
+      name: "Estonia"
+    },
+    {
+      "@type": "Country",
+      name: "Czech Republic"
+    },
+    {
+      "@type": "Country",
+      name: "Poland"
+    },
+    {
+      "@type": "Country",
+      name: "Greece"
+    },
+    {
+      "@type": "Country",
+      name: "Hungary"
+    },
+    {
+      "@type": "Country",
+      name: "Romania"
+    },
+    {
+      "@type": "Country",
+      name: "South Africa"
+    },
+    {
+      "@type": "Country",
+      name: "Nigeria"
+    },
+    {
+      "@type": "Country",
+      name: "Kenya"
+    },
+    {
+      "@type": "Country",
+      name: "Ghana"
+    },
+    {
+      "@type": "Country",
+      name: "Egypt"
+    },
+    {
+      "@type": "Country",
+      name: "Brazil"
+    },
+    {
+      "@type": "Country",
+      name: "Mexico"
+    },
+    {
+      "@type": "Country",
+      name: "Argentina"
+    },
+    {
+      "@type": "Country",
+      name: "Chile"
+    },
+    {
+      "@type": "Country",
+      name: "Colombia"
+    },
+    {
+      "@type": "Country",
+      name: "India"
+    },
+    {
+      "@type": "Country",
+      name: "Pakistan"
+    },
+    {
+      "@type": "Country",
+      name: "Philippines"
+    },
+    {
+      "@type": "Country",
+      name: "Malaysia"
+    },
+    {
+      "@type": "Country",
+      name: "Indonesia"
+    },
+    {
+      "@type": "Country",
+      name: "Thailand"
+    },
+    {
+      "@type": "Country",
+      name: "Vietnam"
+    },
+    {
+      "@type": "Country",
+      name: "Turkey"
+    }
   ]
 };
 
@@ -7590,7 +7864,7 @@ var builtAssets_default = {
     "https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
   ],
   jsSrcs: [
-    "/assets/index-Bz_OESso.js"
+    "/assets/index-4uC8Ihya.js"
   ]
 };
 
@@ -7646,7 +7920,7 @@ function renderJobDetailHtml(job, options) {
       sameAs: "https://www.zenithglobalinnovation.com.ng"
     },
     jobLocationType: "TELECOMMUTE",
-    applicantLocationRequirements: job.applicantLocationRequirements,
+    applicantLocationRequirements: seoJobsData_default.acceptedCountries && seoJobsData_default.acceptedCountries.length > 0 ? seoJobsData_default.acceptedCountries : job.applicantLocationRequirements,
     baseSalary: job.baseSalary,
     directApply: true,
     identifier: {

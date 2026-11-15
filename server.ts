@@ -57,7 +57,7 @@ async function startServer() {
         middlewareMode: true,
         allowedHosts: true as const,
         cors: true,
-        hmr: process.env.DISABLE_HMR === 'true' ? false : { server: httpServer },
+        hmr: process.env.DISABLE_HMR !== 'true',
       },
       appType: 'spa',
     });
