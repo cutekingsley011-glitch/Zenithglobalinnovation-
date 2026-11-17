@@ -134,8 +134,8 @@
         "currency": "USD",
         "value": {
           "@type": "QuantitativeValue",
-          "minValue": 140000,
-          "maxValue": 240000,
+          "minValue": 125000,
+          "maxValue": 285000,
           "unitText": "YEAR"
         }
       },
@@ -195,8 +195,8 @@
         "currency": "USD",
         "value": {
           "@type": "QuantitativeValue",
-          "minValue": 140000,
-          "maxValue": 240000,
+          "minValue": 125000,
+          "maxValue": 285000,
           "unitText": "YEAR"
         }
       },
@@ -256,8 +256,8 @@
         "currency": "USD",
         "value": {
           "@type": "QuantitativeValue",
-          "minValue": 140000,
-          "maxValue": 240000,
+          "minValue": 125000,
+          "maxValue": 285000,
           "unitText": "YEAR"
         }
       },
@@ -317,8 +317,8 @@
         "currency": "USD",
         "value": {
           "@type": "QuantitativeValue",
-          "minValue": 140000,
-          "maxValue": 240000,
+          "minValue": 125000,
+          "maxValue": 285000,
           "unitText": "YEAR"
         }
       },
@@ -378,8 +378,8 @@
         "currency": "USD",
         "value": {
           "@type": "QuantitativeValue",
-          "minValue": 140000,
-          "maxValue": 240000,
+          "minValue": 125000,
+          "maxValue": 285000,
           "unitText": "YEAR"
         }
       },
@@ -439,8 +439,8 @@
         "currency": "USD",
         "value": {
           "@type": "QuantitativeValue",
-          "minValue": 140000,
-          "maxValue": 240000,
+          "minValue": 125000,
+          "maxValue": 285000,
           "unitText": "YEAR"
         }
       },
@@ -500,8 +500,8 @@
         "currency": "USD",
         "value": {
           "@type": "QuantitativeValue",
-          "minValue": 140000,
-          "maxValue": 240000,
+          "minValue": 125000,
+          "maxValue": 285000,
           "unitText": "YEAR"
         }
       },
@@ -561,8 +561,8 @@
         "currency": "USD",
         "value": {
           "@type": "QuantitativeValue",
-          "minValue": 140000,
-          "maxValue": 240000,
+          "minValue": 125000,
+          "maxValue": 285000,
           "unitText": "YEAR"
         }
       },
@@ -622,8 +622,8 @@
         "currency": "USD",
         "value": {
           "@type": "QuantitativeValue",
-          "minValue": 120000,
-          "maxValue": 210000,
+          "minValue": 115000,
+          "maxValue": 225000,
           "unitText": "YEAR"
         }
       },
@@ -683,8 +683,8 @@
         "currency": "USD",
         "value": {
           "@type": "QuantitativeValue",
-          "minValue": 120000,
-          "maxValue": 210000,
+          "minValue": 115000,
+          "maxValue": 225000,
           "unitText": "YEAR"
         }
       },
@@ -744,8 +744,8 @@
         "currency": "USD",
         "value": {
           "@type": "QuantitativeValue",
-          "minValue": 120000,
-          "maxValue": 210000,
+          "minValue": 115000,
+          "maxValue": 225000,
           "unitText": "YEAR"
         }
       },
@@ -805,8 +805,8 @@
         "currency": "USD",
         "value": {
           "@type": "QuantitativeValue",
-          "minValue": 120000,
-          "maxValue": 210000,
+          "minValue": 115000,
+          "maxValue": 225000,
           "unitText": "YEAR"
         }
       },
@@ -866,8 +866,8 @@
         "currency": "USD",
         "value": {
           "@type": "QuantitativeValue",
-          "minValue": 120000,
-          "maxValue": 210000,
+          "minValue": 115000,
+          "maxValue": 225000,
           "unitText": "YEAR"
         }
       },
@@ -927,8 +927,8 @@
         "currency": "USD",
         "value": {
           "@type": "QuantitativeValue",
-          "minValue": 120000,
-          "maxValue": 210000,
+          "minValue": 115000,
+          "maxValue": 225000,
           "unitText": "YEAR"
         }
       },
@@ -988,8 +988,8 @@
         "currency": "USD",
         "value": {
           "@type": "QuantitativeValue",
-          "minValue": 120000,
-          "maxValue": 210000,
+          "minValue": 115000,
+          "maxValue": 225000,
           "unitText": "YEAR"
         }
       },
@@ -1049,8 +1049,8 @@
         "currency": "USD",
         "value": {
           "@type": "QuantitativeValue",
-          "minValue": 120000,
-          "maxValue": 210000,
+          "minValue": 115000,
+          "maxValue": 225000,
           "unitText": "YEAR"
         }
       },
@@ -1110,8 +1110,8 @@
         "currency": "USD",
         "value": {
           "@type": "QuantitativeValue",
-          "minValue": 120000,
-          "maxValue": 210000,
+          "minValue": 115000,
+          "maxValue": 225000,
           "unitText": "YEAR"
         }
       },
@@ -1171,8 +1171,8 @@
         "currency": "USD",
         "value": {
           "@type": "QuantitativeValue",
-          "minValue": 120000,
-          "maxValue": 210000,
+          "minValue": 115000,
+          "maxValue": 225000,
           "unitText": "YEAR"
         }
       },

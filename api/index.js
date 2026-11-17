@@ -2652,8 +2652,8 @@ var seoJobsData_default = {
         currency: "USD",
         value: {
           "@type": "QuantitativeValue",
-          minValue: 14e4,
-          maxValue: 24e4,
+          minValue: 125e3,
+          maxValue: 285e3,
           unitText: "YEAR"
         }
       },
@@ -2713,8 +2713,8 @@ var seoJobsData_default = {
         currency: "USD",
         value: {
           "@type": "QuantitativeValue",
-          minValue: 14e4,
-          maxValue: 24e4,
+          minValue: 125e3,
+          maxValue: 285e3,
           unitText: "YEAR"
         }
       },
@@ -2774,8 +2774,8 @@ var seoJobsData_default = {
         currency: "USD",
         value: {
           "@type": "QuantitativeValue",
-          minValue: 14e4,
-          maxValue: 24e4,
+          minValue: 125e3,
+          maxValue: 285e3,
           unitText: "YEAR"
         }
       },
@@ -2835,8 +2835,8 @@ var seoJobsData_default = {
         currency: "USD",
         value: {
           "@type": "QuantitativeValue",
-          minValue: 14e4,
-          maxValue: 24e4,
+          minValue: 125e3,
+          maxValue: 285e3,
           unitText: "YEAR"
         }
       },
@@ -2896,8 +2896,8 @@ var seoJobsData_default = {
         currency: "USD",
         value: {
           "@type": "QuantitativeValue",
-          minValue: 14e4,
-          maxValue: 24e4,
+          minValue: 125e3,
+          maxValue: 285e3,
           unitText: "YEAR"
         }
       },
@@ -2957,8 +2957,8 @@ var seoJobsData_default = {
         currency: "USD",
         value: {
           "@type": "QuantitativeValue",
-          minValue: 14e4,
-          maxValue: 24e4,
+          minValue: 125e3,
+          maxValue: 285e3,
           unitText: "YEAR"
         }
       },
@@ -3018,8 +3018,8 @@ var seoJobsData_default = {
         currency: "USD",
         value: {
           "@type": "QuantitativeValue",
-          minValue: 14e4,
-          maxValue: 24e4,
+          minValue: 125e3,
+          maxValue: 285e3,
           unitText: "YEAR"
         }
       },
@@ -3079,8 +3079,8 @@ var seoJobsData_default = {
         currency: "USD",
         value: {
           "@type": "QuantitativeValue",
-          minValue: 14e4,
-          maxValue: 24e4,
+          minValue: 125e3,
+          maxValue: 285e3,
           unitText: "YEAR"
         }
       },
@@ -3140,8 +3140,8 @@ var seoJobsData_default = {
         currency: "USD",
         value: {
           "@type": "QuantitativeValue",
-          minValue: 12e4,
-          maxValue: 21e4,
+          minValue: 115e3,
+          maxValue: 225e3,
           unitText: "YEAR"
         }
       },
@@ -3201,8 +3201,8 @@ var seoJobsData_default = {
         currency: "USD",
         value: {
           "@type": "QuantitativeValue",
-          minValue: 12e4,
-          maxValue: 21e4,
+          minValue: 115e3,
+          maxValue: 225e3,
           unitText: "YEAR"
         }
       },
@@ -3262,8 +3262,8 @@ var seoJobsData_default = {
         currency: "USD",
         value: {
           "@type": "QuantitativeValue",
-          minValue: 12e4,
-          maxValue: 21e4,
+          minValue: 115e3,
+          maxValue: 225e3,
           unitText: "YEAR"
         }
       },
@@ -3323,8 +3323,8 @@ var seoJobsData_default = {
         currency: "USD",
         value: {
           "@type": "QuantitativeValue",
-          minValue: 12e4,
-          maxValue: 21e4,
+          minValue: 115e3,
+          maxValue: 225e3,
           unitText: "YEAR"
         }
       },
@@ -3384,8 +3384,8 @@ var seoJobsData_default = {
         currency: "USD",
         value: {
           "@type": "QuantitativeValue",
-          minValue: 12e4,
-          maxValue: 21e4,
+          minValue: 115e3,
+          maxValue: 225e3,
           unitText: "YEAR"
         }
       },
@@ -3445,8 +3445,8 @@ var seoJobsData_default = {
         currency: "USD",
         value: {
           "@type": "QuantitativeValue",
-          minValue: 12e4,
-          maxValue: 21e4,
+          minValue: 115e3,
+          maxValue: 225e3,
           unitText: "YEAR"
         }
       },
@@ -3506,8 +3506,8 @@ var seoJobsData_default = {
         currency: "USD",
         value: {
           "@type": "QuantitativeValue",
-          minValue: 12e4,
-          maxValue: 21e4,
+          minValue: 115e3,
+          maxValue: 225e3,
           unitText: "YEAR"
         }
       },
@@ -3567,8 +3567,8 @@ var seoJobsData_default = {
         currency: "USD",
         value: {
           "@type": "QuantitativeValue",
-          minValue: 12e4,
-          maxValue: 21e4,
+          minValue: 115e3,
+          maxValue: 225e3,
           unitText: "YEAR"
         }
       },
@@ -3628,8 +3628,8 @@ var seoJobsData_default = {
         currency: "USD",
         value: {
           "@type": "QuantitativeValue",
-          minValue: 12e4,
-          maxValue: 21e4,
+          minValue: 115e3,
+          maxValue: 225e3,
           unitText: "YEAR"
         }
       },
@@ -3689,8 +3689,8 @@ var seoJobsData_default = {
         currency: "USD",
         value: {
           "@type": "QuantitativeValue",
-          minValue: 12e4,
-          maxValue: 21e4,
+          minValue: 115e3,
+          maxValue: 225e3,
           unitText: "YEAR"
         }
       },
@@ -7864,7 +7864,7 @@ var builtAssets_default = {
     "https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
   ],
   jsSrcs: [
-    "/assets/index-4uC8Ihya.js"
+    "/assets/index-B1dNdYvp.js"
   ]
 };
 
