@@ -5,6 +5,8 @@ export interface SeoJobEntry {
   slug: string;
   title: string;
   url: string;
+  focus?: string;
+  metaDescription?: string;
   description: string;
   datePosted: string;
   validThrough: string;
@@ -77,7 +79,9 @@ export function renderJobDetailHtml(job: SeoJobEntry, options?: { isDev?: boolea
   const empTypeLabel = job.employmentType === 'CONTRACTOR' ? 'Contract · 100% Remote' : 'Full-time · 100% Remote';
 
   const pageTitle = `${job.title} – Remote (${salaryFormatted}) | Zenith Global Innovation`;
-  const metaDesc = `Apply directly for ${job.title} at Zenith Global Innovation (${salaryFormatted}, ${empTypeLabel}). Google Cloud Partner Verified, Meta Verified & BBB A+ Accredited.`;
+  const metaDesc =
+    job.metaDescription ||
+    `Remote ${job.title} (${salaryFormatted}, ${empTypeLabel}) focused on ${job.focus || 'high-impact global delivery'}. Apply directly at Zenith Global Innovation.`;
 
   const jobPostingNode = {
     '@type': 'JobPosting',
