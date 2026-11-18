@@ -423,29 +423,167 @@ export default function App() {
     );
   };
 
-  // Detect URL parameters or /jobs/:slug path on load (?job=... and ?track=... and ?source=...)
+  const SITE_ORIGIN = 'https://www.zenithglobalinnovation.com.ng';
+  const DEFAULT_TITLE = 'Zenith Global Innovation – Verified Global Executive & Remote Careers';
+  const DEFAULT_DESCRIPTION =
+    'Zenith Global Innovation: Google Cloud Partner Verified Job Board & Meta Verified Business. BBB Accredited Business (A+ Rating). 256-bit SSL encrypted candidate evaluation and transparent remote executive salaries ($65k–$285k/yr).';
+
+  const buildJobMetaDescription = (job: Job): string => {
+    const { min, max } = parseSalaryBounds(job.pay.annual);
+    const salaryRange =
+      min && max ? `$${min.toLocaleString()}–$${max.toLocaleString()}/yr` : `${job.pay.annual}/yr`;
+    const roleFocus =
+      roleDetails[job.title]?.focus || `${job.sector.toLowerCase()} strategy, execution and remote leadership`;
+
+    const full = `Remote ${job.title} (${salaryRange}, ${job.type}) focused on ${roleFocus}. Apply directly at Zenith Global Innovation.`;
+    if (full.length <= 160) return full;
+
+    const mid = `Remote ${job.title} (${salaryRange}, ${job.type}) focused on ${roleFocus}. Apply directly.`;
+    if (mid.length <= 160) return mid;
+
+    const compact = `Remote ${job.title} (${salaryRange}) focused on ${roleFocus}. Apply directly.`;
+    if (compact.length <= 160) return compact;
+
+    const parts = roleFocus.split(/,\s*|\s+and\s+/).map(s => s.trim()).filter(Boolean);
+    for (let count = parts.length - 1; count >= 2; count--) {
+      const joined = `${parts.slice(0, count - 1).join(', ')} and ${parts[count - 1]}`;
+      const candidate = `Remote ${job.title} (${salaryRange}) focused on ${joined}. Apply directly.`;
+      if (candidate.length <= 160) return candidate;
+    }
+    const fallback = `Remote ${job.title} (${salaryRange}) focused on ${parts[0] || roleFocus}. Apply directly.`;
+    return fallback.length <= 160 ? fallback : `${fallback.slice(0, 157).replace(/\s+\S*$/, '')}...`;
+  };
+
+  const upsertMetaTag = (attr: 'name' | 'property', key: string, content: string) => {
+    if (typeof document === 'undefined') return;
+    let el = document.querySelector(`meta[${attr}="${key}"]`) as HTMLMetaElement | null;
+    if (!el) {
+      el = document.createElement('meta');
+      el.setAttribute(attr, key);
+      document.head.appendChild(el);
+    }
+    el.setAttribute('content', content);
+  };
+
+  const upsertCanonicalLink = (href: string) => {
+    if (typeof document === 'undefined') return;
+    let link = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+    if (!link) {
+      link = document.createElement('link');
+      link.setAttribute('rel', 'canonical');
+      document.head.appendChild(link);
+    }
+    link.setAttribute('href', href);
+  };
+
+  // Detect URL parameters or /jobs/:slug path on initial load & browser back/forward navigation
+  useEffect(() => {
+    const syncFromUrl = () => {
+      try {
+        const p = new URLSearchParams(window.location.search);
+        const pathMatch = window.location.pathname.match(/^\/jobs\/([^/?#]+)/i);
+        const jobParam = p.get('job') || (pathMatch ? decodeURIComponent(pathMatch[1]) : null);
+        if (jobParam) {
+          const found = findJobMatch(jobParam);
+          setSelected(found || null);
+        } else {
+          setSelected(null);
+        }
+        const trackParam = p.get('track') || p.get('reference');
+        if (trackParam) {
+          setPage('track');
+          setTrackingRef(trackParam.trim().toUpperCase());
+        }
+        const pageParam = p.get('page');
+        if (pageParam && ['home', 'careers', 'about', 'services', 'seekers', 'clients', 'track', 'blog', 'contact', 'cookies'].includes(pageParam)) {
+          setPage(pageParam);
+        }
+      } catch {}
+    };
+
+    syncFromUrl();
+    window.addEventListener('popstate', syncFromUrl);
+    return () => window.removeEventListener('popstate', syncFromUrl);
+  }, []);
+
+  // Dynamically update document <title>, <meta name="description">, <link rel="canonical">, and OpenGraph/Twitter tags
   useEffect(() => {
     try {
-      const p = new URLSearchParams(window.location.search);
-      const pathMatch = window.location.pathname.match(/^\/jobs\/([^/?#]+)/i);
-      const jobParam = p.get('job') || (pathMatch ? decodeURIComponent(pathMatch[1]) : null);
-      if (jobParam) {
-        const found = findJobMatch(jobParam);
-        if (found) {
-          setSelected(found);
-        }
+      if (selected) {
+        const slug = selected.title.replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-|-$/g, '');
+        const { min, max } = parseSalaryBounds(selected.pay.annual);
+        const salaryFormatted =
+          min && max
+            ? `$${min.toLocaleString()}–$${max.toLocaleString()} USD/yr`
+            : `${selected.pay.annual} USD/yr`;
+        const jobTitle = `${selected.title} – Remote (${salaryFormatted}) | Zenith Global Innovation`;
+        const jobDescription = buildJobMetaDescription(selected);
+        const jobCanonical = `${SITE_ORIGIN}/jobs/${encodeURIComponent(slug)}`;
+
+        document.title = jobTitle;
+        upsertMetaTag('name', 'description', jobDescription);
+        upsertCanonicalLink(jobCanonical);
+        upsertMetaTag('property', 'og:title', jobTitle);
+        upsertMetaTag('property', 'og:description', jobDescription);
+        upsertMetaTag('property', 'og:url', jobCanonical);
+        upsertMetaTag('name', 'twitter:title', jobTitle);
+        upsertMetaTag('name', 'twitter:description', jobDescription);
+        return;
       }
-      const trackParam = p.get('track') || p.get('reference');
-      if (trackParam) {
-        setPage('track');
-        setTrackingRef(trackParam.trim().toUpperCase());
-      }
-      const pageParam = p.get('page');
-      if (pageParam && ['home', 'careers', 'about', 'services', 'seekers', 'clients', 'track', 'contact'].includes(pageParam)) {
-        setPage(pageParam);
-      }
+
+      const pageMeta: Record<string, { title: string; description: string }> = {
+        home: { title: DEFAULT_TITLE, description: DEFAULT_DESCRIPTION },
+        careers: {
+          title: `Open Remote Careers (${jobs.length} Verified Roles) | Zenith Global Innovation`,
+          description: `Browse ${jobs.length} verified 100% remote executive, engineering, finance, marketing and operations careers ($65,000–$285,000/yr) with direct application at Zenith Global Innovation.`,
+        },
+        about: {
+          title: 'About Zenith Global Innovation – Global Executive & Remote Recruitment',
+          description: 'Learn about Zenith Global Innovation, established in 2019 with hubs in New York, London, Singapore and Toronto connecting vetted remote talent with global employers.',
+        },
+        services: {
+          title: 'Global Staffing & Executive Search Services | Zenith Global Innovation',
+          description: 'Dedicated remote staffing, executive search, technical hiring and international workforce solutions backed by thorough candidate vetting.',
+        },
+        seekers: {
+          title: 'For Job Seekers – Transparent Remote Hiring Process | Zenith Global Innovation',
+          description: 'Explore our candidate-first remote hiring process, transparent compensation bands, application reference tracking and 3–5 business day review timeline.',
+        },
+        clients: {
+          title: 'For Employers & Enterprise Clients | Zenith Global Innovation',
+          description: 'Partner with Zenith Global Innovation to hire thoroughly vetted remote executives, engineers, analysts and specialists across 68+ countries.',
+        },
+        track: {
+          title: 'Track Your Application Status | Zenith Global Innovation',
+          description: 'Check real-time recruitment stage updates using your Zenith Global Innovation candidate reference code (ZGI-2026-XXXXXX).',
+        },
+        blog: {
+          title: 'Remote Leadership & Hiring Insights | Zenith Global Innovation',
+          description: 'Guides and insights on remote executive careers, international hiring benchmarks and distributed team strategy from Zenith Global Innovation.',
+        },
+        contact: {
+          title: 'Contact Zenith Global Innovation – Global Hubs & Enquiries',
+          description: 'Contact Zenith Global Innovation offices in New York, London, Singapore and Toronto for client hiring partnerships or candidate support.',
+        },
+        cookies: {
+          title: 'Cookie Policy & Privacy Preferences | Zenith Global Innovation',
+          description: 'Manage your privacy preferences and review Zenith Global Innovation cookie and candidate data protection policies.',
+        },
+      };
+
+      const activeMeta = pageMeta[page] || pageMeta.home;
+      const homeCanonical = `${SITE_ORIGIN}/`;
+
+      document.title = activeMeta.title;
+      upsertMetaTag('name', 'description', activeMeta.description);
+      upsertCanonicalLink(homeCanonical);
+      upsertMetaTag('property', 'og:title', activeMeta.title);
+      upsertMetaTag('property', 'og:description', activeMeta.description);
+      upsertMetaTag('property', 'og:url', homeCanonical);
+      upsertMetaTag('name', 'twitter:title', activeMeta.title);
+      upsertMetaTag('name', 'twitter:description', activeMeta.description);
     } catch {}
-  }, []);
+  }, [selected, page]);
 
   const openJob = (job: Job) => {
     setSelected(job);
@@ -457,7 +595,7 @@ export default function App() {
       if (source && source !== 'Direct') {
         url.searchParams.set('source', source);
       }
-      window.history.replaceState({}, '', url.toString());
+      window.history.pushState({ jobSlug: slug }, '', url.toString());
     } catch {}
   };
 
@@ -467,7 +605,12 @@ export default function App() {
       const url = new URL(window.location.href);
       url.pathname = '/';
       url.searchParams.delete('job');
-      window.history.replaceState({}, '', url.toString());
+      if (page !== 'home') {
+        url.searchParams.set('page', page);
+      } else {
+        url.searchParams.delete('page');
+      }
+      window.history.pushState({ page }, '', url.toString());
     } catch {}
   };
 

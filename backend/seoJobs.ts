@@ -5,6 +5,8 @@ export interface SeoJobEntry {
   slug: string;
   title: string;
   url: string;
+  focus?: string;
+  metaDescription?: string;
   description: string;
   datePosted: string;
   validThrough: string;
@@ -77,7 +79,21 @@ export function renderJobDetailHtml(job: SeoJobEntry, options?: { isDev?: boolea
   const empTypeLabel = job.employmentType === 'CONTRACTOR' ? 'Contract · 100% Remote' : 'Full-time · 100% Remote';
 
   const pageTitle = `${job.title} – Remote (${salaryFormatted}) | Zenith Global Innovation`;
-  const metaDesc = `Apply directly for ${job.title} at Zenith Global Innovation (${salaryFormatted}, ${empTypeLabel}). Google Cloud Partner Verified, Meta Verified & BBB A+ Accredited.`;
+  const metaDesc =
+    job.metaDescription ||
+    `Remote ${job.title} (${salaryFormatted}, ${empTypeLabel}) focused on ${job.focus || 'high-impact global delivery'}. Apply directly at Zenith Global Innovation.`;
+
+  const jobIndex = allJobs.findIndex(j => j.slug === job.slug);
+  const relatedJobs: SeoJobEntry[] = [];
+  if (allJobs.length > 1) {
+    const start = jobIndex >= 0 ? jobIndex : 0;
+    for (let offset = 1; offset <= 8 && relatedJobs.length < 8; offset++) {
+      const candidate = allJobs[(start + offset) % allJobs.length];
+      if (candidate && candidate.slug !== job.slug) {
+        relatedJobs.push(candidate);
+      }
+    }
+  }
 
   const jobPostingNode = {
     '@type': 'JobPosting',
@@ -220,6 +236,18 @@ export function renderJobDetailHtml(job: SeoJobEntry, options?: { isDev?: boolea
             Offices: New York (245 West 29th Street, 1350 Avenue of the Americas, 400 Park Avenue South) · London (82 Great Eastern Street, 152 City Road) · Singapore (10 Marina Boulevard, 1 Raffles Place) · Toronto (88 Queen's Quay West, 199 Bay Street)
           </p>
         </section>
+
+        ${relatedJobs.length > 0 ? `<nav aria-label="More open remote positions" style="margin-top: 28px; padding-top: 20px; border-top: 1px solid #e2e8f0;">
+          <h2 style="font-size: 15px; margin: 0 0 12px; color: #0f172a;">More Open Remote Positions</h2>
+          <ul style="list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 8px 16px;">
+            ${relatedJobs
+              .map(
+                rj =>
+                  `<li><a href="/jobs/${escapeHtml(rj.slug)}" style="color: #2563eb; text-decoration: none; font-size: 13.5px; font-weight: 600;">${escapeHtml(rj.title)}</a></li>`
+              )
+              .join('\n            ')}
+          </ul>
+        </nav>` : ''}
       </main>
     </div>
     ${jsTags}
