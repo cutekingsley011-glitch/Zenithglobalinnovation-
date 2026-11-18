@@ -719,33 +719,6 @@ export default function App() {
           </small>
         </div>
 
-        {/* Crawlable Live Directory of All 81 Self-Canonical Job URLs for Users & Search Engines */}
-        <div style={{ gridColumn: '1 / -1', borderTop: '1px solid #e2e8f0', paddingTop: '18px' }}>
-          <div style={{ fontSize: '11.5px', fontWeight: 700, color: '#0f172a', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '10px' }}>
-            Active Remote Positions Directory ({jobs.length} Open Roles)
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(210px, 1fr))', gap: '6px 14px' }}>
-            {jobs.map(j => {
-              const slug = j.title.replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-|-$/g, '');
-              return (
-                <a
-                  key={j.id}
-                  href={`/jobs/${slug}`}
-                  onClick={e => {
-                    if (!e.metaKey && !e.ctrlKey && !e.shiftKey && !e.altKey) {
-                      e.preventDefault();
-                      openJob(j);
-                    }
-                  }}
-                  style={{ fontSize: '11.5px', color: '#475569', textDecoration: 'none', lineHeight: 1.4 }}
-                >
-                  {j.title}
-                </a>
-              );
-            })}
-          </div>
-        </div>
-
         <div style={{ gridColumn: '1 / -1', borderTop: '1px solid #e2e8f0', paddingTop: '16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px', fontSize: '11.5px', color: '#64748b' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
             <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', background: '#eff6ff', color: '#1e40af', padding: '3px 8px', borderRadius: '6px', fontWeight: 600 }}>
