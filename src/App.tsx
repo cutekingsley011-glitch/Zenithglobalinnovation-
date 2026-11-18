@@ -1,7 +1,8 @@
-import React, { useMemo, useState, useEffect } from 'react';
+import React, { useMemo, useState, useEffect, Suspense } from 'react';
 import { api } from './lib/api';
-import AdminDashboard from './AdminDashboard';
 import { ErrorBoundary } from './components/ErrorBoundary';
+
+const AdminDashboard = React.lazy(() => import('./AdminDashboard'));
 import {
   ArrowRight,
   BriefcaseBusiness,
@@ -424,9 +425,109 @@ export default function App() {
   };
 
   const SITE_ORIGIN = 'https://www.zenithglobalinnovation.com.ng';
+  const SITE_LOGO_URL = `${SITE_ORIGIN}/logo.png`;
+  const SITE_OG_IMAGE = `${SITE_ORIGIN}/og-image.jpg`;
   const DEFAULT_TITLE = 'Zenith Global Innovation – Verified Global Executive & Remote Careers';
   const DEFAULT_DESCRIPTION =
     'Zenith Global Innovation: Google Cloud Partner Verified Job Board & Meta Verified Business. BBB Accredited Business (A+ Rating). 256-bit SSL encrypted candidate evaluation and transparent remote executive salaries ($65k–$285k/yr).';
+
+  const escapeSchemaHtml = (text: string) =>
+    String(text || '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+
+  const buildJobPostingJsonLd = (job: Job) => {
+    const slug = job.title.replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-|-$/g, '');
+    const canonicalUrl = `${SITE_ORIGIN}/jobs/${encodeURIComponent(slug)}`;
+    const { min, max } = parseSalaryBounds(job.pay.annual);
+    const detail = roleDetails[job.title];
+
+    const descriptionHtml = detail
+      ? [
+          `<p>${escapeSchemaHtml(detail.overview)}</p>`,
+          `<h3>Key Responsibilities</h3><ul>${detail.responsibilities
+            .map(item => `<li>${escapeSchemaHtml(item)}</li>`)
+            .join('')}</ul>`,
+          `<h3>Qualifications</h3><ul>${detail.qualifications
+            .map(item => `<li>${escapeSchemaHtml(item)}</li>`)
+            .join('')}</ul>`,
+          `<p>${escapeSchemaHtml(detail.success)}</p>`,
+        ].join('')
+      : `<p>${escapeSchemaHtml(job.title)} is a 100% remote position at Zenith Global Innovation.</p>`;
+
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'JobPosting',
+      '@id': `${canonicalUrl}#jobposting`,
+      title: job.title,
+      url: canonicalUrl,
+      description: descriptionHtml,
+      datePosted: `${job.postedDate}T08:00:00Z`,
+      validThrough: '2027-06-30T23:59:59Z',
+      employmentType: job.type === 'Contract' ? 'CONTRACTOR' : 'FULL_TIME',
+      hiringOrganization: {
+        '@type': 'Organization',
+        '@id': `${SITE_ORIGIN}/#organization`,
+        name: 'Zenith Global Innovation',
+        sameAs: SITE_ORIGIN,
+        logo: SITE_LOGO_URL,
+      },
+      jobLocationType: 'TELECOMMUTE',
+      applicantLocationRequirements: countries
+        .filter(c => c !== 'Other')
+        .map(name => ({ '@type': 'Country', name })),
+      baseSalary: {
+        '@type': 'MonetaryAmount',
+        currency: 'USD',
+        value: {
+          '@type': 'QuantitativeValue',
+          minValue: min || 65000,
+          maxValue: max || 150000,
+          unitText: 'YEAR',
+        },
+      },
+      directApply: true,
+      identifier: {
+        '@type': 'PropertyValue',
+        name: 'Zenith Global Innovation',
+        value: slug,
+      },
+    };
+  };
+
+  const syncDynamicJobJsonLd = (job: Job | null) => {
+    if (typeof document === 'undefined') return;
+    const ssrScript = document.getElementById('zenith-ssr-job-jsonld');
+    let dynScript = document.getElementById('zenith-dynamic-job-jsonld') as HTMLScriptElement | null;
+
+    if (!job) {
+      if (dynScript) dynScript.remove();
+      if (ssrScript) ssrScript.remove();
+      return;
+    }
+
+    const slug = job.title.replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-|-$/g, '');
+    // Avoid emitting duplicate JobPosting JSON-LD if SSR already injected this exact job
+    if (ssrScript && ssrScript.getAttribute('data-job-slug') === slug) {
+      if (dynScript) dynScript.remove();
+      return;
+    }
+
+    // If navigated SPA-style away from an initial SSR job page to another role, clear stale SSR script
+    if (ssrScript) {
+      ssrScript.remove();
+    }
+
+    if (!dynScript) {
+      dynScript = document.createElement('script');
+      dynScript.id = 'zenith-dynamic-job-jsonld';
+      dynScript.type = 'application/ld+json';
+      document.head.appendChild(dynScript);
+    }
+    dynScript.setAttribute('data-job-slug', slug);
+    dynScript.textContent = JSON.stringify(buildJobPostingJsonLd(job), null, 2);
+  };
 
   const buildJobMetaDescription = (job: Job): string => {
     const { min, max } = parseSalaryBounds(job.pay.annual);
@@ -495,7 +596,10 @@ export default function App() {
           setTrackingRef(trackParam.trim().toUpperCase());
         }
         const pageParam = p.get('page');
-        if (pageParam && ['home', 'careers', 'about', 'services', 'seekers', 'clients', 'track', 'blog', 'contact', 'cookies'].includes(pageParam)) {
+        if (
+          pageParam &&
+          ['home', 'careers', 'about', 'services', 'seekers', 'clients', 'track', 'blog', 'contact', 'cookies', 'privacy', 'terms'].includes(pageParam)
+        ) {
           setPage(pageParam);
         }
       } catch {}
@@ -506,7 +610,7 @@ export default function App() {
     return () => window.removeEventListener('popstate', syncFromUrl);
   }, []);
 
-  // Dynamically update invisible <head> tags (<title>, <meta name="description">, <link rel="canonical">, OG/Twitter)
+  // Dynamically update invisible <head> tags (<title>, <meta name="description">, <link rel="canonical">, OG/Twitter, and JobPosting JSON-LD)
   useEffect(() => {
     try {
       if (selected) {
@@ -526,8 +630,12 @@ export default function App() {
         upsertMetaTag('property', 'og:title', jobTitle);
         upsertMetaTag('property', 'og:description', jobDescription);
         upsertMetaTag('property', 'og:url', jobCanonical);
+        upsertMetaTag('property', 'og:image', SITE_OG_IMAGE);
+        upsertMetaTag('property', 'og:image:alt', `${selected.title} – Zenith Global Innovation`);
         upsertMetaTag('name', 'twitter:title', jobTitle);
         upsertMetaTag('name', 'twitter:description', jobDescription);
+        upsertMetaTag('name', 'twitter:image', SITE_OG_IMAGE);
+        syncDynamicJobJsonLd(selected);
         return;
       }
 
@@ -569,6 +677,14 @@ export default function App() {
           title: 'Cookie Policy & Privacy Preferences | Zenith Global Innovation',
           description: 'Manage your privacy preferences and review Zenith Global Innovation cookie and candidate data protection policies.',
         },
+        privacy: {
+          title: 'Privacy Policy – Candidate & Corporate Data Protection | Zenith Global Innovation',
+          description: 'Read how Zenith Global Innovation collects, encrypts, protects and processes candidate resumes, application records and employer inquiries.',
+        },
+        terms: {
+          title: 'Terms of Service & Recruitment Portal Agreement | Zenith Global Innovation',
+          description: 'Review the Terms of Service governing use of the Zenith Global Innovation remote careers portal, candidate submissions and employer partnerships.',
+        },
       };
 
       const activeMeta = pageMeta[page] || pageMeta.home;
@@ -580,8 +696,12 @@ export default function App() {
       upsertMetaTag('property', 'og:title', activeMeta.title);
       upsertMetaTag('property', 'og:description', activeMeta.description);
       upsertMetaTag('property', 'og:url', homeCanonical);
+      upsertMetaTag('property', 'og:image', SITE_OG_IMAGE);
+      upsertMetaTag('property', 'og:image:alt', 'Zenith Global Innovation – Verified Global Executive & Remote Careers');
       upsertMetaTag('name', 'twitter:title', activeMeta.title);
       upsertMetaTag('name', 'twitter:description', activeMeta.description);
+      upsertMetaTag('name', 'twitter:image', SITE_OG_IMAGE);
+      syncDynamicJobJsonLd(null);
     } catch {}
   }, [selected, page]);
 
@@ -673,7 +793,30 @@ export default function App() {
   if (isAdminView) {
     return (
       <ErrorBoundary onReset={() => go('home')}>
-        <AdminDashboard onExit={() => go('home')} />
+        <Suspense
+          fallback={
+            <div
+              style={{
+                minHeight: '100vh',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '14px',
+                background: '#f8fafc',
+                color: '#10243e',
+                fontFamily: 'inherit',
+              }}
+            >
+              <img src="/logo.png" alt="Zenith Global Innovation" style={{ height: '38px', width: 'auto' }} />
+              <div style={{ fontSize: '14px', fontWeight: 600, color: '#475569' }}>
+                Loading Management Portal...
+              </div>
+            </div>
+          }
+        >
+          <AdminDashboard onExit={() => go('home')} />
+        </Suspense>
       </ErrorBoundary>
     );
   }
@@ -681,12 +824,8 @@ export default function App() {
   return (
     <div className="site">
       <header className="nav">
-        <button className="brand" onClick={() => go('home')}>
-          <b>Z</b>
-          <span>
-            ZENITH GLOBAL
-            <small>INNOVATION</small>
-          </span>
+        <button className="brand" onClick={() => go('home')} aria-label="Zenith Global Innovation Home">
+          <img src="/logo.png" alt="Zenith Global Innovation" className="brand-logo" />
         </button>
 
         <button className="menu-btn" onClick={() => setMenu(!menu)} aria-label="Toggle navigation">
@@ -731,6 +870,8 @@ export default function App() {
       {page === 'careers' && <Careers search={search} setSearch={setSearch} open={openJob} />}
       {page === 'about' && <About go={go} />}
       {page === 'cookies' && <CookiePolicy go={go} />}
+      {page === 'privacy' && <PrivacyPolicy go={go} />}
+      {page === 'terms' && <TermsOfService go={go} />}
       {page === 'services' && (
         <Services go={go} />
       )}
@@ -771,7 +912,7 @@ export default function App() {
 
       <footer>
         <div style={{ maxWidth: '360px' }}>
-          <b>ZENITH GLOBAL INNOVATION</b>
+          <img src="/logo.png" alt="Zenith Global Innovation" className="footer-logo" />
           <span>Connecting Talent Across Continents · Established 2019</span>
           <div style={{ marginTop: '10px', fontSize: '11px', color: '#64748b', lineHeight: 1.5 }}>
             Headquarters: New York, NY · International operations: London, Singapore, Toronto
@@ -836,6 +977,30 @@ export default function App() {
             style={{ color: '#475569', cursor: 'pointer', textDecoration: 'none' }}
           >
             Track Application
+          </a>
+          <a
+            href="/?page=privacy"
+            onClick={e => {
+              if (!e.metaKey && !e.ctrlKey && !e.shiftKey && !e.altKey) {
+                e.preventDefault();
+                go('privacy');
+              }
+            }}
+            style={{ color: '#475569', cursor: 'pointer', textDecoration: 'none' }}
+          >
+            Privacy Policy
+          </a>
+          <a
+            href="/?page=terms"
+            onClick={e => {
+              if (!e.metaKey && !e.ctrlKey && !e.shiftKey && !e.altKey) {
+                e.preventDefault();
+                go('terms');
+              }
+            }}
+            style={{ color: '#475569', cursor: 'pointer', textDecoration: 'none' }}
+          >
+            Terms of Service
           </a>
           <a
             href="/?page=cookies"
@@ -1081,12 +1246,28 @@ function Careers({
   const [alertCountry, setAlertCountry] = useState('Any country');
   const [alertCategory, setAlertCategory] = useState('All roles');
   const [sortBy, setSortBy] = useState<'newest' | 'highest-salary' | 'alphabetical'>('newest');
+  const [selectedSector, setSelectedSector] = useState<string>('all');
+  const [selectedType, setSelectedType] = useState<'all' | 'Full-time' | 'Contract'>('all');
+
+  const fullTimeCount = useMemo(() => jobs.filter(j => j.type === 'Full-time').length, []);
+  const contractCount = useMemo(() => jobs.filter(j => j.type === 'Contract').length, []);
+
+  const hasActiveFilters = search.trim() !== '' || selectedSector !== 'all' || selectedType !== 'all';
+
+  const resetFilters = () => {
+    setSearch('');
+    setSelectedSector('all');
+    setSelectedType('all');
+  };
 
   const filtered = useMemo(() => {
     const q = search.trim().toLowerCase();
-    const matched = jobs.filter(j =>
-      !q || `${j.title} ${j.sector} ${j.location}`.toLowerCase().includes(q)
-    );
+    const matched = jobs.filter(j => {
+      if (selectedSector !== 'all' && j.sector !== selectedSector) return false;
+      if (selectedType !== 'all' && j.type !== selectedType) return false;
+      if (!q) return true;
+      return `${j.title} ${j.sector} ${j.location} ${j.type}`.toLowerCase().includes(q);
+    });
     return [...matched].sort((a, b) => {
       if (sortBy === 'highest-salary') {
         const payA = parseSalaryBounds(a.pay.annual);
@@ -1103,7 +1284,7 @@ function Careers({
       if (dateCmp !== 0) return dateCmp;
       return a.title.localeCompare(b.title);
     });
-  }, [search, sortBy]);
+  }, [search, selectedSector, selectedType, sortBy]);
 
   async function subscribe(e: React.FormEvent) {
     e.preventDefault();
@@ -1145,21 +1326,60 @@ function Careers({
               onChange={e => setSearch(e.target.value)}
               placeholder="Search a role, sector or keyword..."
             />
-            <span>{filtered.length} positions</span>
+            <span>
+              {hasActiveFilters ? `${filtered.length} of ${jobs.length}` : `${filtered.length} positions`}
+            </span>
           </div>
 
-          <label className="sort-control">
-            <span>Sort by</span>
-            <select
-              aria-label="Sort open positions"
-              value={sortBy}
-              onChange={e => setSortBy(e.target.value as 'newest' | 'highest-salary' | 'alphabetical')}
-            >
-              <option value="newest">Newest Date Posted</option>
-              <option value="highest-salary">Highest Salary</option>
-              <option value="alphabetical">Alphabetical</option>
-            </select>
-          </label>
+          <div className="careers-filter-row">
+            <label className="sort-control">
+              <span>Sector</span>
+              <select
+                aria-label="Filter by department or sector"
+                value={selectedSector}
+                onChange={e => setSelectedSector(e.target.value)}
+              >
+                <option value="all">All Sectors ({jobs.length})</option>
+                {Object.entries(groups).map(([sectorName, roles]) => (
+                  <option key={sectorName} value={sectorName}>
+                    {sectorName} ({roles.length})
+                  </option>
+                ))}
+              </select>
+            </label>
+
+            <label className="sort-control">
+              <span>Type</span>
+              <select
+                aria-label="Filter by employment type"
+                value={selectedType}
+                onChange={e => setSelectedType(e.target.value as 'all' | 'Full-time' | 'Contract')}
+              >
+                <option value="all">All Types ({jobs.length})</option>
+                <option value="Full-time">Full-time ({fullTimeCount})</option>
+                <option value="Contract">Contract ({contractCount})</option>
+              </select>
+            </label>
+
+            <label className="sort-control">
+              <span>Sort by</span>
+              <select
+                aria-label="Sort open positions"
+                value={sortBy}
+                onChange={e => setSortBy(e.target.value as 'newest' | 'highest-salary' | 'alphabetical')}
+              >
+                <option value="newest">Newest Date Posted</option>
+                <option value="highest-salary">Highest Salary</option>
+                <option value="alphabetical">Alphabetical</option>
+              </select>
+            </label>
+
+            {hasActiveFilters && (
+              <button type="button" onClick={resetFilters} className="filter-reset-btn">
+                <X size={14} /> Reset Filters
+              </button>
+            )}
+          </div>
         </div>
 
         <div className="all-jobs">
@@ -1168,13 +1388,15 @@ function Careers({
           ))}
           {filtered.length === 0 && (
             <div style={{ textAlign: 'center', padding: '60px 20px', color: '#64748b' }}>
-              <p style={{ fontSize: '16px', margin: 0 }}>No positions match "{search}". Try searching for another keyword or sector.</p>
+              <p style={{ fontSize: '16px', margin: 0 }}>
+                No positions match your active search or filters. Try selecting another sector, employment type, or keyword.
+              </p>
               <button
-                onClick={() => setSearch('')}
+                onClick={resetFilters}
                 className="btn primary"
                 style={{ marginTop: '16px' }}
               >
-                Clear Search
+                Reset All Filters
               </button>
             </div>
           )}
@@ -2547,8 +2769,212 @@ function CookiePolicy({ go }: { go: (p: string) => void }) {
               <button className="btn primary" onClick={() => go('careers')}>
                 Explore Careers <ArrowRight size={16} />
               </button>
-              <button className="btn" style={{ background: '#ffffff', border: '1px solid #cbd5e1', color: '#0f172a' }} onClick={() => go('about')}>
-                About Zenith Global
+              <button className="btn" style={{ background: '#ffffff', border: '1px solid #cbd5e1', color: '#0f172a' }} onClick={() => go('privacy')}>
+                Privacy Policy
+              </button>
+              <button className="btn" style={{ background: '#ffffff', border: '1px solid #cbd5e1', color: '#0f172a' }} onClick={() => go('terms')}>
+                Terms of Service
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+function PrivacyPolicy({ go }: { go: (p: string) => void }) {
+  return (
+    <>
+      <section className="page-hero">
+        <span className="kicker">LEGAL &amp; DATA PROTECTION · UPDATED NOVEMBER 2026</span>
+        <h1>Privacy Policy</h1>
+        <p>
+          How Zenith Global Innovation collects, safeguards, processes, and retains personal data submitted by job applicants, enterprise clients, and portal visitors.
+        </p>
+      </section>
+
+      <section className="section light">
+        <div style={{ maxWidth: '860px', margin: '0 auto', display: 'grid', gap: '28px' }}>
+          <div style={{ background: '#ffffff', padding: '24px 28px', borderRadius: '16px', border: '1.5px solid #e2e8f0', display: 'flex', gap: '14px', alignItems: 'flex-start' }}>
+            <ShieldCheck size={22} color="#2563eb" style={{ flexShrink: 0, marginTop: '2px' }} />
+            <div style={{ fontSize: '13.5px', color: '#475569', lineHeight: 1.6 }}>
+              <strong style={{ color: '#0f172a', display: 'block', marginBottom: '4px' }}>Candidate Data Security Commitment</strong>
+              All resumes, identity details, and application payloads transmitted to Zenith Global Innovation are protected by 256-bit TLS 1.3 encryption in transit. We never sell, lease, or broker candidate information to third-party advertisers or commercial lead lists.
+            </div>
+          </div>
+
+          <div style={{ background: '#ffffff', padding: '36px', borderRadius: '16px', border: '1px solid #e2e8f0', display: 'grid', gap: '24px', lineHeight: 1.7, fontSize: '14px', color: '#475569' }}>
+            <div>
+              <h2 style={{ fontSize: '20px', color: '#0f172a', margin: '0 0 10px' }}>1. Scope &amp; Data Controller</h2>
+              <p style={{ margin: 0 }}>
+                Zenith Global Innovation LLC ("Zenith," "we," "our," or "us"), headquartered in New York with regional operating centers in London, Singapore, and Toronto, acts as the data controller for personal information submitted through <strong>www.zenithglobalinnovation.com.ng</strong> and associated recruitment channels.
+              </p>
+            </div>
+
+            <div>
+              <h2 style={{ fontSize: '20px', color: '#0f172a', margin: '0 0 10px' }}>2. Information We Collect</h2>
+              <ul style={{ paddingLeft: '20px', margin: '8px 0 0', display: 'grid', gap: '8px' }}>
+                <li><strong>Candidate Application Data:</strong> Full name, email address, phone number, country of residence, professional background, academic qualifications, salary expectations, uploaded resumes/CVs, portfolio links, and cover letters.</li>
+                <li><strong>Application Tracking &amp; Correspondence:</strong> Unique tracking reference codes (<code>ZGI-2026-XXXXXX</code>), assessment status updates, interview scheduling records, and direct correspondence with our recruitment specialists.</li>
+                <li><strong>Employer &amp; Client Inquiries:</strong> Organization name, contact details, hiring specifications, and project scoping notes submitted via our client partnership and contact forms.</li>
+                <li><strong>Essential Technical Metadata:</strong> Strictly necessary session security tokens and optional referral source attribution (e.g., job board source parameter), manageable anytime in our Cookie Policy.</li>
+              </ul>
+            </div>
+
+            <div>
+              <h2 style={{ fontSize: '20px', color: '#0f172a', margin: '0 0 10px' }}>3. How We Use Personal Information</h2>
+              <ul style={{ paddingLeft: '20px', margin: '8px 0 0', display: 'grid', gap: '8px' }}>
+                <li>Evaluate candidate qualifications, academic credentials, and role fit for active remote vacancies.</li>
+                <li>Issue formal application confirmations, tracking reference codes, and recruitment stage notifications within our 3–5 business day review window.</li>
+                <li>Match shortlisted candidates with verified hiring organizations solely for the roles applied for or closely aligned opportunities where consent is provided.</li>
+                <li>Deliver opted-in job alert notifications and respond to candidate, client, or compliance inquiries.</li>
+                <li>Maintain platform security, prevent fraudulent or automated spam submissions, and comply with applicable employment and data-protection regulations.</li>
+              </ul>
+            </div>
+
+            <div>
+              <h2 style={{ fontSize: '20px', color: '#0f172a', margin: '0 0 10px' }}>4. Legal Basis &amp; Cross-Border Transfers</h2>
+              <p style={{ margin: 0 }}>
+                We process personal information under lawful bases recognized by GDPR, UK GDPR, CCPA/CPRA, and international privacy frameworks—including pre-contractual recruitment steps requested by applicants, explicit consent (such as job alert subscriptions), and legitimate corporate interest in secure talent vetting. Because our recruitment teams and global clients operate across North America, Europe, and Asia-Pacific, data may be processed internationally under appropriate contractual and technical safeguards.
+              </p>
+            </div>
+
+            <div>
+              <h2 style={{ fontSize: '20px', color: '#0f172a', margin: '0 0 10px' }}>5. Data Retention &amp; Security Controls</h2>
+              <p style={{ margin: 0 }}>
+                Applicant records are stored in access-controlled cloud infrastructure accessible exclusively to authorized recruitment personnel and hiring reviewers. We retain active candidate applications for up to 24 months to support ongoing role matching and audit compliance unless you request earlier deletion or applicable law mandates a different retention period.
+              </p>
+            </div>
+
+            <div>
+              <h2 style={{ fontSize: '20px', color: '#0f172a', margin: '0 0 10px' }}>6. Your Privacy Rights</h2>
+              <p style={{ margin: '0 0 8px' }}>Depending on your jurisdiction, you have the right to:</p>
+              <ul style={{ paddingLeft: '20px', margin: 0, display: 'grid', gap: '6px' }}>
+                <li>Request access to a copy of the personal data and application records we hold about you.</li>
+                <li>Request correction of inaccurate resume, contact, or application details.</li>
+                <li>Request permanent deletion ("right to erasure") of your applicant profile and uploaded documents.</li>
+                <li>Withdraw consent for job alerts or optional referral attribution cookies at any time.</li>
+              </ul>
+            </div>
+
+            <div>
+              <h2 style={{ fontSize: '20px', color: '#0f172a', margin: '0 0 10px' }}>7. Data Protection Contact</h2>
+              <p style={{ margin: 0 }}>
+                To exercise any privacy right or submit a data inquiry, email our Legal &amp; Privacy Directorate with your full name and candidate reference code (if applicable):
+              </p>
+              <div style={{ marginTop: '12px', background: '#f8fafc', padding: '16px', borderRadius: '10px', border: '1px solid #e2e8f0', fontSize: '13px' }}>
+                <strong>Zenith Global Innovation — Data Protection Office</strong><br />
+                Email: <a href="mailto:zenithglobalinnovationhq@protonmail.com" style={{ color: '#2563eb', textDecoration: 'none' }}>zenithglobalinnovationhq@protonmail.com</a><br />
+                Headquarters: 245 West 29th Street, Suite 1204, New York, NY 10001, USA<br />
+                Regional Operations: London · Singapore · Toronto
+              </div>
+            </div>
+
+            <div style={{ borderTop: '1px solid #e2e8f0', paddingTop: '20px', display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+              <button className="btn primary" onClick={() => go('careers')}>
+                Explore Careers <ArrowRight size={16} />
+              </button>
+              <button className="btn" style={{ background: '#ffffff', border: '1px solid #cbd5e1', color: '#0f172a' }} onClick={() => go('terms')}>
+                Terms of Service
+              </button>
+              <button className="btn" style={{ background: '#ffffff', border: '1px solid #cbd5e1', color: '#0f172a' }} onClick={() => go('cookies')}>
+                Cookie Preferences
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+function TermsOfService({ go }: { go: (p: string) => void }) {
+  return (
+    <>
+      <section className="page-hero">
+        <span className="kicker">LEGAL &amp; PLATFORM GOVERNANCE · UPDATED NOVEMBER 2026</span>
+        <h1>Terms of Service</h1>
+        <p>
+          Terms governing access to the Zenith Global Innovation remote careers portal, candidate submissions, employer partnership requests, and recruitment communications.
+        </p>
+      </section>
+
+      <section className="section light">
+        <div style={{ maxWidth: '860px', margin: '0 auto', display: 'grid', gap: '28px' }}>
+          <div style={{ background: '#ffffff', padding: '36px', borderRadius: '16px', border: '1px solid #e2e8f0', display: 'grid', gap: '24px', lineHeight: 1.7, fontSize: '14px', color: '#475569' }}>
+            <div>
+              <h2 style={{ fontSize: '20px', color: '#0f172a', margin: '0 0 10px' }}>1. Acceptance of Terms</h2>
+              <p style={{ margin: 0 }}>
+                By accessing or using <strong>www.zenithglobalinnovation.com.ng</strong>, submitting an application for an open position, tracking an application reference code, or requesting staffing services, you agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree to these terms, please refrain from using the portal.
+              </p>
+            </div>
+
+            <div>
+              <h2 style={{ fontSize: '20px', color: '#0f172a', margin: '0 0 10px' }}>2. Candidate Representations &amp; Acceptable Use</h2>
+              <ul style={{ paddingLeft: '20px', margin: '8px 0 0', display: 'grid', gap: '8px' }}>
+                <li><strong>Accuracy of Submissions:</strong> You warrant that all biographical, academic, employment history, and resume information submitted through this portal is truthful, complete, and your own.</li>
+                <li><strong>Prohibited Conduct:</strong> You agree not to submit fraudulent identities, upload malicious files, attempt unauthorized access to administrative portals, scrape listings via abusive automated scripts, or interfere with portal availability.</li>
+                <li><strong>Zero Recruitment Fees for Candidates:</strong> Zenith Global Innovation never charges candidates fees to apply for published vacancies or to undergo initial recruitment screening.</li>
+              </ul>
+            </div>
+
+            <div>
+              <h2 style={{ fontSize: '20px', color: '#0f172a', margin: '0 0 10px' }}>3. Job Listings, Compensation Ranges &amp; Selection</h2>
+              <p style={{ margin: 0 }}>
+                Submitting an application initiates professional evaluation—typically within 3 to 5 business days—and generates an official tracking reference code, but does not constitute an offer or guarantee of employment. Published annual, weekly, and hourly salary bands represent good-faith USD compensation ranges for remote roles; final offers, engagement terms (full-time or contractor), and benefits are confirmed exclusively in a written employment or consulting agreement executed by the hiring organization.
+              </p>
+            </div>
+
+            <div>
+              <h2 style={{ fontSize: '20px', color: '#0f172a', margin: '0 0 10px' }}>4. Equal Opportunity &amp; International Eligibility</h2>
+              <p style={{ margin: 0 }}>
+                Zenith Global Innovation is committed to merit-based, equal-opportunity recruitment regardless of race, color, religion, gender, national origin, age, disability, or protected status. Remote roles welcome qualified applicants across our supported countries subject to client role requirements, applicable international labor compliance, and export-control regulations.
+              </p>
+            </div>
+
+            <div>
+              <h2 style={{ fontSize: '20px', color: '#0f172a', margin: '0 0 10px' }}>5. Enterprise Clients &amp; Hiring Partnerships</h2>
+              <p style={{ margin: 0 }}>
+                Inquiries submitted by prospective enterprise clients establish initial scoping discussions only. Executive search, remote staffing engagements, placement fees, and service-level guarantees are governed solely by mutually executed Master Services Agreements (MSA) and Statements of Work (SOW).
+              </p>
+            </div>
+
+            <div>
+              <h2 style={{ fontSize: '20px', color: '#0f172a', margin: '0 0 10px' }}>6. Intellectual Property</h2>
+              <p style={{ margin: 0 }}>
+                All Zenith Global Innovation trademarks, logos, role frameworks, portal design elements, copy, and software are the exclusive property of Zenith Global Innovation LLC or its licensors and may not be reproduced, redistributed, or used to misrepresent affiliation without prior written permission.
+              </p>
+            </div>
+
+            <div>
+              <h2 style={{ fontSize: '20px', color: '#0f172a', margin: '0 0 10px' }}>7. Disclaimers &amp; Limitation of Liability</h2>
+              <p style={{ margin: 0 }}>
+                The portal is provided on an "as is" and "as available" basis. While we maintain rigorous uptime and security controls, Zenith Global Innovation makes no warranties regarding uninterrupted availability and shall not be liable for indirect, incidental, or consequential damages arising from use of the website or third-party employer hiring decisions.
+              </p>
+            </div>
+
+            <div>
+              <h2 style={{ fontSize: '20px', color: '#0f172a', margin: '0 0 10px' }}>8. Updates &amp; Legal Contact</h2>
+              <p style={{ margin: 0 }}>
+                We may update these Terms of Service periodically to reflect operational or regulatory changes. Continued use of the portal following posted updates signifies acceptance of the revised terms. For legal notices or compliance inquiries, please contact:
+              </p>
+              <div style={{ marginTop: '12px', background: '#f8fafc', padding: '16px', borderRadius: '10px', border: '1px solid #e2e8f0', fontSize: '13px' }}>
+                <strong>Zenith Global Innovation — Legal &amp; Compliance</strong><br />
+                Email: <a href="mailto:zenithglobalinnovationhq@protonmail.com" style={{ color: '#2563eb', textDecoration: 'none' }}>zenithglobalinnovationhq@protonmail.com</a><br />
+                Headquarters: New York, NY · United States
+              </div>
+            </div>
+
+            <div style={{ borderTop: '1px solid #e2e8f0', paddingTop: '20px', display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+              <button className="btn primary" onClick={() => go('careers')}>
+                Explore Careers <ArrowRight size={16} />
+              </button>
+              <button className="btn" style={{ background: '#ffffff', border: '1px solid #cbd5e1', color: '#0f172a' }} onClick={() => go('privacy')}>
+                Privacy Policy
+              </button>
+              <button className="btn" style={{ background: '#ffffff', border: '1px solid #cbd5e1', color: '#0f172a' }} onClick={() => go('cookies')}>
+                Cookie Policy
               </button>
             </div>
           </div>

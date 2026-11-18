@@ -56,6 +56,21 @@ body {
   text-decoration: none;
 }
 
+.brand-logo {
+  height: 40px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.footer-logo {
+  height: 32px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
 .brand > b {
   display: grid;
   place-items: center;
@@ -353,15 +368,21 @@ h2 em {
 
 .careers-controls {
   max-width: 1000px;
-  margin: 0 auto 32px;
+  margin: 0 auto 28px;
   display: flex;
+  flex-direction: column;
   gap: 12px;
+}
+
+.careers-filter-row {
+  display: flex;
+  gap: 10px;
   align-items: stretch;
   flex-wrap: wrap;
 }
 
 .search {
-  flex: 1 1 320px;
+  width: 100%;
   margin: 0;
   display: flex;
   gap: 12px;
@@ -411,7 +432,8 @@ h2 em {
   border-radius: 14px;
   padding: 8px 14px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-  flex: 0 0 auto;
+  flex: 1 1 200px;
+  min-width: 0;
 }
 
 .sort-control span {
@@ -427,12 +449,37 @@ h2 em {
   border: 0;
   outline: 0;
   background: transparent;
-  font-size: 14px;
+  font-size: 13.5px;
   font-weight: 600;
   color: #0f172a;
   cursor: pointer;
   padding: 6px 4px;
   font-family: inherit;
+  flex: 1;
+  min-width: 0;
+  text-overflow: ellipsis;
+}
+
+.filter-reset-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 16px;
+  border-radius: 14px;
+  border: 1px solid #bfdbfe;
+  background: #eff6ff;
+  color: #1d4ed8;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.filter-reset-btn:hover {
+  background: #dbeafe;
+  border-color: #93c5fd;
 }
 
 .all-jobs {
@@ -1072,7 +1119,14 @@ footer b {
     padding: 14px 20px !important;
   }
 
+  .brand-logo {
+    height: 32px;
+  }
   .careers-controls {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .careers-filter-row {
     flex-direction: column;
     gap: 10px;
   }
@@ -1084,6 +1138,7 @@ footer b {
     font-size: 16px;
   }
   .sort-control {
+    flex: none;
     width: 100%;
     justify-content: space-between;
     min-height: 48px;
@@ -1092,5 +1147,9 @@ footer b {
     flex: 1;
     text-align: right;
     font-size: 16px;
+  }
+  .filter-reset-btn {
+    width: 100%;
+    min-height: 46px;
   }
 }

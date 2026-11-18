@@ -2523,6 +2523,8 @@ var seoJobsData_default = {
     name: "Zenith Global Innovation",
     alternateName: "Zenith Global HR & Strategic Remote Staffing",
     url: "https://www.zenithglobalinnovation.com.ng",
+    logo: "https://www.zenithglobalinnovation.com.ng/logo.png",
+    image: "https://www.zenithglobalinnovation.com.ng/og-image.jpg",
     foundingDate: "2019",
     description: "International corporate recruitment and remote staffing partner connecting thoroughly vetted professionals with companies worldwide.",
     email: "zenithglobalinnovationhq@protonmail.com",
@@ -8022,11 +8024,11 @@ var seoJobsData_default = {
 // backend/builtAssets.json
 var builtAssets_default = {
   cssHrefs: [
-    "/assets/index-BQDFU4VC.css",
+    "/assets/index-BJJKUFRy.css",
     "https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
   ],
   jsSrcs: [
-    "/assets/index-L9xX2-gB.js"
+    "/assets/index-DPu2mvE1.js"
   ]
 };
 
@@ -8079,7 +8081,8 @@ function renderJobDetailHtml(job, options) {
       "@type": "Organization",
       "@id": "https://www.zenithglobalinnovation.com.ng/#organization",
       name: "Zenith Global Innovation",
-      sameAs: "https://www.zenithglobalinnovation.com.ng"
+      sameAs: "https://www.zenithglobalinnovation.com.ng",
+      logo: "https://www.zenithglobalinnovation.com.ng/logo.png"
     },
     jobLocationType: "TELECOMMUTE",
     applicantLocationRequirements: seoJobsData_default.acceptedCountries && seoJobsData_default.acceptedCountries.length > 0 ? seoJobsData_default.acceptedCountries : job.applicantLocationRequirements,
@@ -8127,6 +8130,9 @@ function renderJobDetailHtml(job, options) {
     <meta name="author" content="Zenith Global Innovation" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="theme-color" content="#10243e" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
     <link rel="canonical" href="${escapeHtml(canonicalUrl)}" />
 
@@ -8136,14 +8142,19 @@ function renderJobDetailHtml(job, options) {
     <meta property="og:site_name" content="Zenith Global Innovation" />
     <meta property="og:title" content="${escapeHtml(pageTitle)}" />
     <meta property="og:description" content="${escapeHtml(metaDesc)}" />
+    <meta property="og:image" content="https://www.zenithglobalinnovation.com.ng/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="${escapeHtml(job.title)} \u2013 Zenith Global Innovation" />
 
     <!-- Twitter / X Cards -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${escapeHtml(pageTitle)}" />
     <meta name="twitter:description" content="${escapeHtml(metaDesc)}" />
+    <meta name="twitter:image" content="https://www.zenithglobalinnovation.com.ng/og-image.jpg" />
 
     <!-- Single-Job Google for Jobs JSON-LD Structured Data -->
-    <script type="application/ld+json">
+    <script id="zenith-ssr-job-jsonld" data-job-slug="${escapeHtml(job.slug)}" type="application/ld+json">
     ${JSON.stringify(graphPayload, null, 2)}
     </script>
 
@@ -8154,12 +8165,11 @@ function renderJobDetailHtml(job, options) {
   </head>
   <body>
     <div id="root">
-      <header style="padding: 20px; background: #ffffff; border-bottom: 1px solid #e2e8f0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+      <header style="padding: 16px 20px; background: #ffffff; border-bottom: 1px solid #e2e8f0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
         <div style="max-width: 960px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
-          <div>
-            <a href="https://www.zenithglobalinnovation.com.ng/" style="font-size: 20px; font-weight: 800; color: #10243e; text-decoration: none;">ZENITH GLOBAL INNOVATION</a>
-            <p style="font-size: 12px; color: #64748b; margin: 3px 0 0;">Connecting Talent Across Continents \xB7 Established 2019</p>
-          </div>
+          <a href="https://www.zenithglobalinnovation.com.ng/" style="display: inline-flex; align-items: center; text-decoration: none;">
+            <img src="/logo.png" alt="Zenith Global Innovation" style="height: 38px; width: auto; display: block;" />
+          </a>
           <a href="https://www.zenithglobalinnovation.com.ng/" style="color: #2563eb; font-weight: 700; font-size: 13px; text-decoration: none;">\u2190 Browse All 81 Open Roles</a>
         </div>
       </header>
