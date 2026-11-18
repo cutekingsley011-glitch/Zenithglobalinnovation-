@@ -2698,9 +2698,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "enterprise technology strategy, architecture, engineering leadership, cybersecurity and long-term technical investment",
-      metaDescription: "Remote Chief Technology Officer (CTO) ($125,000\u2013$285,000/yr) focused on enterprise technology strategy, architecture and engineering leadership. Apply directly."
+      ]
     },
     {
       slug: "Chief-Marketing-Officer-CMO",
@@ -2761,9 +2759,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "global brand strategy, demand generation, positioning, customer acquisition and marketing performance",
-      metaDescription: "Remote Chief Marketing Officer (CMO) ($125,000\u2013$285,000/yr) focused on global brand strategy, demand generation and positioning. Apply directly."
+      ]
     },
     {
       slug: "Chief-Operations-Officer-COO",
@@ -2824,9 +2820,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "company-wide operating discipline, service delivery, process excellence, workforce performance and scalable execution",
-      metaDescription: "Remote Chief Operations Officer (COO) ($125,000\u2013$285,000/yr) focused on company-wide operating discipline and service delivery. Apply directly."
+      ]
     },
     {
       slug: "Director-of-Digital-Transformation",
@@ -2887,9 +2881,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "business process modernization, technology adoption, automation and measurable digital change",
-      metaDescription: "Remote Director of Digital Transformation ($125,000\u2013$285,000/yr) focused on business process modernization, technology adoption and automation. Apply directly."
+      ]
     },
     {
       slug: "Vice-President-of-Business-Development",
@@ -2950,9 +2942,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "strategic partnerships, enterprise pipeline growth, market expansion and high-value commercial relationships",
-      metaDescription: "Remote Vice President of Business Development ($125,000\u2013$285,000/yr) focused on strategic partnerships and enterprise pipeline growth. Apply directly."
+      ]
     },
     {
       slug: "Senior-Project-Manager",
@@ -3013,9 +3003,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "complex project planning, delivery governance, stakeholder coordination, budgets, risks and milestones",
-      metaDescription: "Remote Senior Project Manager ($125,000\u2013$285,000/yr) focused on complex project planning, delivery governance and stakeholder coordination. Apply directly."
+      ]
     },
     {
       slug: "Product-Strategy-Lead",
@@ -3076,9 +3064,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "product vision, market opportunity, customer insight, portfolio priorities and commercial product strategy",
-      metaDescription: "Remote Product Strategy Lead ($125,000\u2013$285,000/yr) focused on product vision, market opportunity, customer insight and portfolio priorities. Apply directly."
+      ]
     },
     {
       slug: "Change-Management-Consultant",
@@ -3139,9 +3125,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "organizational change, stakeholder readiness, communication, adoption planning and transformation outcomes",
-      metaDescription: "Remote Change Management Consultant ($125,000\u2013$285,000/yr) focused on organizational change, stakeholder readiness and communication. Apply directly."
+      ]
     },
     {
       slug: "Senior-Full-Stack-Developer",
@@ -3202,9 +3186,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "end-to-end web application engineering across frontend, backend, APIs, databases and production delivery",
-      metaDescription: "Remote Senior Full Stack Developer ($115,000\u2013$225,000/yr) focused on end-to-end web application engineering across frontend, backend and APIs. Apply directly."
+      ]
     },
     {
       slug: "Lead-Software-Architect",
@@ -3265,9 +3247,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "technical architecture, engineering standards, system design, scalability and architectural decision-making",
-      metaDescription: "Remote Lead Software Architect ($115,000\u2013$225,000/yr) focused on technical architecture, engineering standards, system design and scalability. Apply directly."
+      ]
     },
     {
       slug: "Senior-DevOps-Engineer",
@@ -3328,9 +3308,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "CI/CD, cloud infrastructure, observability, automation, reliability and secure software delivery",
-      metaDescription: "Remote Senior DevOps Engineer ($115,000\u2013$225,000/yr) focused on CI/CD, cloud infrastructure, observability, automation and reliability. Apply directly."
+      ]
     },
     {
       slug: "Principal-Cloud-Engineer",
@@ -3391,9 +3369,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "cloud architecture, migration, infrastructure automation, scalability, resilience and cost optimization",
-      metaDescription: "Remote Principal Cloud Engineer ($115,000\u2013$225,000/yr) focused on cloud architecture, migration, infrastructure automation and scalability. Apply directly."
+      ]
     },
     {
       slug: "Senior-Cybersecurity-Analyst",
@@ -3454,9 +3430,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "security monitoring, threat analysis, incident response, vulnerability management and security controls",
-      metaDescription: "Remote Senior Cybersecurity Analyst ($115,000\u2013$225,000/yr) focused on security monitoring, threat analysis and incident response. Apply directly."
+      ]
     },
     {
       slug: "Lead-Data-Scientist",
@@ -3517,9 +3491,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "advanced analytics, predictive modeling, experimentation and data-driven business decision support",
-      metaDescription: "Remote Lead Data Scientist ($115,000\u2013$225,000/yr) focused on advanced analytics, predictive modeling and experimentation. Apply directly."
+      ]
     },
     {
       slug: "Senior-Machine-Learning-Engineer",
@@ -3580,9 +3552,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "production machine learning systems, model deployment, data pipelines, evaluation and MLOps",
-      metaDescription: "Remote Senior Machine Learning Engineer ($115,000\u2013$225,000/yr) focused on production machine learning systems and model deployment. Apply directly."
+      ]
     },
     {
       slug: "Blockchain-Solutions-Architect",
@@ -3643,9 +3613,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "distributed ledger architecture, smart-contract ecosystems, integration design and enterprise blockchain solutions",
-      metaDescription: "Remote Blockchain Solutions Architect ($115,000\u2013$225,000/yr) focused on distributed ledger architecture and smart-contract ecosystems. Apply directly."
+      ]
     },
     {
       slug: "Senior-Database-Administrator",
@@ -3706,9 +3674,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "database reliability, performance tuning, backup strategy, security and high-availability operations",
-      metaDescription: "Remote Senior Database Administrator ($115,000\u2013$225,000/yr) focused on database reliability, performance tuning, backup strategy and security. Apply directly."
+      ]
     },
     {
       slug: "Principal-UX-UI-Designer",
@@ -3769,9 +3735,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "user research, interaction design, visual systems, accessibility and product experience leadership",
-      metaDescription: "Remote Principal UX/UI Designer ($115,000\u2013$225,000/yr) focused on user research, interaction design, visual systems and accessibility. Apply directly."
+      ]
     },
     {
       slug: "Senior-Digital-Marketing-Manager",
@@ -3832,9 +3796,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "multi-channel campaigns, performance marketing, audience growth, analytics and digital acquisition",
-      metaDescription: "Remote Senior Digital Marketing Manager ($95,000\u2013$185,000/yr) focused on multi-channel campaigns, performance marketing and audience growth. Apply directly."
+      ]
     },
     {
       slug: "Brand-Strategy-Director",
@@ -3895,9 +3857,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "brand positioning, identity, messaging, market differentiation and global brand governance",
-      metaDescription: "Remote Brand Strategy Director ($95,000\u2013$185,000/yr) focused on brand positioning, identity, messaging and market differentiation. Apply directly."
+      ]
     },
     {
       slug: "Senior-Content-Strategist",
@@ -3958,9 +3918,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "editorial strategy, content planning, audience journeys, thought leadership and measurable content performance",
-      metaDescription: "Remote Senior Content Strategist ($95,000\u2013$185,000/yr) focused on editorial strategy, content planning and audience journeys. Apply directly."
+      ]
     },
     {
       slug: "Creative-Director",
@@ -4021,9 +3979,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "creative vision, campaign concepts, brand expression, creative teams and quality standards",
-      metaDescription: "Remote Creative Director ($95,000\u2013$185,000/yr) focused on creative vision, campaign concepts, brand expression and creative teams. Apply directly."
+      ]
     },
     {
       slug: "Senior-SEO-Specialist",
@@ -4084,9 +4040,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "technical SEO, content optimization, search visibility, keyword strategy and organic growth",
-      metaDescription: "Remote Senior SEO Specialist ($95,000\u2013$185,000/yr) focused on technical SEO, content optimization, search visibility and keyword strategy. Apply directly."
+      ]
     },
     {
       slug: "Marketing-Automation-Lead",
@@ -4147,9 +4101,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "lifecycle marketing, CRM automation, segmentation, lead nurturing and campaign operations",
-      metaDescription: "Remote Marketing Automation Lead ($95,000\u2013$185,000/yr) focused on lifecycle marketing, CRM automation, segmentation and lead nurturing. Apply directly."
+      ]
     },
     {
       slug: "Senior-Growth-Hacker",
@@ -4210,9 +4162,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "rapid experimentation, acquisition loops, conversion optimization and scalable growth channels",
-      metaDescription: "Remote Senior Growth Hacker ($95,000\u2013$185,000/yr) focused on rapid experimentation, acquisition loops and conversion optimization. Apply directly."
+      ]
     },
     {
       slug: "E-commerce-Strategy-Manager",
@@ -4273,9 +4223,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "digital commerce strategy, merchandising, conversion, customer journeys and online revenue growth",
-      metaDescription: "Remote E-commerce Strategy Manager ($95,000\u2013$185,000/yr) focused on digital commerce strategy, merchandising, conversion and customer journeys. Apply directly."
+      ]
     },
     {
       slug: "Senior-Financial-Analyst",
@@ -4336,9 +4284,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "financial modeling, forecasting, variance analysis, reporting and management decision support",
-      metaDescription: "Remote Senior Financial Analyst ($105,000\u2013$195,000/yr) focused on financial modeling, forecasting, variance analysis and reporting. Apply directly."
+      ]
     },
     {
       slug: "Business-Intelligence-Manager",
@@ -4399,9 +4345,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "BI strategy, dashboards, data governance, analytics delivery and executive reporting",
-      metaDescription: "Remote Business Intelligence Manager ($105,000\u2013$195,000/yr) focused on BI strategy, dashboards, data governance and analytics delivery. Apply directly."
+      ]
     },
     {
       slug: "Senior-Investment-Analyst",
@@ -4462,9 +4406,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "investment research, valuation, financial modeling, market analysis and investment recommendations",
-      metaDescription: "Remote Senior Investment Analyst ($105,000\u2013$195,000/yr) focused on investment research, valuation, financial modeling and market analysis. Apply directly."
+      ]
     },
     {
       slug: "Risk-Management-Consultant",
@@ -4525,9 +4467,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "enterprise risk identification, controls, scenario analysis and risk mitigation programs",
-      metaDescription: "Remote Risk Management Consultant ($105,000\u2013$195,000/yr) focused on enterprise risk identification, controls and scenario analysis. Apply directly."
+      ]
     },
     {
       slug: "Senior-Compliance-Officer",
@@ -4588,9 +4528,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "regulatory compliance, policy implementation, monitoring, controls and compliance reporting",
-      metaDescription: "Remote Senior Compliance Officer ($105,000\u2013$195,000/yr) focused on regulatory compliance, policy implementation, monitoring and controls. Apply directly."
+      ]
     },
     {
       slug: "Treasury-Manager",
@@ -4651,9 +4589,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "cash management, liquidity planning, banking relationships, funding and treasury controls",
-      metaDescription: "Remote Treasury Manager ($105,000\u2013$195,000/yr) focused on cash management, liquidity planning, banking relationships and funding. Apply directly."
+      ]
     },
     {
       slug: "Financial-Planning-Analysis-Lead",
@@ -4714,9 +4650,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "budgeting, forecasting, scenario planning, performance analysis and executive financial insight",
-      metaDescription: "Remote Financial Planning & Analysis Lead ($105,000\u2013$195,000/yr) focused on budgeting, forecasting, scenario planning and performance analysis. Apply directly."
+      ]
     },
     {
       slug: "Senior-Tax-Consultant",
@@ -4777,9 +4711,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "tax planning, compliance, research, advisory analysis and coordination of tax obligations",
-      metaDescription: "Remote Senior Tax Consultant ($105,000\u2013$195,000/yr) focused on tax planning, compliance, research and advisory analysis. Apply directly."
+      ]
     },
     {
       slug: "Senior-Operations-Manager",
@@ -4840,9 +4772,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "daily operating performance, service quality, process improvement, resource planning and team leadership",
-      metaDescription: "Remote Senior Operations Manager ($90,000\u2013$175,000/yr) focused on daily operating performance, service quality and process improvement. Apply directly."
+      ]
     },
     {
       slug: "Director-of-Remote-Workforce-Management",
@@ -4903,9 +4833,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "distributed workforce strategy, remote operating models, productivity, engagement and workforce governance",
-      metaDescription: "Remote Director of Remote Workforce Management ($90,000\u2013$175,000/yr) focused on distributed workforce strategy and remote operating models. Apply directly."
+      ]
     },
     {
       slug: "Senior-HR-Business-Partner",
@@ -4966,9 +4894,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "strategic HR partnership, workforce planning, employee relations, performance and organizational effectiveness",
-      metaDescription: "Remote Senior HR Business Partner ($90,000\u2013$175,000/yr) focused on strategic HR partnership, workforce planning and employee relations. Apply directly."
+      ]
     },
     {
       slug: "Talent-Acquisition-Lead",
@@ -5029,9 +4955,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "recruitment strategy, sourcing, selection, employer branding and hiring quality",
-      metaDescription: "Remote Talent Acquisition Lead ($90,000\u2013$175,000/yr) focused on recruitment strategy, sourcing, selection, employer branding and hiring quality. Apply directly."
+      ]
     },
     {
       slug: "Organizational-Development-Consultant",
@@ -5092,9 +5016,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "organizational design, leadership development, culture, capability building and change initiatives",
-      metaDescription: "Remote Organizational Development Consultant ($90,000\u2013$175,000/yr) focused on organizational design, leadership development and culture. Apply directly."
+      ]
     },
     {
       slug: "Senior-Learning-Development-Specialist",
@@ -5155,9 +5077,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "learning strategy, training programs, skills development, facilitation and learning measurement",
-      metaDescription: "Remote Senior Learning & Development Specialist ($90,000\u2013$175,000/yr) focused on learning strategy, training programs and skills development. Apply directly."
+      ]
     },
     {
       slug: "Employee-Experience-Manager",
@@ -5218,9 +5138,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "employee journey, engagement programs, workplace culture, feedback and retention initiatives",
-      metaDescription: "Remote Employee Experience Manager ($90,000\u2013$175,000/yr) focused on employee journey, engagement programs, workplace culture and feedback. Apply directly."
+      ]
     },
     {
       slug: "Workforce-Analytics-Lead",
@@ -5281,9 +5199,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "people analytics, workforce planning, reporting, forecasting and evidence-based talent decisions",
-      metaDescription: "Remote Workforce Analytics Lead ($90,000\u2013$175,000/yr) focused on people analytics, workforce planning, reporting and forecasting. Apply directly."
+      ]
     },
     {
       slug: "Senior-Management-Consultant",
@@ -5344,9 +5260,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "executive advisory, business analysis, strategic recommendations and transformation execution",
-      metaDescription: "Remote Senior Management Consultant ($110,000\u2013$250,000/yr) focused on executive advisory, business analysis and strategic recommendations. Apply directly."
+      ]
     },
     {
       slug: "Digital-Transformation-Consultant",
@@ -5407,9 +5321,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "digital operating models, technology-enabled process redesign, adoption and transformation roadmaps",
-      metaDescription: "Remote Digital Transformation Consultant ($110,000\u2013$250,000/yr) focused on digital operating models and technology-enabled process redesign. Apply directly."
+      ]
     },
     {
       slug: "Process-Improvement-Specialist",
@@ -5470,9 +5382,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "process mapping, root-cause analysis, workflow redesign, lean improvement and measurable efficiency",
-      metaDescription: "Remote Process Improvement Specialist ($110,000\u2013$250,000/yr) focused on process mapping, root-cause analysis and workflow redesign. Apply directly."
+      ]
     },
     {
       slug: "Senior-Business-Analyst",
@@ -5533,9 +5443,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "business requirements, process analysis, stakeholder discovery, solution definition and delivery support",
-      metaDescription: "Remote Senior Business Analyst ($110,000\u2013$250,000/yr) focused on business requirements, process analysis and stakeholder discovery. Apply directly."
+      ]
     },
     {
       slug: "IT-Strategy-Consultant",
@@ -5596,9 +5504,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "technology roadmaps, IT operating models, investment priorities, governance and business alignment",
-      metaDescription: "Remote IT Strategy Consultant ($110,000\u2013$250,000/yr) focused on technology roadmaps, IT operating models, investment priorities and governance. Apply directly."
+      ]
     },
     {
       slug: "Customer-Experience-Consultant",
@@ -5659,9 +5565,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "customer journey design, service improvement, voice-of-customer insight and experience strategy",
-      metaDescription: "Remote Customer Experience Consultant ($110,000\u2013$250,000/yr) focused on customer journey design and service improvement. Apply directly."
+      ]
     },
     {
       slug: "Supply-Chain-Optimization-Expert",
@@ -5722,9 +5626,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "supply chain performance, planning, procurement flows, inventory and operational optimization",
-      metaDescription: "Remote Supply Chain Optimization Expert ($110,000\u2013$250,000/yr) focused on supply chain performance, planning, procurement flows and inventory. Apply directly."
+      ]
     },
     {
       slug: "Senior-Data-Privacy-Consultant",
@@ -5785,9 +5687,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "privacy governance, data protection programs, risk assessments, controls and regulatory readiness",
-      metaDescription: "Remote Senior Data Privacy Consultant ($110,000\u2013$250,000/yr) focused on privacy governance, data protection programs and risk assessments. Apply directly."
+      ]
     },
     {
       slug: "Senior-Account-Manager",
@@ -5848,9 +5748,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "strategic account ownership, client retention, expansion opportunities and executive relationship management",
-      metaDescription: "Remote Senior Account Manager ($85,000\u2013$180,000/yr) focused on strategic account ownership, client retention and expansion opportunities. Apply directly."
+      ]
     },
     {
       slug: "Customer-Success-Director",
@@ -5911,9 +5809,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "customer outcomes, retention strategy, adoption, renewal performance and success team leadership",
-      metaDescription: "Remote Customer Success Director ($85,000\u2013$180,000/yr) focused on customer outcomes, retention strategy, adoption and renewal performance. Apply directly."
+      ]
     },
     {
       slug: "Senior-Sales-Strategist",
@@ -5974,9 +5870,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "sales strategy, segmentation, pipeline performance, consultative selling and revenue planning",
-      metaDescription: "Remote Senior Sales Strategist ($85,000\u2013$180,000/yr) focused on sales strategy, segmentation, pipeline performance and consultative selling. Apply directly."
+      ]
     },
     {
       slug: "Key-Account-Manager",
@@ -6037,9 +5931,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "high-value account planning, relationship development, commercial growth and client satisfaction",
-      metaDescription: "Remote Key Account Manager ($85,000\u2013$180,000/yr) focused on high-value account planning, relationship development and commercial growth. Apply directly."
+      ]
     },
     {
       slug: "Client-Relationship-Manager",
@@ -6100,9 +5992,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "client partnership, service coordination, issue resolution and relationship health",
-      metaDescription: "Remote Client Relationship Manager ($85,000\u2013$180,000/yr) focused on client partnership, service coordination and issue resolution. Apply directly."
+      ]
     },
     {
       slug: "Senior-Business-Development-Manager",
@@ -6163,9 +6053,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "prospecting, enterprise opportunities, partnerships, proposals and revenue growth",
-      metaDescription: "Remote Senior Business Development Manager ($85,000\u2013$180,000/yr) focused on prospecting, enterprise opportunities, partnerships and proposals. Apply directly."
+      ]
     },
     {
       slug: "Sales-Operations-Lead",
@@ -6226,9 +6114,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "sales processes, CRM discipline, forecasting, performance analytics and commercial enablement",
-      metaDescription: "Remote Sales Operations Lead ($85,000\u2013$180,000/yr) focused on sales processes, CRM discipline, forecasting and performance analytics. Apply directly."
+      ]
     },
     {
       slug: "Senior-Research-Analyst",
@@ -6289,9 +6175,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "structured research, market intelligence, data analysis, evidence synthesis and executive-ready insights",
-      metaDescription: "Remote Senior Research Analyst ($95,000\u2013$190,000/yr) focused on structured research, market intelligence, data analysis and evidence synthesis. Apply directly."
+      ]
     },
     {
       slug: "Corporate-Trainer",
@@ -6352,9 +6236,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "professional training design, facilitation, curriculum development and measurable capability improvement",
-      metaDescription: "Remote Corporate Trainer ($95,000\u2013$190,000/yr) focused on professional training design, facilitation and curriculum development. Apply directly."
+      ]
     },
     {
       slug: "Senior-Legal-Counsel",
@@ -6415,9 +6297,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "commercial legal advice, contract review, legal risk management and business-facing counsel",
-      metaDescription: "Remote Senior Legal Counsel ($95,000\u2013$190,000/yr) focused on commercial legal advice, contract review and legal risk management. Apply directly."
+      ]
     },
     {
       slug: "Senior-Procurement-Specialist",
@@ -6478,9 +6358,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "supplier sourcing, procurement processes, negotiation, vendor performance and cost management",
-      metaDescription: "Remote Senior Procurement Specialist ($95,000\u2013$190,000/yr) focused on supplier sourcing, procurement processes and negotiation. Apply directly."
+      ]
     },
     {
       slug: "Quality-Assurance-Lead",
@@ -6541,9 +6419,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "quality strategy, testing standards, defect prevention, audit readiness and continuous improvement",
-      metaDescription: "Remote Quality Assurance Lead ($95,000\u2013$190,000/yr) focused on quality strategy, testing standards, defect prevention and audit readiness. Apply directly."
+      ]
     },
     {
       slug: "Senior-Compliance-Auditor",
@@ -6604,9 +6480,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "independent compliance testing, control evaluation, evidence review, findings and remediation tracking",
-      metaDescription: "Remote Senior Compliance Auditor ($95,000\u2013$190,000/yr) focused on independent compliance testing, control evaluation and evidence review. Apply directly."
+      ]
     },
     {
       slug: "Corporate-Communications-Manager",
@@ -6667,9 +6541,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "internal communications, corporate messaging, executive communications, reputation and stakeholder engagement",
-      metaDescription: "Remote Corporate Communications Manager ($95,000\u2013$190,000/yr) focused on internal communications and corporate messaging. Apply directly."
+      ]
     },
     {
       slug: "Senior-Product-Manager",
@@ -6730,9 +6602,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "product strategy, roadmap ownership, customer needs, cross-functional delivery and product performance",
-      metaDescription: "Remote Senior Product Manager ($95,000\u2013$190,000/yr) focused on product strategy, roadmap ownership and customer needs. Apply directly."
+      ]
     },
     {
       slug: "Virtual-Assistant",
@@ -6793,9 +6663,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "calendar management, correspondence, scheduling, research, administrative coordination and remote executive support",
-      metaDescription: "Remote Virtual Assistant ($65,000\u2013$95,000/yr) focused on calendar management, correspondence, scheduling and research. Apply directly."
+      ]
     },
     {
       slug: "Executive-Assistant",
@@ -6856,9 +6724,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "high-trust executive support, complex scheduling, meeting preparation, travel coordination and confidential administration",
-      metaDescription: "Remote Executive Assistant ($65,000\u2013$95,000/yr) focused on high-trust executive support, complex scheduling and meeting preparation. Apply directly."
+      ]
     },
     {
       slug: "Customer-Service-Representative",
@@ -6919,9 +6785,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "customer inquiries, issue resolution, service quality, accurate documentation and positive customer experiences",
-      metaDescription: "Remote Customer Service Representative ($65,000\u2013$95,000/yr) focused on customer inquiries, issue resolution and service quality. Apply directly."
+      ]
     },
     {
       slug: "Data-Entry-Specialist",
@@ -6982,9 +6846,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "accurate data capture, validation, record maintenance, document processing and information quality",
-      metaDescription: "Remote Data Entry Specialist ($65,000\u2013$95,000/yr) focused on accurate data capture, validation, record maintenance and document processing. Apply directly."
+      ]
     },
     {
       slug: "Social-Media-Manager",
@@ -7045,9 +6907,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "social strategy, publishing, community management, campaign execution and channel performance",
-      metaDescription: "Remote Social Media Manager ($75,000\u2013$110,000/yr) focused on social strategy, publishing, community management and campaign execution. Apply directly."
+      ]
     },
     {
       slug: "Content-Creator",
@@ -7108,9 +6968,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "original digital content, storytelling, creative production, editorial consistency and audience engagement",
-      metaDescription: "Remote Content Creator ($75,000\u2013$110,000/yr) focused on original digital content, storytelling, creative production and editorial consistency. Apply directly."
+      ]
     },
     {
       slug: "SEO-Specialist",
@@ -7171,9 +7029,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "keyword research, on-page optimization, technical improvements, content briefs and search performance",
-      metaDescription: "Remote SEO Specialist ($75,000\u2013$110,000/yr) focused on keyword research, on-page optimization, technical improvements and content briefs. Apply directly."
+      ]
     },
     {
       slug: "Email-Marketing-Coordinator",
@@ -7234,9 +7090,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "email campaigns, segmentation, automation support, testing, deliverability and performance reporting",
-      metaDescription: "Remote Email Marketing Coordinator ($75,000\u2013$110,000/yr) focused on email campaigns, segmentation, automation support and testing. Apply directly."
+      ]
     },
     {
       slug: "IT-Support-Specialist",
@@ -7297,9 +7151,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "technical troubleshooting, user support, device and software assistance and service-desk resolution",
-      metaDescription: "Remote IT Support Specialist ($85,000\u2013$140,000/yr) focused on technical troubleshooting, user support, device and software assistance. Apply directly."
+      ]
     },
     {
       slug: "Junior-Developer",
@@ -7360,9 +7212,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "frontend or backend implementation, bug fixing, code quality, testing and supervised product delivery",
-      metaDescription: "Remote Junior Developer ($85,000\u2013$140,000/yr) focused on frontend or backend implementation, bug fixing, code quality and testing. Apply directly."
+      ]
     },
     {
       slug: "Web-Designer",
@@ -7423,9 +7273,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "responsive web interfaces, visual design, usability, accessibility and design-to-development handoff",
-      metaDescription: "Remote Web Designer ($85,000\u2013$140,000/yr) focused on responsive web interfaces, visual design, usability and accessibility. Apply directly."
+      ]
     },
     {
       slug: "Digital-Project-Manager",
@@ -7486,9 +7334,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "digital project coordination, timelines, requirements, vendors, stakeholder communication and delivery quality",
-      metaDescription: "Remote Digital Project Manager ($85,000\u2013$140,000/yr) focused on digital project coordination, timelines, requirements and vendors. Apply directly."
+      ]
     },
     {
       slug: "Bookkeeper",
@@ -7549,9 +7395,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "transaction recording, reconciliations, ledger accuracy and routine financial reporting",
-      metaDescription: "Remote Bookkeeper ($80,000\u2013$135,000/yr) focused on transaction recording, reconciliations, ledger accuracy and routine financial reporting. Apply directly."
+      ]
     },
     {
       slug: "Payroll-Administrator",
@@ -7612,9 +7456,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "payroll preparation, employee records, deductions, compliance checks and payroll issue resolution",
-      metaDescription: "Remote Payroll Administrator ($80,000\u2013$135,000/yr) focused on payroll preparation, employee records, deductions and compliance checks. Apply directly."
+      ]
     },
     {
       slug: "Accounts-Receivable-Specialist",
@@ -7675,9 +7517,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "invoice management, collections, payment reconciliation, aging analysis and customer account accuracy",
-      metaDescription: "Remote Accounts Receivable Specialist ($80,000\u2013$135,000/yr) focused on invoice management, collections and payment reconciliation. Apply directly."
+      ]
     },
     {
       slug: "Financial-Analyst",
@@ -7738,9 +7578,7 @@ var seoJobsData_default = {
           "@type": "Country",
           name: "India"
         }
-      ],
-      focus: "financial reporting, modeling, budgeting, variance analysis and business performance insight",
-      metaDescription: "Remote Financial Analyst ($80,000\u2013$135,000/yr) focused on financial reporting, modeling, budgeting and variance analysis. Apply directly."
+      ]
     }
   ],
   acceptedCountries: [
@@ -8026,7 +7864,7 @@ var builtAssets_default = {
     "https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
   ],
   jsSrcs: [
-    "/assets/index-u1LZNT8H.js"
+    "/assets/index-B1dNdYvp.js"
   ]
 };
 
@@ -8065,18 +7903,7 @@ function renderJobDetailHtml(job, options) {
   const salaryFormatted = `$${minPay.toLocaleString()}\u2013$${maxPay.toLocaleString()} USD/yr`;
   const empTypeLabel = job.employmentType === "CONTRACTOR" ? "Contract \xB7 100% Remote" : "Full-time \xB7 100% Remote";
   const pageTitle = `${job.title} \u2013 Remote (${salaryFormatted}) | Zenith Global Innovation`;
-  const metaDesc = job.metaDescription || `Remote ${job.title} (${salaryFormatted}, ${empTypeLabel}) focused on ${job.focus || "high-impact global delivery"}. Apply directly at Zenith Global Innovation.`;
-  const jobIndex = allJobs.findIndex((j) => j.slug === job.slug);
-  const relatedJobs = [];
-  if (allJobs.length > 1) {
-    const start = jobIndex >= 0 ? jobIndex : 0;
-    for (let offset = 1; offset <= 8 && relatedJobs.length < 8; offset++) {
-      const candidate = allJobs[(start + offset) % allJobs.length];
-      if (candidate && candidate.slug !== job.slug) {
-        relatedJobs.push(candidate);
-      }
-    }
-  }
+  const metaDesc = `Apply directly for ${job.title} at Zenith Global Innovation (${salaryFormatted}, ${empTypeLabel}). Google Cloud Partner Verified, Meta Verified & BBB A+ Accredited.`;
   const jobPostingNode = {
     "@type": "JobPosting",
     "@id": `${canonicalUrl}#jobposting`,
@@ -8202,15 +8029,6 @@ function renderJobDetailHtml(job, options) {
             Offices: New York (245 West 29th Street, 1350 Avenue of the Americas, 400 Park Avenue South) \xB7 London (82 Great Eastern Street, 152 City Road) \xB7 Singapore (10 Marina Boulevard, 1 Raffles Place) \xB7 Toronto (88 Queen's Quay West, 199 Bay Street)
           </p>
         </section>
-
-        ${relatedJobs.length > 0 ? `<nav aria-label="More open remote positions" style="margin-top: 28px; padding-top: 20px; border-top: 1px solid #e2e8f0;">
-          <h2 style="font-size: 15px; margin: 0 0 12px; color: #0f172a;">More Open Remote Positions</h2>
-          <ul style="list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 8px 16px;">
-            ${relatedJobs.map(
-    (rj) => `<li><a href="/jobs/${escapeHtml(rj.slug)}" style="color: #2563eb; text-decoration: none; font-size: 13.5px; font-weight: 600;">${escapeHtml(rj.title)}</a></li>`
-  ).join("\n            ")}
-          </ul>
-        </nav>` : ""}
       </main>
     </div>
     ${jsTags}
