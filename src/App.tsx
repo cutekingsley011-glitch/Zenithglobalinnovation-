@@ -1,6 +1,7 @@
 import React, { useMemo, useState, useEffect, Suspense } from 'react';
 import { api } from './lib/api';
 import { ErrorBoundary } from './components/ErrorBoundary';
+import { RecruitmentFaq } from './components/RecruitmentFaq';
 
 const AdminDashboard = React.lazy(() => import('./AdminDashboard'));
 import {
@@ -598,7 +599,7 @@ export default function App() {
         const pageParam = p.get('page');
         if (
           pageParam &&
-          ['home', 'careers', 'about', 'services', 'seekers', 'clients', 'track', 'blog', 'contact', 'cookies', 'privacy', 'terms'].includes(pageParam)
+          ['home', 'careers', 'about', 'services', 'seekers', 'clients', 'track', 'blog', 'contact', 'cookies', 'privacy', 'terms', 'faq'].includes(pageParam)
         ) {
           setPage(pageParam);
         }
@@ -684,6 +685,10 @@ export default function App() {
         terms: {
           title: 'Terms of Service & Recruitment Portal Agreement | Zenith Global Innovation',
           description: 'Review the Terms of Service governing use of the Zenith Global Innovation remote careers portal, candidate submissions and employer partnerships.',
+        },
+        faq: {
+          title: 'Recruitment FAQ – Salaries, Application Process & Tracking | Zenith Global Innovation',
+          description: 'Find instant answers about Zenith Global Innovation salaries, what happens after you apply, global remote eligibility, tracking reference codes and candidate security.',
         },
       };
 
@@ -867,8 +872,9 @@ export default function App() {
       </header>
 
       {page === 'home' && <Home go={go} open={openJob} />}
-      {page === 'careers' && <Careers search={search} setSearch={setSearch} open={openJob} />}
+      {page === 'careers' && <Careers search={search} setSearch={setSearch} open={openJob} go={go} />}
       {page === 'about' && <About go={go} />}
+      {page === 'faq' && <FaqPage go={go} />}
       {page === 'cookies' && <CookiePolicy go={go} />}
       {page === 'privacy' && <PrivacyPolicy go={go} />}
       {page === 'terms' && <TermsOfService go={go} />}
@@ -887,7 +893,7 @@ export default function App() {
       {page === 'blog' && (
         <Blog />
       )}
-      {page === 'contact' && <Contact />}
+      {page === 'contact' && <Contact go={go} />}
 
       {selected && (
         <JobModal
@@ -977,6 +983,18 @@ export default function App() {
             style={{ color: '#475569', cursor: 'pointer', textDecoration: 'none' }}
           >
             Track Application
+          </a>
+          <a
+            href="/?page=faq"
+            onClick={e => {
+              if (!e.metaKey && !e.ctrlKey && !e.shiftKey && !e.altKey) {
+                e.preventDefault();
+                go('faq');
+              }
+            }}
+            style={{ color: '#475569', cursor: 'pointer', textDecoration: 'none' }}
+          >
+            Recruitment FAQ
           </a>
           <a
             href="/?page=privacy"
@@ -1235,10 +1253,12 @@ function Careers({
   search,
   setSearch,
   open,
+  go,
 }: {
   search: string;
   setSearch: (s: string) => void;
   open: (j: Job) => void;
+  go: (p: string) => void;
 }) {
   const [alertDone, setAlertDone] = useState(false);
   const [alertBusy, setAlertBusy] = useState(false);
@@ -1400,6 +1420,10 @@ function Careers({
               </button>
             </div>
           )}
+        </div>
+
+        <div style={{ marginTop: '56px' }}>
+          <RecruitmentFaq context="careers" go={go} compact />
         </div>
 
         <section className="job-alert">
@@ -2395,6 +2419,29 @@ function Seekers({ go }: { go: (p: string) => void }) {
           </div>
         </div>
       </section>
+      <section className="section">
+        <RecruitmentFaq context="seekers" go={go} emitSchema />
+      </section>
+    </>
+  );
+}
+
+function FaqPage({ go }: { go: (p: string) => void }) {
+  return (
+    <>
+      <section className="page-hero">
+        <span className="kicker">CANDIDATE &amp; EMPLOYER HELP CENTER</span>
+        <h1>
+          Recruitment <em>FAQ.</em>
+        </h1>
+        <p>
+          Clear, up-to-date answers on Zenith Global Innovation&rsquo;s hiring workflow, transparent USD salary bands, global remote eligibility, and real-time application tracking.
+        </p>
+      </section>
+
+      <section className="section light">
+        <RecruitmentFaq context="all" go={go} emitSchema />
+      </section>
     </>
   );
 }
@@ -2984,7 +3031,7 @@ function TermsOfService({ go }: { go: (p: string) => void }) {
   );
 }
 
-function Contact() {
+function Contact({ go }: { go: (p: string) => void }) {
   const [done, setDone] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [formError, setFormError] = useState('');
@@ -3128,6 +3175,10 @@ function Contact() {
             </button>
           </form>
         )}
+      </section>
+
+      <section className="section light">
+        <RecruitmentFaq context="contact" go={go} compact />
       </section>
     </>
   );
@@ -3615,6 +3666,10 @@ function TrackApplication({
             </div>
           )}
         </div>
+      </section>
+
+      <section className="section">
+        <RecruitmentFaq context="track" go={go} compact />
       </section>
     </>
   );

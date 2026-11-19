@@ -14,6 +14,7 @@ import {
   hashPassword,
   rateLimiter,
 } from './security';
+import { queryFaqs, type FaqContext } from './faqsData';
 
 const ADMIN_EMAIL = 'zenithglobalinnovationhq@protonmail.com';
 const HMAC_SECRET = process.env.ADMIN_SESSION_SECRET || 'zgi_admin_session_key_2026_zenith_secure';
@@ -1568,6 +1569,27 @@ apiRouter.post('/job-alerts', async (req: Request, res: Response) => {
     res.status(201).json({ subscriptionId, subscribed: true, confirmationSent });
   } catch (err: any) {
     res.status(500).json({ message: err?.message || 'Error processing job alert' });
+  }
+});
+
+// Dynamic Recruitment FAQ API (context-aware & searchable to deflect repetitive support inquiries)
+apiRouter.get('/faqs', (req: Request, res: Response) => {
+  try {
+    const rawContext = String(req.query.context || 'all').toLowerCase();
+    const allowedContexts: FaqContext[] = ['all', 'seekers', 'careers', 'track', 'contact', 'clients', 'home'];
+    const context: FaqContext = allowedContexts.includes(rawContext as FaqContext)
+      ? (rawContext as FaqContext)
+      : 'all';
+    const category = req.query.category ? String(req.query.category) : undefined;
+    const q = req.query.q ? String(req.query.q) : undefined;
+    const parsedLimit = req.query.limit ? Number(req.query.limit) : undefined;
+    const limit = parsedLimit && !Number.isNaN(parsedLimit) && parsedLimit > 0 ? Math.min(parsedLimit, 50) : undefined;
+
+    const payload = queryFaqs({ context, category, q, limit });
+    res.setHeader('Cache-Control', 'public, max-age=300');
+    res.json(payload);
+  } catch (err: any) {
+    res.status(500).json({ message: err?.message || 'Error loading recruitment FAQs' });
   }
 });
 
